@@ -70,17 +70,19 @@ export default function Menu() {
 			{/* Sticky Header */}
 			<header className="sticky top-0 z-30 bg-marble-black/90 backdrop-blur-md border-b border-gold/20">
 				<div className="px-4 py-4">
-					<div className="flex items-center justify-between">
-						<button onClick={toggleDrawer} className="text-gold hover:text-deep-gold transition-colors"><i className="fas fa-bars text-lg"></i></button>
-						<div className="flex-1 text-center">
-							<h1 className="font-cinzel text-2xl font-semibold text-gold italic">Tress²</h1>
-						</div>
-						<div className="flex space-x-3">
-							<a href="#" className="text-gold hover:text-deep-gold transition-colors"><i className="fab fa-instagram text-lg"></i></a>
-							<a href="#" className="text-gold hover:text-deep-gold transition-colors"><i className="fab fa-facebook text-lg"></i></a>
-							<a href="#" className="text-gold hover:text-deep-gold transition-colors"><i className="fab fa-tiktok text-lg"></i></a>
-						</div>
-					</div>
+			<div className="flex items-center justify-between">
+			<div className="w-20 flex items-center">
+				<button onClick={toggleDrawer} className="text-gold hover:text-deep-gold transition-colors"><i className="fas fa-bars text-lg"></i></button>
+			</div>
+			<div className="flex-1 flex items-center justify-center">
+				<img src="/lotus-logo.png" alt="Lotus" className="h-16 w-auto" />
+			</div>
+			<div className="w-20 flex items-center justify-end space-x-3">
+				<a href="#" className="text-gold hover:text-deep-gold transition-colors"><i className="fab fa-instagram text-lg"></i></a>
+				<a href="#" className="text-gold hover:text-deep-gold transition-colors"><i className="fab fa-facebook text-lg"></i></a>
+				<a href="#" className="text-gold hover:text-deep-gold transition-colors"><i className="fab fa-tiktok text-lg"></i></a>
+			</div>
+		</div>
 				</div>
 				<div className="gold-line mx-4"></div>
 			</header>

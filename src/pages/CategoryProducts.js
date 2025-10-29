@@ -36,13 +36,15 @@ export default function CategoryProducts() {
 		<div className="min-h-screen marble-bg marble-overlay text-off-white">
 			<header className="sticky top-0 z-30 bg-marble-black/90 backdrop-blur-md border-b border-gold/20">
 				<div className="px-4 py-4">
-					<div className="flex items-center justify-between">
-						<button onClick={() => navigate('/')} className="text-gold hover:text-deep-gold transition-colors"><i className="fas fa-arrow-left text-lg"></i></button>
-						<div className="flex-1 text-center">
-							<h1 className="font-cinzel text-2xl font-semibold text-gold italic">Tress²</h1>
-						</div>
-						<div className="w-6"></div>
-					</div>
+			<div className="flex items-center justify-between">
+				<div className="w-20 flex items-center">
+					<button onClick={() => navigate('/')} className="text-gold hover:text-deep-gold transition-colors"><i className="fas fa-arrow-left text-lg"></i></button>
+				</div>
+				<div className="flex-1 flex items-center justify-center">
+					<img src="/lotus-logo.png" alt="Lotus" className="h-16 w-auto" />
+				</div>
+				<div className="w-20"></div>
+			</div>
 				</div>
 				<div className="gold-line mx-4"></div>
 			</header>

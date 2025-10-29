@@ -29,36 +29,9 @@
 .diagonal-line { 
 	position: relative;
 	width: 100%;
-	height: 80px;
-	background: linear-gradient(to bottom, 
-		rgba(10, 10, 10, 0.75) 0%, 
-		rgba(10, 10, 10, 0.75) 50%, 
-		#000000 50%, 
-		#000000 100%
-	);
-}
-
-.diagonal-line::before,
-.diagonal-line::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 50%;
 	height: 2px;
 	background: #D4AF37;
-}
-
-.diagonal-line::before {
-	left: 0;
-	transform-origin: left center;
-	transform: translateY(-50%) rotate(-2deg);
-}
-
-.diagonal-line::after {
-	right: 0;
-	transform-origin: right center;
-	transform: translateY(-50%) rotate(2deg);
+	margin: 0;
 }
 .category-card { background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.8) 70%); }
 .drawer-overlay { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); }

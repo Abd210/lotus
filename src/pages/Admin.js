@@ -156,16 +156,23 @@ export default function Admin() {
 
 	return (
 		<div className="min-h-screen marble-bg marble-overlay text-off-white">
-			<header className="sticky top-0 z-30 bg-marble-black/90 backdrop-blur-md border-b border-gold/20">
-				<div className="px-4 py-4 flex items-center justify-between">
-					<h1 className="font-cinzel text-2xl text-gold">Admin Panel</h1>
-					<div className="flex items-center gap-3">
-						<span className="text-sm text-muted-gray">{user?.email}</span>
-						<button onClick={signOutUser} className="px-3 py-1.5 bg-gold text-black rounded hover:bg-deep-gold">Sign out</button>
+		<header className="sticky top-0 z-30 bg-marble-black/90 backdrop-blur-md border-b border-gold/20">
+			<div className="px-4 py-4">
+				<div className="flex items-center justify-between mb-3">
+					<div className="flex-1 flex items-center justify-center">
+						<img src="/lotus-logo.png" alt="Lotus" className="h-12 w-auto" />
 					</div>
 				</div>
-				<div className="gold-line mx-4" />
-			</header>
+				<div className="flex items-center justify-between">
+					<h2 className="font-cinzel text-lg text-gold">Admin Panel</h2>
+					<div className="flex items-center gap-3">
+						<span className="text-sm text-muted-gray">{user?.email}</span>
+						<button onClick={signOutUser} className="px-3 py-1.5 bg-gold text-black rounded hover:bg-deep-gold text-sm">Sign out</button>
+					</div>
+				</div>
+			</div>
+			<div className="gold-line mx-4" />
+		</header>
 
 			<main className="px-4 py-8 space-y-8">
 				{/* Forms Section */}
