@@ -192,7 +192,7 @@ export default function Menu() {
 					<div className="gold-line mb-6"></div>
 					<div className="flex flex-col space-y-4 md:flex-row md:justify-between md:items-center md:space-y-0">
 						<div className="flex items-center space-x-4 text-sm text-muted-gray">
-							<span>© 2025 Tress²</span>
+							<span>© 2025 Lotus</span>
 							<a href="#" className="active:text-gold">Privacy Policy</a>
 							<span>|</span>
 							<a href="#" className="active:text-gold">Terms of Service</a>
