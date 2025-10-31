@@ -103,7 +103,7 @@ export default function Menu() {
 			<button onClick={toggleDrawer} className="text-gold active:opacity-70"><i className="fas fa-bars text-lg"></i></button>
 		</div>
 		<div className="flex-1 flex items-center justify-center">
-			<img src="/lotus-logo.png" alt="Lotus" className="h-16 w-auto cursor-pointer active:opacity-70" onClick={() => navigate('/')} />
+			<img src="/lotus-logo.png" alt="Lotus" className="h-16 w-auto cursor-pointer active:opacity-70" onClick={() => navigate('/')} decoding="async" fetchpriority="high" loading="eager" />
 		</div>
 	<div className="w-20 flex items-center justify-end space-x-2">
 		{footerSettings.instagramUrl && (
@@ -138,7 +138,7 @@ export default function Menu() {
 				<div key={cat.id} className="cursor-pointer active:opacity-90" onClick={() => navigate(`/category/${cat.id}`)}>
 					<div className="relative overflow-hidden rounded-xl border border-gold/30 shadow-lg">
 						<div className="h-48 overflow-hidden">
-							<img className="w-full h-full object-cover" src={cat.imageUrl || 'https://images.unsplash.com/photo-1541542684-4a6e4f9a82b4?q=80&w=1200&auto=format&fit=crop'} alt={cat.name} />
+							<img className="w-full h-full object-cover" src={cat.imageUrl || 'https://images.unsplash.com/photo-1541542684-4a6e4f9a82b4?q=70&w=800&auto=format&fit=crop'} alt={cat.name} loading="lazy" decoding="async" />
 						</div>
 						<div className="absolute inset-0 category-card"></div>
 						<div className="absolute bottom-0 left-0 right-0 p-4">
