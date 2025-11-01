@@ -2,22 +2,34 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
 import { collection, getDocs, query, orderBy, doc, getDoc } from 'firebase/firestore';
+import LoadingOverlay from '../components/LoadingOverlay';
+import { getCategoriesCache, setCategoriesCache } from '../utils/cache';
 
 function useCategories() {
 	const [categories, setCategories] = React.useState([]);
 	const [error, setError] = React.useState(null);
+	const [loading, setLoading] = React.useState(false);
+
+	// Serve cached immediately (SWR)
 	React.useEffect(() => {
+		const cached = getCategoriesCache();
+		if (cached) setCategories(cached);
+		setLoading(!cached);
 		(async () => {
 			try {
 				const snap = await getDocs(query(collection(db, 'categories'), orderBy('name')));
-				setCategories(snap.docs.map(d=>({ id: d.id, ...d.data() })));
+				const list = snap.docs.map(d=>({ id: d.id, ...d.data() }));
+				setCategories(list);
+				setCategoriesCache(list);
 			} catch (e) {
 				console.error(e);
 				setError(e);
+			} finally {
+				setLoading(false);
 			}
 		})();
 	}, []);
-	return { categories, error };
+	return { categories, error, loading };
 }
 
 function useFooterSettings() {
@@ -49,7 +61,7 @@ function useFooterSettings() {
 
 export default function Menu() {
 	const navigate = useNavigate();
-	const { categories, error } = useCategories();
+	const { categories, error, loading } = useCategories();
 	const footerSettings = useFooterSettings();
 	const topLevel = categories.filter(c => !c.parentId);
 	const childrenByParent = React.useMemo(() => {
@@ -65,8 +77,19 @@ export default function Menu() {
 	const [drawerOpen, setDrawerOpen] = React.useState(false);
 	const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
+	// Preload all category images
+	React.useEffect(() => {
+		topLevel.forEach(cat => {
+			if (cat.imageUrl) {
+				const img = new Image();
+				img.src = cat.imageUrl;
+			}
+		});
+	}, [topLevel]);
+
 	return (
 		<div className="marble-overlay min-h-screen">
+			{loading && categories.length === 0 ? <LoadingOverlay text="Loading menu…" /> : null}
 			{error ? (
 				<div className="p-4 text-center text-red-400">Unable to load menu. Check Firestore rules.</div>
 			) : null}
@@ -87,7 +110,7 @@ export default function Menu() {
 							<h4 className="font-cinzel text-lg text-gold mb-3">{top.name}</h4>
 							<div className="space-y-2 ml-4">
 								{(childrenByParent.get(top.id) || []).map(sub => (
-									<a key={sub.id} href="#" className="block text-off-white active:text-gold">{sub.name}</a>
+									<button key={sub.id} onClick={() => navigate(`/category/${sub.id}`)} className="block text-off-white active:text-gold text-left w-full">{sub.name}</button>
 								))}
 							</div>
 						</div>
@@ -137,8 +160,14 @@ export default function Menu() {
 						return (
 				<div key={cat.id} className="cursor-pointer active:opacity-90" onClick={() => navigate(`/category/${cat.id}`)}>
 					<div className="relative overflow-hidden rounded-xl border border-gold/30 shadow-lg">
-						<div className="h-48 overflow-hidden">
-							<img className="w-full h-full object-cover" src={cat.imageUrl || 'https://images.unsplash.com/photo-1541542684-4a6e4f9a82b4?q=70&w=800&auto=format&fit=crop'} alt={cat.name} loading="lazy" decoding="async" />
+						<div className="h-48 overflow-hidden bg-marble-black/50">
+							<img 
+								className="w-full h-full object-cover" 
+								src={cat.imageUrl || 'https://images.unsplash.com/photo-1541542684-4a6e4f9a82b4?q=70&w=800&auto=format&fit=crop'} 
+								alt={cat.name} 
+								loading="eager" 
+								decoding="async"
+							/>
 						</div>
 						<div className="absolute inset-0 category-card"></div>
 						<div className="absolute bottom-0 left-0 right-0 p-4">
@@ -186,16 +215,16 @@ export default function Menu() {
 							<div className="h-32 bg-marble-black/50 rounded-xl border border-gold/20 mb-4 flex items-center justify-center">
 								<iframe title="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.123!2d26.1234567!3d44.4123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDI0JzQ0LjQiTiAyNsKwMDcnMjQuNCJF!5e0!3m2!1sen!2sro!4v1234567890" className="w-full h-full rounded-xl" style={{ border: 0 }} allowFullScreen loading="lazy"></iframe>
 							</div>
-							<a href="#" className="inline-flex items-center space-x-2 text-gold active:opacity-70"><i className="fas fa-directions"></i><span>Get Directions</span></a>
+							<button className="inline-flex items-center space-x-2 text-gold active:opacity-70"><i className="fas fa-directions"></i><span>Get Directions</span></button>
 						</div>
 					</div>
 					<div className="gold-line mb-6"></div>
 					<div className="flex flex-col space-y-4 md:flex-row md:justify-between md:items-center md:space-y-0">
 						<div className="flex items-center space-x-4 text-sm text-muted-gray">
 							<span>© 2025 Lotus</span>
-							<a href="#" className="active:text-gold">Privacy Policy</a>
+							<button className="active:text-gold">Privacy Policy</button>
 							<span>|</span>
-							<a href="#" className="active:text-gold">Terms of Service</a>
+							<button className="active:text-gold">Terms of Service</button>
 						</div>
 					<div className="flex space-x-4">
 					{footerSettings.instagramUrl && (

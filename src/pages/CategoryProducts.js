@@ -2,7 +2,9 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
 import { collection, getDocs, query, where, doc, getDoc } from 'firebase/firestore';
-import ProductModal from '../components/ProductModal';
+import LoadingOverlay from '../components/LoadingOverlay';
+import { getCategoryBundle, setCategoryBundle } from '../utils/cache';
+// Modal removed for performance; product opens in its own route
 
 export default function CategoryProducts() {
 	const { categoryId } = useParams();
@@ -10,24 +12,47 @@ export default function CategoryProducts() {
 	const [category, setCategory] = React.useState(null);
 	const [subcategories, setSubcategories] = React.useState([]);
 	const [products, setProducts] = React.useState([]);
-	const [selectedProduct, setSelectedProduct] = React.useState(null);
+	const [loading, setLoading] = React.useState(false);
+	// modal state removed
 
 	React.useEffect(() => {
+		const cached = getCategoryBundle(categoryId);
+		if (cached) {
+			setCategory(cached.category || null);
+			setSubcategories(cached.subcategories || []);
+			setProducts(cached.products || []);
+		} else {
+			setLoading(true);
+		}
 		(async () => {
 			try {
-				// Get current category
-				const catDoc = await getDoc(doc(db, 'categories', categoryId));
-				if (catDoc.exists()) setCategory({ id: catDoc.id, ...catDoc.data() });
+				// Get all data in parallel for faster loading
+				const [catDoc, subsSnap, productsSnap] = await Promise.all([
+					getDoc(doc(db, 'categories', categoryId)),
+					getDocs(query(collection(db, 'categories'), where('parentId', '==', categoryId))),
+					getDocs(query(collection(db, 'products'), where('categoryId', '==', categoryId)))
+				]);
 
-				// Get subcategories
-				const subsSnap = await getDocs(query(collection(db, 'categories'), where('parentId', '==', categoryId)));
-				setSubcategories(subsSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+				const cat = catDoc.exists() ? { id: catDoc.id, ...catDoc.data() } : null;
+				const subsData = subsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+				const prodsData = productsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+				
+				setCategory(cat);
+				setSubcategories(subsData);
+				setProducts(prodsData);
+				setCategoryBundle(categoryId, { category: cat, subcategories: subsData, products: prodsData });
 
-				// Get products
-				const productsSnap = await getDocs(query(collection(db, 'products'), where('categoryId', '==', categoryId)));
-				setProducts(productsSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+				// Preload all images immediately
+				[...subsData, ...prodsData].forEach(item => {
+					if (item.imageUrl) {
+						const img = new Image();
+						img.src = item.imageUrl;
+					}
+				});
 			} catch (e) {
 				console.error(e);
+			} finally {
+				setLoading(false);
 			}
 		})();
 	}, [categoryId]);
@@ -67,11 +92,13 @@ export default function CategoryProducts() {
 									className="category-card-container group cursor-pointer"
 								>
 									<div className="relative overflow-hidden rounded-xl border border-gold/30 gold-glow transition-all duration-250">
-										<div className="h-40 overflow-hidden">
+										<div className="h-40 overflow-hidden bg-marble-black/50">
 											<img 
 												className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-250" 
 												src={subcat.imageUrl || 'https://images.unsplash.com/photo-1541542684-4a6e4f9a82b4?q=80&w=1200&auto=format&fit=crop'} 
-												alt={subcat.name} 
+												alt={subcat.name}
+												loading="eager"
+												decoding="async"
 											/>
 										</div>
 										<div className="absolute inset-0 category-card"></div>
@@ -94,12 +121,18 @@ export default function CategoryProducts() {
 					{products.map(product => (
 						<div 
 							key={product.id} 
-							onClick={() => setSelectedProduct(product)}
+							onClick={() => navigate(`/product/${product.id}`)}
 							className="bg-marble-black/80 border border-gold/30 rounded-xl overflow-hidden hover:border-gold hover:shadow-xl hover:shadow-gold/10 transition-all cursor-pointer group"
 						>
 							{product.imageUrl && (
-								<div className="h-56 overflow-hidden relative">
-									<img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+								<div className="h-56 overflow-hidden relative bg-marble-black/50">
+									<img 
+										src={product.imageUrl} 
+										alt={product.name} 
+										className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+										loading="eager"
+										decoding="async"
+									/>
 									<div className="absolute inset-0 bg-gradient-to-t from-marble-black via-transparent to-transparent opacity-60"></div>
 								</div>
 							)}
@@ -124,7 +157,7 @@ export default function CategoryProducts() {
 				)}
 
 				{/* Empty State */}
-				{subcategories.length === 0 && products.length === 0 && (
+				{!loading && subcategories.length === 0 && products.length === 0 && (
 					<div className="text-center py-12">
 						<p className="text-muted-gray text-lg">This category is empty.</p>
 						<p className="text-muted-gray text-sm mt-2">No subcategories or products have been added yet.</p>
@@ -132,13 +165,8 @@ export default function CategoryProducts() {
 				)}
 			</section>
 
-		{/* Product Detail Modal */}
-		{selectedProduct && (
-			<ProductModal 
-				product={selectedProduct} 
-				onClose={() => setSelectedProduct(null)} 
-			/>
-		)}
+		{/* Modal removed */}
+		{loading && subcategories.length === 0 && products.length === 0 ? <LoadingOverlay text="Loading category…" /> : null}
 	</div>
 );
 }

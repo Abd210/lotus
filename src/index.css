@@ -2,18 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Remove default body margin only */
+html {
+	background-color: #000000;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #000000;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Performance optimizations */
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+
+img {
+	will-change: transform;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+/* Force GPU acceleration for smooth scrolling */
+.marble-bg, .marble-overlay {
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+}
+
 /* Hide scrollbar */
 ::-webkit-scrollbar { display: none; }
 
 /* Custom backgrounds and overlays from design */
 .marble-bg {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><filter id="marble"><feTurbulence baseFrequency="0.02" numOctaves="3" result="turbulence"/><feColorMatrix in="turbulence" values="0 0 0 0 0.04 0 0 0 0 0.04 0 0 0 0 0.04 0 0 0 1 0"/></filter></defs><rect width="400" height="400" fill="%23000000" filter="url(%23marble)"/></svg>');
+	background-color: #2a2a2a;
+	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><filter id="marble"><feTurbulence baseFrequency="0.02" numOctaves="3" result="turbulence"/><feColorMatrix in="turbulence" values="0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 1 0"/></filter></defs><rect width="400" height="400" fill="%23333333" filter="url(%23marble)"/></svg>');
 	background-attachment: fixed;
 	background-size: cover;
 }
 
 .marble-overlay {
-	background: linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.75) 100%);
+	background: linear-gradient(135deg, rgba(40, 40, 40, 0.6) 0%, rgba(30, 30, 30, 0.7) 100%);
 }
 
 .gold-glow:active {
@@ -36,3 +67,18 @@
 .category-card { background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.8) 70%); }
 .drawer-overlay { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); }
 .drawer { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border-right: 1px solid #D4AF37; }
+
+/* Gold ring loader */
+.loader-gold {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	border: 3px solid rgba(212,175,55,0.25);
+	border-top-color: #D4AF37;
+	animation: spin 0.9s linear infinite;
+	box-shadow: 0 0 16px rgba(212,175,55,0.35);
+}
+
+@keyframes spin {
+	to { transform: rotate(360deg); }
+}
