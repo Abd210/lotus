@@ -4,11 +4,14 @@ import { db } from '../firebase';
 import { collection, getDocs, query, where, doc, getDoc } from 'firebase/firestore';
 import LoadingOverlay from '../components/LoadingOverlay';
 import { getCategoryBundle, setCategoryBundle } from '../utils/cache';
+import { useI18n } from '../i18n';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 // Modal removed for performance; product opens in its own route
 
 export default function CategoryProducts() {
 	const { categoryId } = useParams();
 	const navigate = useNavigate();
+	const { t, lang } = useI18n();
 	const [category, setCategory] = React.useState(null);
 	const [subcategories, setSubcategories] = React.useState([]);
 	const [products, setProducts] = React.useState([]);
@@ -36,6 +39,17 @@ export default function CategoryProducts() {
 				const cat = catDoc.exists() ? { id: catDoc.id, ...catDoc.data() } : null;
 				const subsData = subsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
 				const prodsData = productsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+				// sort client-side by name_ro with fallbacks
+				subsData.sort((a,b)=>{
+					const an = (a?.name_ro || (a?.name?.ro) || (a?.name?.en) || a?.name || '').toString().toLowerCase();
+					const bn = (b?.name_ro || (b?.name?.ro) || (b?.name?.en) || b?.name || '').toString().toLowerCase();
+					return an.localeCompare(bn);
+				});
+				prodsData.sort((a,b)=>{
+					const an = (a?.name_ro || (a?.name?.ro) || (a?.name?.en) || a?.name || '').toString().toLowerCase();
+					const bn = (b?.name_ro || (b?.name?.ro) || (b?.name?.en) || b?.name || '').toString().toLowerCase();
+					return an.localeCompare(bn);
+				});
 				
 				setCategory(cat);
 				setSubcategories(subsData);
@@ -57,18 +71,23 @@ export default function CategoryProducts() {
 		})();
 	}, [categoryId]);
 
+	const getName = React.useCallback((item) => (item?.name && (item.name[lang] || item.name.en || item.name.ro)) || item?.name || '', [lang]);
+	const getDesc = React.useCallback((item) => (item?.description && (item.description[lang] || item.description.en || item.description.ro)) || item?.description || '', [lang]);
+
 	return (
 		<div className="min-h-screen marble-bg marble-overlay text-off-white">
 			<header className="sticky top-0 z-30 bg-marble-black/90 backdrop-blur-md border-b border-gold/20">
-				<div className="px-4 py-4">
+				<div className="px-4 py-1">
 		<div className="flex items-center justify-between">
 			<div className="w-20 flex items-center">
-				<button onClick={() => navigate('/')} className="text-gold active:opacity-70"><i className="fas fa-arrow-left text-lg"></i></button>
+				<button onClick={() => navigate('/')} className="text-gold active:opacity-70"><i className="fas fa-arrow-left text-2xl"></i></button>
 			</div>
 			<div className="flex-1 flex items-center justify-center">
-				<img src="/lotus-logo.png" alt="Lotus" className="h-16 w-auto cursor-pointer active:opacity-70" onClick={() => navigate('/')} />
+				<img src="/lotus-logo.png" alt="Lotus" className="h-24 w-auto cursor-pointer active:opacity-70" onClick={() => navigate('/')} />
 			</div>
-			<div className="w-20"></div>
+			<div className="w-20 flex items-center justify-end gap-3">
+				<LanguageSwitcher />
+			</div>
 		</div>
 				</div>
 				<div className="gold-line mx-4"></div>
@@ -76,14 +95,14 @@ export default function CategoryProducts() {
 
 			<section className="py-8 px-4">
 				<div className="text-center mb-8">
-					<h2 className="font-cinzel text-3xl text-gold mb-2">{category?.name || 'Category'}</h2>
+					<h2 className="font-cinzel text-3xl text-gold mb-2">{getName(category) || 'Category'}</h2>
 					<div className="gold-line max-w-32 mx-auto"></div>
 				</div>
 
 				{/* Subcategories Section */}
 				{subcategories.length > 0 && (
 					<div className="mb-12">
-						<h3 className="font-cinzel text-2xl text-gold mb-6 text-center">Subcategories</h3>
+						<h3 className="font-cinzel text-2xl text-gold mb-6 text-center">{t('subcategories')}</h3>
 						<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto mb-8">
 							{subcategories.map(subcat => (
 								<div 
@@ -96,14 +115,14 @@ export default function CategoryProducts() {
 											<img 
 												className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-250" 
 												src={subcat.imageUrl || 'https://images.unsplash.com/photo-1541542684-4a6e4f9a82b4?q=80&w=1200&auto=format&fit=crop'} 
-												alt={subcat.name}
+												alt={getName(subcat)}
 												loading="eager"
 												decoding="async"
 											/>
 										</div>
 										<div className="absolute inset-0 category-card"></div>
 										<div className="absolute bottom-0 left-0 right-0 p-3">
-											<h3 className="font-cinzel text-base font-semibold text-off-white">{subcat.name}</h3>
+											<h3 className="font-cinzel text-base font-semibold text-off-white">{getName(subcat)}</h3>
 										</div>
 									</div>
 								</div>
@@ -116,7 +135,7 @@ export default function CategoryProducts() {
 				{/* Products Section */}
 				{products.length > 0 && (
 					<div>
-						<h3 className="font-cinzel text-2xl text-gold mb-6 text-center">Products</h3>
+						<h3 className="font-cinzel text-2xl text-gold mb-6 text-center">{t('products')}</h3>
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 					{products.map(product => (
 						<div 
@@ -128,7 +147,7 @@ export default function CategoryProducts() {
 								<div className="h-56 overflow-hidden relative bg-marble-black/50">
 									<img 
 										src={product.imageUrl} 
-										alt={product.name} 
+										alt={getName(product)} 
 										className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
 										loading="eager"
 										decoding="async"
@@ -137,16 +156,16 @@ export default function CategoryProducts() {
 								</div>
 							)}
 							<div className="p-5">
-								<h3 className="font-cinzel text-xl text-gold mb-2 group-hover:text-deep-gold transition-colors">{product.name}</h3>
+								<h3 className="font-cinzel text-xl text-gold mb-2 group-hover:text-deep-gold transition-colors">{getName(product)}</h3>
 								{product.description && (
 									<p className="text-off-white/80 text-sm mb-3 line-clamp-2">
-										{product.description}
+										{getDesc(product)}
 									</p>
 								)}
 								<div className="flex items-center justify-between">
 									<p className="text-gold font-semibold text-xl">{product.price} LEI</p>
 									<span className="text-gold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-										View Details <i className="fas fa-arrow-right ml-1"></i>
+										{t('viewDetails')} <i className="fas fa-arrow-right ml-1"></i>
 									</span>
 								</div>
 							</div>
@@ -159,8 +178,8 @@ export default function CategoryProducts() {
 				{/* Empty State */}
 				{!loading && subcategories.length === 0 && products.length === 0 && (
 					<div className="text-center py-12">
-						<p className="text-muted-gray text-lg">This category is empty.</p>
-						<p className="text-muted-gray text-sm mt-2">No subcategories or products have been added yet.</p>
+						<p className="text-muted-gray text-lg">{t('emptyCategoryTitle')}</p>
+						<p className="text-muted-gray text-sm mt-2">{t('emptyCategoryDesc')}</p>
 					</div>
 				)}
 			</section>

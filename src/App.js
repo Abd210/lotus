@@ -7,10 +7,12 @@ import ProductDetail from './pages/ProductDetail';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './auth';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { I18nProvider } from './i18n';
 
 function App() {
 	return (
 		<AuthProvider>
+			<I18nProvider>
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Menu />} />
@@ -19,6 +21,7 @@ function App() {
 					<Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
 				</Routes>
 			</BrowserRouter>
+			</I18nProvider>
 		</AuthProvider>
 	);
 }
