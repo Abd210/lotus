@@ -128,7 +128,7 @@ export default function CategoryProducts() {
 								</div>
 							))}
 						</div>
-						<div className="diagonal-line max-w-4xl mx-auto my-8"></div>
+						<div className="diagonal-line my-8"></div>
 					</div>
 				)}
 
@@ -186,7 +186,6 @@ export default function CategoryProducts() {
 
 		{/* Modal removed */}
 		{loading && subcategories.length === 0 && products.length === 0 ? <LoadingOverlay text="Loading category…" /> : null}
-	</div>
-);
+		</div>
+	);
 }
-

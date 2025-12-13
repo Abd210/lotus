@@ -138,7 +138,7 @@ export default function Menu() {
 			<button onClick={toggleDrawer} className="text-gold active:opacity-70"><i className="fas fa-bars text-2xl"></i></button>
 		</div>
 		<div className="flex-1 flex items-center justify-center">
-			<img src="/lotus-logo.png" alt="Lotus" className="h-24 w-auto cursor-pointer active:opacity-70" onClick={() => navigate('/')} decoding="async" fetchpriority="high" loading="eager" />
+			<img src="/lotus-logo.png" alt="Lotus" className="h-24 w-auto cursor-pointer active:opacity-70" onClick={() => navigate('/')} decoding="async" fetchPriority="high" loading="eager" />
 		</div>
 	<div className="w-20 flex items-center justify-end gap-3">
 		<LanguageSwitcher />

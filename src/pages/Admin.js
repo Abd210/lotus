@@ -3,6 +3,7 @@ import { db, storage } from '../firebase';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, setDoc, getDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { signOutUser, useAuth } from '../auth';
+import { useToast } from '../components/Toast';
 
 function useCategories(refresh) {
 	const [categories, setCategories] = React.useState([]);
@@ -78,6 +79,7 @@ function useFooterSettings(refresh) {
 
 export default function Admin() {
 	const { user } = useAuth();
+	const { showToast, ToastComponent } = useToast();
 	const [refreshKey, setRefreshKey] = React.useState(0);
 	const categories = useCategories(refreshKey);
 	const products = useProducts(refreshKey);
@@ -133,46 +135,63 @@ export default function Admin() {
 
 	async function handleAddCategory(e) {
 		e.preventDefault();
-		let imageUrl = editingCat?.imageUrl || '';
-		if (catImage) imageUrl = await uploadToStorage(catImage, 'category-images');
 		
-		if (editingCat) {
-			await updateDoc(doc(db, 'categories', editingCat.id), {
-				name: {
-					en: (catNames.en || '').trim(),
-					ro: (catNames.ro || '').trim(),
-					ar: (catNames.ar || '').trim()
-				},
-				name_ro: ((catNames.ro || catNames.en || catNames.ar || '')).trim(),
-				parentId: parentId || null,
-				...(catImage ? { imageUrl } : {})
-			});
-			alert('Category updated!');
-		} else {
-			await addDoc(collection(db, 'categories'), {
-				name: {
-					en: (catNames.en || '').trim(),
-					ro: (catNames.ro || '').trim(),
-					ar: (catNames.ar || '').trim()
-				},
-				name_ro: ((catNames.ro || catNames.en || catNames.ar || '')).trim(),
-				parentId: parentId || null,
-				imageUrl: imageUrl || '',
-				createdAt: Date.now()
-			});
-			alert('Category added!');
+		// Validate all languages are filled
+		if (!catNames.en.trim() || !catNames.ro.trim() || !catNames.ar.trim()) {
+			showToast('Please fill in category name for all languages (EN, RO, AR)', 'error');
+			return;
 		}
 		
-		setCatNames({ en: '', ro: '', ar: '' }); setParentId(''); setCatImage(null); setEditingCat(null);
-		e.target.reset();
-		setRefreshKey(prev => prev + 1);
+		try {
+			let imageUrl = editingCat?.imageUrl || '';
+			if (catImage) imageUrl = await uploadToStorage(catImage, 'category-images');
+			
+			if (editingCat) {
+				await updateDoc(doc(db, 'categories', editingCat.id), {
+					name: {
+						en: catNames.en.trim(),
+						ro: catNames.ro.trim(),
+						ar: catNames.ar.trim()
+					},
+					name_ro: catNames.ro.trim(),
+					parentId: parentId || null,
+					...(catImage ? { imageUrl } : {})
+				});
+				showToast('Category updated successfully!', 'success');
+			} else {
+				await addDoc(collection(db, 'categories'), {
+					name: {
+						en: catNames.en.trim(),
+						ro: catNames.ro.trim(),
+						ar: catNames.ar.trim()
+					},
+					name_ro: catNames.ro.trim(),
+					parentId: parentId || null,
+					imageUrl: imageUrl || '',
+					createdAt: Date.now()
+				});
+				showToast('Category added successfully!', 'success');
+			}
+			
+			setCatNames({ en: '', ro: '', ar: '' }); setParentId(''); setCatImage(null); setEditingCat(null);
+			e.target.reset();
+			setRefreshKey(prev => prev + 1);
+		} catch (error) {
+			console.error('Error saving category:', error);
+			showToast('Failed to save category. Please try again.', 'error');
+		}
 	}
 
 	async function handleDeleteCategory(id) {
 		if (!window.confirm('Delete this category? All subcategories and products will remain.')) return;
-		await deleteDoc(doc(db, 'categories', id));
-		setRefreshKey(prev => prev + 1);
-		alert('Category deleted!');
+		try {
+			await deleteDoc(doc(db, 'categories', id));
+			setRefreshKey(prev => prev + 1);
+			showToast('Category deleted successfully!', 'success');
+		} catch (error) {
+			console.error('Error deleting category:', error);
+			showToast('Failed to delete category. Please try again.', 'error');
+		}
 	}
 
 	function handleEditCategory(cat) {
@@ -192,52 +211,68 @@ export default function Admin() {
 
 	async function handleAddProduct(e) {
 		e.preventDefault();
-		let imageUrl = editingProd?.imageUrl || '';
-		if (prodImage) imageUrl = await uploadToStorage(prodImage, 'product-images');
 		
-		if (editingProd) {
-			await updateDoc(doc(db, 'products', editingProd.id), {
-				name: {
-					en: (prodNames.en || '').trim(),
-					ro: (prodNames.ro || '').trim(),
-					ar: (prodNames.ar || '').trim()
-				},
-				name_ro: ((prodNames.ro || prodNames.en || prodNames.ar || '')).trim(),
-				description: {
-					en: (prodDescs.en || '').trim(),
-					ro: (prodDescs.ro || '').trim(),
-					ar: (prodDescs.ar || '').trim()
-				},
-				price: parseFloat(prodPrice),
-				categoryId: prodCatId || null,
-				...(prodImage ? { imageUrl } : {})
-			});
-			alert('Product updated!');
-		} else {
-			await addDoc(collection(db, 'products'), {
-				name: {
-					en: (prodNames.en || '').trim(),
-					ro: (prodNames.ro || '').trim(),
-					ar: (prodNames.ar || '').trim()
-				},
-				name_ro: ((prodNames.ro || prodNames.en || prodNames.ar || '')).trim(),
-				description: {
-					en: (prodDescs.en || '').trim(),
-					ro: (prodDescs.ro || '').trim(),
-					ar: (prodDescs.ar || '').trim()
-				},
-				price: parseFloat(prodPrice),
-				imageUrl: imageUrl || '',
-				categoryId: prodCatId || null,
-				createdAt: Date.now()
-			});
-			alert('Product added!');
+		// Validate all languages are filled
+		if (!prodNames.en.trim() || !prodNames.ro.trim() || !prodNames.ar.trim()) {
+			showToast('Please fill in product name for all languages (EN, RO, AR)', 'error');
+			return;
+		}
+		if (!prodDescs.en.trim() || !prodDescs.ro.trim() || !prodDescs.ar.trim()) {
+			showToast('Please fill in product description for all languages (EN, RO, AR)', 'error');
+			return;
 		}
 		
-		setProdNames({ en: '', ro: '', ar: '' }); setProdDescs({ en: '', ro: '', ar: '' }); setProdPrice(''); setProdCatId(''); setProdImage(null); setEditingProd(null);
-	e.target.reset();
-	setRefreshKey(prev => prev + 1);
-}
+		try {
+			let imageUrl = editingProd?.imageUrl || '';
+			if (prodImage) imageUrl = await uploadToStorage(prodImage, 'product-images');
+			
+			if (editingProd) {
+				await updateDoc(doc(db, 'products', editingProd.id), {
+					name: {
+						en: prodNames.en.trim(),
+						ro: prodNames.ro.trim(),
+						ar: prodNames.ar.trim()
+					},
+					name_ro: prodNames.ro.trim(),
+					description: {
+						en: prodDescs.en.trim(),
+						ro: prodDescs.ro.trim(),
+						ar: prodDescs.ar.trim()
+					},
+					price: parseFloat(prodPrice),
+					categoryId: prodCatId || null,
+					...(prodImage ? { imageUrl } : {})
+				});
+				showToast('Product updated successfully!', 'success');
+			} else {
+				await addDoc(collection(db, 'products'), {
+					name: {
+						en: prodNames.en.trim(),
+						ro: prodNames.ro.trim(),
+						ar: prodNames.ar.trim()
+					},
+					name_ro: prodNames.ro.trim(),
+					description: {
+						en: prodDescs.en.trim(),
+						ro: prodDescs.ro.trim(),
+						ar: prodDescs.ar.trim()
+					},
+					price: parseFloat(prodPrice),
+					imageUrl: imageUrl || '',
+					categoryId: prodCatId || null,
+					createdAt: Date.now()
+				});
+				showToast('Product added successfully!', 'success');
+			}
+			
+			setProdNames({ en: '', ro: '', ar: '' }); setProdDescs({ en: '', ro: '', ar: '' }); setProdPrice(''); setProdCatId(''); setProdImage(null); setEditingProd(null);
+			e.target.reset();
+			setRefreshKey(prev => prev + 1);
+		} catch (error) {
+			console.error('Error saving product:', error);
+			showToast('Failed to save product. Please try again.', 'error');
+		}
+	}
 
 async function handleSaveFooter(e) {
 	e.preventDefault();
@@ -254,19 +289,24 @@ async function handleSaveFooter(e) {
 			tiktokUrl: tiktokUrl.trim(),
 			updatedAt: Date.now()
 		});
-		alert('Footer settings saved!');
+		showToast('Footer settings saved successfully!', 'success');
 		setRefreshKey(prev => prev + 1);
 	} catch (error) {
 		console.error('Error saving footer:', error);
-		alert('Failed to save footer settings');
+		showToast('Failed to save footer settings. Please try again.', 'error');
 	}
 }
 
 	async function handleDeleteProduct(id) {
 		if (!window.confirm('Delete this product?')) return;
-		await deleteDoc(doc(db, 'products', id));
-		setRefreshKey(prev => prev + 1);
-		alert('Product deleted!');
+		try {
+			await deleteDoc(doc(db, 'products', id));
+			setRefreshKey(prev => prev + 1);
+			showToast('Product deleted successfully!', 'success');
+		} catch (error) {
+			console.error('Error deleting product:', error);
+			showToast('Failed to delete product. Please try again.', 'error');
+		}
 	}
 
 	function handleEditProduct(prod) {
@@ -574,8 +614,7 @@ async function handleSaveFooter(e) {
 					)}
 				</section>
 			</main>
-		</div>
-	);
+	{ToastComponent}
+</div>
+);
 }
-
-
