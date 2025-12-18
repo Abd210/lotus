@@ -22,8 +22,8 @@ function useCategories() {
 				const snap = await getDocs(collection(db, 'categories'));
 				const list = snap.docs.map(d=>({ id: d.id, ...d.data() }));
 				list.sort((a,b)=>{
-					const an = (a?.name_ro || (a?.name?.ro) || (a?.name?.en) || a?.name || '').toString().toLowerCase();
-					const bn = (b?.name_ro || (b?.name?.ro) || (b?.name?.en) || b?.name || '').toString().toLowerCase();
+					const an = (a?.name_ro || (a?.name?.ro) || (a?.name?.en) || (a?.name?.ar) || a?.name || '').toString().toLowerCase();
+					const bn = (b?.name_ro || (b?.name?.ro) || (b?.name?.en) || (b?.name?.ar) || b?.name || '').toString().toLowerCase();
 					return an.localeCompare(bn);
 				});
 				setCategories(list);
@@ -73,7 +73,7 @@ export default function Menu() {
 	const footerSettings = useFooterSettings();
 
 	const getName = React.useCallback((item) => {
-		return (item?.name && (item.name[lang] || item.name.en || item.name.ro)) || item?.name || '';
+		return (item?.name && (item.name[lang] || item.name.en || item.name.ro || item.name.ar)) || item?.name || '';
 	}, [lang]);
 	const topLevel = categories.filter(c => !c.parentId);
 	const childrenByParent = React.useMemo(() => {

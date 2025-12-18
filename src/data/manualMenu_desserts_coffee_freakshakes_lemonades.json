@@ -1,0 +1,439 @@
+{
+  "categories": [
+    {
+      "key": "desserts",
+      "name": { "en": "Desserts", "ro": "Deserturi", "ar": "الحلويات" }
+    },
+    {
+      "key": "coffee_and_more",
+      "name": { "en": "Coffee and more", "ro": "COFFEE AND MORE", "ar": "القهوة والمزيد" }
+    },
+    {
+      "key": "freak_shakes_and_frappe",
+      "name": { "en": "Freak shakes and frappé", "ro": "FREAK SHAKES AND FRAPPE", "ar": "فريك شيك والفرابي" }
+    },
+    {
+      "key": "lemonades_and_fresh_juices",
+      "name": { "en": "Lemonades and fresh juices", "ro": "LEMONADES AND FRESHES", "ar": "ليمونادة وعصائر طازجة" }
+    }
+  ],
+  "products": [
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "CRÊPES LOTUS", "ro": "CLĂTITE LOTUS", "ar": "كرêبيس لوتس" },
+      "description": {
+        "en": "Ingredients: flour 50 g, sugar vanilla sugar 30 g, egg 50 g, sparkling water 20 ml, extract of vanilla, chocolate 50 g, bananas 50 g, strawberries 25 g, whipped cream 25 g, 10 g walnut.\nNutritional values: kcal 450, protein: 10 g, carbohydrates 69 g, fat: 16 g.",
+        "ro": "Ingrediente: făină 50 g, zahăr vanilinat 30 g, ou 50 g, apă minerală 20 ml, esență de vanilie, ciocolată 50 g, banane 50 g, căpșuni 25 g, frișcă 25 g, 10 g nucă.\nValori nutriționale: kcal 450, proteine: 10 g, carbohidrați 69 g, grăsimi: 16 g.",
+        "ar": "المكونات: طحين 50 غ، سكر فانيليا سكر 30 غ، بيض 50 غ، سباركلينج ماء 20 مل، يكستراكت من فانيليا, شوكولاتة 50 غ, باناناس 50 غ, ستراوبيرريس 25 غ, وهيببيد كريمة 25 غ, 10 غ والنوت.\nالقيم الغذائية: كيلو كالوري 450، بروتين: 10 غ، كربوهيدرات 69 غ، دهون: 16 غ."
+      },
+      "price": 55
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "CRÊPES WITH CHOCOLATE", "ro": "CLĂTITE CU CIOCOLATĂ", "ar": "كرêبيس مع شوكولاتة" },
+      "description": {
+        "en": "Ingredients: flour 50 g, sugar vanilla sugar 30 g, chocolate 20 ml, egg, sparkling water 20 ml, extract of vanilla, nutella 30 g.\nNutritional values: kcal 438, protein: 6 g, carbohydrates 69 g, fat: 16 g.",
+        "ro": "Ingrediente: făină 50 g, zahăr vanilinat 30 g, ciocolată 20 ml, ou, apă minerală 20 ml, esență de vanilie, nutella 30 g.\nValori nutriționale: kcal 438, proteine: 6 g, carbohidrați 69 g, grăsimi: 16 g.",
+        "ar": "المكونات: طحين 50 غ، سكر فانيليا سكر 30 غ، شوكولاتة 20 مل، بيض، سباركلينج ماء 20 مل, يكستراكت من فانيليا, نوتيللا 30 غ.\nالقيم الغذائية: كيلو كالوري 438، بروتين: 6 غ، كربوهيدرات 69 غ، دهون: 16 غ."
+      },
+      "price": 35
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "CRÊPES WITH JAM", "ro": "CLĂTITE CU DULCEAȚĂ", "ar": "كرêبيس مع مربى" },
+      "description": {
+        "en": "Ingredients: flour 50 g, sugar powder 30 g, egg, milk, sparkling water 20 ml, extract of vanilla, oil vegetable 30 ml.\nNutritional values: 410, protein: 6 g, carbohydrates 69 g, fat: 13 g.",
+        "ro": "Ingrediente: făină 50 g, zahăr pudră 30 g, ou, lapte, apă minerală 20 ml, esență de vanilie, ulei vegetal 30 ml.\nValori nutriționale: 410, proteine: 6 g, carbohidrați 69 g, grăsimi: 13 g.",
+        "ar": "المكونات: طحين 50 غ، سكر بوودير 30 غ، بيض، حليب، سباركلينج ماء 20 مل، يكستراكت من فانيليا, زيت خضار 30 مل.\nالقيم الغذائية: 410، بروتين: 6 غ، كربوهيدرات 69 غ، دهون: 13 غ."
+      },
+      "price": 35
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "CRÊPES WITH BANANA AND CHOCOLATE", "ro": "CLĂTITE CU BANANĂ ȘI CIOCOLATĂ", "ar": "كرêبيس مع موز و شوكولاتة" },
+      "description": {
+        "en": "Ingredients: flour 50 g, sugar powder 30 g, egg, milk, sparkling water 20 ml, extract of vanilla, nutella 30 ml, bananas 50 g.\nNutritional values: 482, protein: 6 g, carbohydrates 80 g, fat: 16 g.",
+        "ro": "Ingrediente: făină 50 g, zahăr pudră 30 g, ou, lapte, apă minerală 20 ml, esență de vanilie, nutella 30 ml, banane 50 g.\nValori nutriționale: 482, proteine: 6 g, carbohidrați 80 g, grăsimi: 16 g.",
+        "ar": "المكونات: طحين 50 غ، سكر بوودير 30 غ، بيض، حليب، سباركلينج ماء 20 مل، يكستراكت من فانيليا, نوتيللا 30 مل, باناناس 50 غ.\nالقيم الغذائية: 482، بروتين: 6 غ، كربوهيدرات 80 غ، دهون: 16 غ."
+      },
+      "price": 38
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "ROMANIAN DOUGHNUTS WITH CHOCOLATE", "ro": "PAPANAȘI CU CIOCOLATĂ", "ar": "رومانيان دوغنوتس مع شوكولاتة" },
+      "description": {
+        "en": "Ingredients: cheese of cows 100 g with 8,5% fat, flour 250 g, sugar white 30 g, 2 eggs, sugar 25 g, salt 5 g, orange 10 g, oil 10 ml, extract of vanilla.\nNutritional values: 705, protein: 30 g, carbohydrates 30 g, fat: 50 g.",
+        "ro": "Ingrediente: brânză de vaci 100 g cu 8,5% grăsime, făină 250 g, zahăr alb 30 g, 2 ouă, zahăr 25 g, sare 5 g, portocală 10 g, ulei 10 ml, esență de vanilie.\nValori nutriționale: 705, proteine: 30 g, carbohidrați 30 g, grăsimi: 50 g.",
+        "ar": "المكونات: جبن من كووس 100 غ مع 8،5% دهون، طحين 250 غ، سكر أبيض 30 غ، 2 بيض, سكر 25 غ, ملح 5 غ, برتقال 10 غ, زيت 10 مل, يكستراكت من فانيليا.\nالقيم الغذائية: 705، بروتين: 30 غ، كربوهيدرات 30 غ، دهون: 50 غ."
+      },
+      "price": 41
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "ROMANIAN DOUGHNUTS WITH JAM AND SOUR CREAM", "ro": "PAPANAȘI CU DULCEAȚĂ ȘI SMÂNTÂNĂ", "ar": "رومانيان دوغنوتس مع مربى و سور كريمة" },
+      "description": {
+        "en": "Ingredients: cheese of cows 100 g with 8,5% fat, flour 250 g, sugar white 30 g, 2 eggs, sugar 25 g, salt 5 g, orange 10 g, oil 10 ml, extract of vanilla, oil 10 ml, jam and sour cream.\nNutritional values: 650, protein: 27 g, carbohydrates 28 g, fat: 15 g.",
+        "ro": "Ingrediente: brânză de vaci 100 g cu 8,5% grăsime, făină 250 g, zahăr alb 30 g, 2 ouă, zahăr 25 g, sare 5 g, portocală 10 g, ulei 10 ml, esență de vanilie, ulei 10 ml, dulceață și smântână.\nValori nutriționale: 650, proteine: 27 g, carbohidrați 28 g, grăsimi: 15 g.",
+        "ar": "المكونات: جبن من كووس 100 غ مع 8،5% دهون، طحين 250 غ، سكر أبيض 30 غ، 2 بيض, سكر 25 غ, ملح 5 غ, برتقال 10 غ, زيت 10 مل, يكستراكت من فانيليا, زيت 10 مل, مربى و سور كريمة.\nالقيم الغذائية: 650، بروتين: 27 غ، كربوهيدرات 28 غ، دهون: 15 غ."
+      },
+      "price": 42
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "LAVA CAKE", "ro": "LAVA CAKE", "ar": "لافا كاكي" },
+      "description": {
+        "en": "Ingredients: chocolate black 100 g, butter with 20% fat 100 g flour 30 g, sugar 60 g, 2 eggs, 2 egg yolks, sugar 60 g, salt 5 g, orange 10 g, extract of vanilla.\nNutritional values: 450, protein 7 g, carbohydrates 45 g, fat 35 g.",
+        "ro": "Ingrediente: ciocolată neagră 100 g, unt cu 20% grăsime 100 g făină 30 g, zahăr 60 g, 2 ouă, 2 gălbenușuri, zahăr 60 g, sare 5 g, portocală 10 g, esență de vanilie.\nValori nutriționale: 450, proteine 7 g, carbohidrați 45 g, grăsimi 35 g.",
+        "ar": "المكونات: شوكولاتة أسود 100 غ، زبدة مع 20% دهون 100 غ طحين 30 غ، سكر 60 غ, 2 بيض, 2 بيض يولكس, سكر 60 غ, ملح 5 غ, برتقال 10 غ, يكستراكت من فانيليا.\nالقيم الغذائية: 450، بروتين 7 غ، كربوهيدرات 45 غ، دهون 35 غ."
+      },
+      "price": 38
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "PLATTER WITH FRUITS", "ro": "PLATOU CU FRUCTE", "ar": "طبق مع فرويتس" },
+      "description": {
+        "en": "Ingredients: pineapple 50 g, banana 50 g, 50 g honey, 50 g grapes, 50 g orange, 50 g grapefruit, kiwi 50 g.\nNutritional values: 350, protein 77 g, carbohydrates 45 g, fat 3 g.",
+        "ro": "Ingrediente: ananas 50 g, banană 50 g, 50 g miere, 50 g struguri, 50 g portocală, 50 g grapefruit, kiwi 50 g.\nValori nutriționale: 350, proteine 77 g, carbohidrați 45 g, grăsimi 3 g.",
+        "ar": "المكونات: بينياببلي 50 غ، موز 50 غ، 50 غ هونيي، 50 غ جرابيس، 50 غ برتقال، 50 غ جرابيفرويت, كيوي 50 غ.\nالقيم الغذائية: 350، بروتين 77 غ، كربوهيدرات 45 غ، دهون 3 غ."
+      },
+      "price": 79
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "WATERMELON RED (2P)", "ro": "PEPENE ROȘU (2P)", "ar": "بطيخ أحمر (لشخصين)" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 48
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "KUNAFE", "ro": "KUNAFE", "ar": "كونافي" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 42
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "KUNAFE WITH ICE CREAM", "ro": "KUNAFE CU ÎNGHEȚATĂ", "ar": "كونافي مع ثلج كريمة" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 55
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "ICE CREAM MARASH", "ro": "ÎNGHEȚATĂ MARASH", "ar": "ثلج كريمة ماراش" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 44
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "KAIMAK LOTUS", "ro": "KAIMAK LOTUS", "ar": "كايماك لوتس" },
+      "description": {
+        "en": "INGREDIENTS: milk, apples, fruits, pistachio",
+        "ro": "Ingredinte: lapte, mere, fructe, fistic",
+        "ar": "المكونات: حليب, اببليس, فرويتس, بيستاتشيو"
+      },
+      "price": 44
+    },
+    {
+      "categoryKey": "desserts",
+      "name": { "en": "WAFFLE", "ro": "WAFFEL", "ar": "واففلي" },
+      "description": {
+        "en": "INGREDIENTS: waffle, chocolate, fruits, hazelnuts",
+        "ro": "Ingredinte: waffel, ciocolată, fructe, alune de pădure",
+        "ar": "المكونات: واففلي, شوكولاتة, فرويتس, هازيلنوتس"
+      },
+      "price": 50
+    },
+
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "ESPRESSO SHORT/LONG (30/50 ml)", "ro": "ESPRESSO SCURT/LUNG (30/50 ml)", "ar": "إسبريسو شورت / لونج (30/50 مل)" },
+      "description": {
+        "en": "Nutritional values: 8 kcal 1 g protein 1 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 8 kcal 1 g proteine 1 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 8 كيلو كالوري 1 غ بروتين 1 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 15
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "DUBLU ESPRESSO (60 ml)", "ro": "DUBLU ESPRESSO (60 ml)", "ar": "دوبلو إسبريسو (60 مل)" },
+      "description": {
+        "en": "Nutritional values: 8 kcal 1 g protein 1 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 8 kcal 1 g proteine 1 g carbohidrați 0 g grăsime",
+        "ar": "القيم الغذائية: 8 كيلو كالوري 1 غ بروتين 1 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 24
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "ESPRESSO AMERICANO (120 ml)", "ro": "ESPRESSO AMERICANO (120 ml)", "ar": "إسبريسو اميريكانو (120 مل)" },
+      "description": {
+        "en": "Nutritional values: 15 kcal 1 g protein 1 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 15 kcal 1 g proteine 1 g carbohidrați 0 g grăsime",
+        "ar": "القيم الغذائية: 15 كيلو كالوري 1 غ بروتين 1 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 19
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "ESPRESSO MACHIATO (50 ml)", "ro": "ESPRESSO MACHIATO (50 ml)", "ar": "إسبريسو ماتشياتو (50 مل)" },
+      "description": {
+        "en": "Nutritional values: 8 kcal 0 g protein 1 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 8 kcal 0 g proteine 1 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 8 كيلو كالوري 0 غ بروتين 1 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 18
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "ESPRESSO DECAF (30/60 ml)", "ro": "ESPRESSO DECOFF (30/60 ml)", "ar": "إسبريسو ديكاف (30/60 مل)" },
+      "description": {
+        "en": "Nutritional values: 8 kcal 1 g protein 1 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 8 kcal 1 g proteine 1 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 8 كيلو كالوري 1 غ بروتين 1 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 16
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "COFFEE TURKISH (30 ml)", "ro": "CAFEA TURCEASCA (30 ml)", "ar": "كوففي تركي (30 مل)" },
+      "description": {
+        "en": "Nutritional values: 25 kcal 0 g protein 1 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 25 kcal 0 g proteine 1 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 25 كيلو كالوري 0 غ بروتين 1 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 23
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "CAPPUCCINO (120 ml)", "ro": "CAPPUCCINO (120 ml)", "ar": "كاببوككينو (120 مل)" },
+      "description": {
+        "en": "Nutritional values: 42 kcal 2 g protein 4 g carbohydrates 3 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 42 kcal 2 g proteine 4 g carbohidrați 3 g grăsimi",
+        "ar": "القيم الغذائية: 42 كيلو كالوري 2 غ بروتين 4 غ كربوهيدرات 3 غ دهون"
+      },
+      "price": 23
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "CAPPUCCINO VIENNESE (150 ml)", "ro": "CAPPUCCINO VIENEZ (150 ml)", "ar": "كاببوككينو فيننيسي (150 مل)" },
+      "description": {
+        "en": "Nutritional values: 43 kcal 4 g protein 6 g carbohydrates 5 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 43 kcal 4 g proteine 6 g carbohidrați 5 g grăsimi",
+        "ar": "القيم الغذائية: 43 كيلو كالوري 4 غ بروتين 6 غ كربوهيدرات 5 غ دهون"
+      },
+      "price": 27
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "CAPUCCINO DECAF (120 ml)", "ro": "CAPUCCINO DECOFF (120 ml)", "ar": "كابوككينو ديكاف (120 مل)" },
+      "description": {
+        "en": "Nutritional values: 43 kcal 4 g protein 6 g carbohydrates 5 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 43 kcal 4 g proteine 6 g carbohidrați 5 g grăsimi",
+        "ar": "القيم الغذائية: 43 كيلو كالوري 4 غ بروتين 6 غ كربوهيدرات 5 غ دهون"
+      },
+      "price": 25
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "FLAT WHITE (120 ml)", "ro": "FLAT WITE (120 ml)", "ar": "فلات أبيض (120 مل)" },
+      "description": {
+        "en": "Nutritional values: 78 kcal 7 g protein 3 g carbohydrates 5 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 78 kcal 7 g proteine 3 g carbohidrați 5 g grăsimi",
+        "ar": "القيم الغذائية: 78 كيلو كالوري 7 غ بروتين 3 غ كربوهيدرات 5 غ دهون"
+      },
+      "price": 27
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "CAFFE LATTE (200 ml)", "ro": "CAFFE LATTE (200 ml)", "ar": "كاففي لاتيه (200 مل)" },
+      "description": {
+        "en": "Nutritional values: 78 kcal 7 g protein 3 g carbohydrates 5 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 78 kcal 7 g proteine 3 g carbohidrați 5 g grăsimi",
+        "ar": "القيم الغذائية: 78 كيلو كالوري 7 غ بروتين 3 غ كربوهيدرات 5 غ دهون"
+      },
+      "price": 25
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "FLAVOURED LATTE (200 ml)", "ro": "FLAVOURED LATTE (200 ml)", "ar": "منكه لاتيه (200 مل)" },
+      "description": {
+        "en": "Vanilla, Caramel, Hazelnuts\nNutritional values: 98 kcal 9 g protein 4 g carbohydrates 8 g fat",
+        "ro": "Vanilie, Caramel, Alune\nVALORI NUTRIȚIONALE: 98 kcal 9 g proteine 4 g carbohidrați 8 g grăsimi",
+        "ar": "فانيليا, كراميل, هازيلنوتس\nالقيم الغذائية: 98 كيلو كالوري 9 غ بروتين 4 غ كربوهيدرات 8 غ دهون"
+      },
+      "price": 27
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "ICE LATTE (200 ml)", "ro": "ICE LATTE (200 ml)", "ar": "ثلج لاتيه (200 مل)" },
+      "description": {
+        "en": "Nutritional values: 78 kcal 7 g protein 3 g carbohydrates 5 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 78 kcal 7 g proteine 3 g carbohidrați 5 g grăsimi",
+        "ar": "القيم الغذائية: 78 كيلو كالوري 7 غ بروتين 3 غ كربوهيدرات 5 غ دهون"
+      },
+      "price": 25
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "ESPRESSO TONIC (50 ml)", "ro": "ESPRESSO TONIC (50 ml)", "ar": "إسبريسو تونيك (50 مل)" },
+      "description": {
+        "en": "Nutritional values: 8 kcal 1 g protein 1 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 8 kcal 1 g proteine 1 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 8 كيلو كالوري 1 غ بروتين 1 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 28
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "HOT CHOCOLATE (200 ml)", "ro": "CIOCOLATA CALDA (200 ml)", "ar": "شوكولاتة كالدا (200 مل)" },
+      "description": {
+        "en": "WHITE/ BLACK\nNutritional values: 57 kcal 5 g protein 16 g carbohydrates 8 g fat",
+        "ro": "ALBA/ NEAGRA\nVALORI NUTRIȚIONALE: 57 kcal 5 g proteine 16 g carbohidrați 8 g grăsimi",
+        "ar": "أبيض/أسود\nالقيم الغذائية: 57 كيلو كالوري 5 غ بروتين 16 غ كربوهيدرات 8 غ دهون"
+      },
+      "price": 26
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "TEA INFUZIE (200 ml)", "ro": "CEAI INFUZIE (200 ml)", "ar": "شاي منقوع (200 مل)" },
+      "description": {
+        "en": "MISCELLANEOUS SELECTIONS\nNutritional values: 43 kcal 4 g protein 6 g carbohydrates 5 g fat",
+        "ro": "DIVERSE SORTIMENTE\nVALORI NUTRIȚIONALE: 43 kcal 4 g proteine 6 g carbohidrați 5 g grăsimi",
+        "ar": "اختيارات متنوعة\nالقيم الغذائية: 43 كيلو كالوري 4 غ بروتين 6 غ كربوهيدرات 5 غ دهون"
+      },
+      "price": 26
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "TEA LIPTON (150 ml)", "ro": "CEAI LIPTON (150 ml)", "ar": "شاي ليبتون (150 مل)" },
+      "description": {
+        "en": "Nutritional values: 43 kcal 4 g protein 23 g carbohydrates 5 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 43 kcal 4 g proteine 23 g carbohidrați 5 g grăsimi",
+        "ar": "القيم الغذائية: 43 كيلو كالوري 4 غ بروتين 23 غ كربوهيدرات 5 غ دهون"
+      },
+      "price": 15
+    },
+    {
+      "categoryKey": "coffee_and_more",
+      "name": { "en": "TEA TURKISH (150 ml)", "ro": "CEAI TURCESC (150 ml)", "ar": "شاي تركي (150 مل)" },
+      "description": {
+        "en": "Nutritional values: 43 kcal 4 g protein 23 g carbohydrates 5 g fat",
+        "ro": "VALORI NUTRIȚIONALE: 43 kcal 4 g proteine 23 g carbohidrați 5 g grăsimi",
+        "ar": "القيم الغذائية: 43 كيلو كالوري 4 غ بروتين 23 غ كربوهيدرات 5 غ دهون"
+      },
+      "price": 15
+    },
+
+    {
+      "categoryKey": "freak_shakes_and_frappe",
+      "name": { "en": "CHOCOLATE FRAPPE (400 ml)", "ro": "CHOCOLATE FRAPPE (400 ml)", "ar": "فرابي شوكولاتة (400 مل)" },
+      "description": {
+        "en": "Ingredients: instant coffee, milk, whipped cream, syrup chocolate\nNutritional values: 263 kcal 24 g protein 35 g carbohydrates 8 g fat",
+        "ro": "INGREDIENTE: ness, lapte, frișcă, sirop ciocolata\nVALORI NUTRITIONALE: 263 kcal 24 g proteine 35 g carbohidrați 8 g grăsimi",
+        "ar": "المكونات: ينستانت كوففي، حليب، وهيببيد كريمة، سيروب شوكولاتة\nالقيم الغذائية: 263 كيلو كالوري 24 غ بروتين 35 غ كربوهيدرات 8 غ دهون"
+      },
+      "price": 36
+    },
+    {
+      "categoryKey": "freak_shakes_and_frappe",
+      "name": { "en": "CARAMEL FRAPPE (400 ml)", "ro": "CARAMEL FRAPPE (400 ml)", "ar": "فرابي كراميل (400 مل)" },
+      "description": {
+        "en": "Ingredients: instant coffee, milk, whipped cream, syrup caramel\nNutritional values: 263 kcal 24 g protein 35 g carbohydrates 8 g fat",
+        "ro": "INGREDIENTE: ness, lapte, frișcă, sirop caramel\nVALORI NUTRITIONALE: 263 kcal 24 g proteine 35 g carbohidrați 8 g grăsimi",
+        "ar": "المكونات: ينستانت كوففي، حليب، وهيببيد كريمة، سيروب كراميل\nالقيم الغذائية: 263 كيلو كالوري 24 غ بروتين 35 غ كربوهيدرات 8 غ دهون"
+      },
+      "price": 36
+    },
+    {
+      "categoryKey": "freak_shakes_and_frappe",
+      "name": { "en": "OREO FREAK SHAKE (500 ml)", "ro": "OREO FREAK SHAKE (500 ml)", "ar": "فريك شيك أوريو (500 مل)" },
+      "description": {
+        "en": "Ingredients: milk, whipped cream, Oreo, syrup cookies\nNutritional values: 320 kcal 7 g protein 46 g carbohydrates 8 g fat",
+        "ro": "INGREDIENTE: lapte, frișcă, Oreo, sirop biscuiți\nVALORI NUTRIȚIONALE: 320 kcal 7 g proteine 46 g carbohidrați 8 g grăsimi",
+        "ar": "المكونات: حليب، وهيببيد كريمة، أوريو، سيروب كوكيس\nالقيم الغذائية: 320 كيلو كالوري 7 غ بروتين 46 غ كربوهيدرات 8 غ دهون"
+      },
+      "price": 49
+    },
+    {
+      "categoryKey": "freak_shakes_and_frappe",
+      "name": { "en": "CLASSIC MILK SHAKE (400 ml)", "ro": "CLASSIC MILK SHAKE (400 ml)", "ar": "ميلك شيك كلاسيك (400 مل)" },
+      "description": {
+        "en": "Ingredients: milk, whipped cream liquid, puree strawberries\nNutritional values: 250 kcal 17 g protein 45 g carbohydrates 9 g fat",
+        "ro": "INGREDIENTE: lapte, frișcă lichidă, piure căpșuni\nVALORI NUTRIȚIONALE: 250 kcal 17 g proteine 45 g carbohidrați 9 g grăsimi",
+        "ar": "المكونات: حليب، وهيببيد كريمة ليقويد، بوري ستراوبيرريس\nالقيم الغذائية: 250 كيلو كالوري 17 غ بروتين 45 غ كربوهيدرات 9 غ دهون"
+      },
+      "price": 36
+    },
+    {
+      "categoryKey": "freak_shakes_and_frappe",
+      "name": { "en": "SNICKERS FRAPPE", "ro": "SNICKERS FRAPPE", "ar": "فرابي سنيكرز" },
+      "description": {
+        "en": "Instant Coffee, snickers, topping chocolate, whipped cream liquid, milk, ice",
+        "ro": "Ness, snickers, toping ciocolată, frișcă lichidă, lapte, gheață",
+        "ar": "ينستانت كوففي, سنيكرز, توببينج شوكولاتة, وهيببيد كريمة ليقويد, حليب, ثلج"
+      },
+      "price": 49
+    },
+
+    {
+      "categoryKey": "lemonades_and_fresh_juices",
+      "name": { "en": "LEMONADE CLASSIC (400 ml)", "ro": "LIMONADA CLASICĂ (400 ml)", "ar": "ليمونادة كلاسيك (400 مل)" },
+      "description": {
+        "en": "Ingredients: fresh lemon, syrup sugar, still water\nNutritional values: 40 kcal 7 g protein 10 g carbohydrates 0 g fat",
+        "ro": "INGREDIENTE: fresh lămâie, sirop zahăr, apa plata\nVALORI NUTRIȚIONALE: 40 kcal 7 g proteine 10 g carbohidrați 0 g grăsimi",
+        "ar": "المكونات: طازج ليمون، سيروب سكر، ستيلل ماء\nالقيم الغذائية: 40 كيلو كالوري 7 غ بروتين 10 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 31
+    },
+    {
+      "categoryKey": "lemonades_and_fresh_juices",
+      "name": { "en": "MINT LEMONADE (400 ml)", "ro": "MINT LEMONADE (400 ml)", "ar": "ليمونادة بالنعناع (400 مل)" },
+      "description": {
+        "en": "Ingredients: fresh lemon, mint, syrup sugar, still water\nNutritional values: 40 kcal 7 g protein 10 g carbohydrates 0 g fat",
+        "ro": "INGREDIENTE: fresh lamaie, menta, sirop zahăr, apa plata\nVALORI NUTRIȚIONALE: 40 kcal 7 g proteine 10 g carbohidrați 0 g grăsimi",
+        "ar": "المكونات: طازج ليمون، نعناع، سيروب سكر، ستيلl ماء\nالقيم الغذائية: 40 كيلو كالوري 7 غ بروتين 10 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 35
+    },
+    {
+      "categoryKey": "lemonades_and_fresh_juices",
+      "name": { "en": "FLAVOURED LEMONADE (400 ml)", "ro": "FLAVOURED LEMONADE (400 ml)", "ar": "منكه ليمونادة (400 مل)" },
+      "description": {
+        "en": "Ingredients: fresh lemon, still water, puree assorted flavors\nNutritional values: 46 kcal 7 g protein 19 g carbohydrates 1 g fat",
+        "ro": "INGREDIENTE: fresh lamaie, apa plata, piure diverse arome\nVALORI NUTRIȚIONALE: 46 kcal 7 g proteine 19 g carbohidrați 1 g grăsimi",
+        "ar": "المكونات: طازج ليمون، ستيلl ماء، بوري اسسورتيد فلافورس\nالقيم الغذائية: 46 كيلو كالوري 7 غ بروتين 19 غ كربوهيدرات 1 غ دهون"
+      },
+      "price": 37
+    },
+    {
+      "categoryKey": "lemonades_and_fresh_juices",
+      "name": { "en": "FROZEN LEMONADE (400 ml)", "ro": "FROZEN LEMONADE (400 ml)", "ar": "مثلجة ليمونادة (400 مل)" },
+      "description": {
+        "en": "Ingredients: fresh lemon, still water, puree assorted flavors\nNutritional values: 46 kcal 7 g protein 19 g carbohydrates 1 g fat",
+        "ro": "INGREDIENTE: fresh lamaie, apa plata, piure diverse arome\nVALORI NUTRIȚIONALE: 46 kcal 7 g proteine 19 g carbohidrați 1 g grăsimi",
+        "ar": "المكونات: طازج ليمون، ستيلl ماء، بوري اسسورتيد فلافورس\nالقيم الغذائية: 46 كيلو كالوري 7 غ بروتين 19 غ كربوهيدرات 1 غ دهون"
+      },
+      "price": 41
+    },
+    {
+      "categoryKey": "lemonades_and_fresh_juices",
+      "name": { "en": "LEMONADE (lemon + orange) (400 ml)", "ro": "CITRONADĂ (400 ml)", "ar": "ليمونادة (ليمون + برتقال) (400 مل)" },
+      "description": {
+        "en": "Ingredients: fresh lemon, fresh orange, mint, syrup sugar, still water\nNutritional values: 42 kcal 36 g protein 11 g carbohydrates 1 g fat",
+        "ro": "INGREDIENTE: fresh lămâie, fresh portocală, mentă, sirop zahăr, apa plata\nVALORI NUTRIȚIONALE: 42 kcal 36 g proteine 11 g carbohidrați 1 g grăsimi",
+        "ar": "المكونات: طازج ليمون، طازج برتقال، نعناع، سيروب سكر، ستيلl ماء\nالقيم الغذائية: 42 كيلو كالوري 36 غ بروتين 11 غ كربوهيدرات 1 غ دهون"
+      },
+      "price": 36
+    },
+    {
+      "categoryKey": "lemonades_and_fresh_juices",
+      "name": { "en": "FRESH JUICE (220 ml)", "ro": "FRESH JUICE (220 ml)", "ar": "عصير طازج (220 مل)" },
+      "description": {
+        "en": "Orange / Grapefruit/ Mix\nNutritional values: 27 kcal 9 g protein 22 g carbohydrates 1 g fat",
+        "ro": "Portocala / Grapefruit/ Mix\nVALORI NUTRIȚIONALE: 27 kcal 9 g proteine 22 g carbohidrați 1 g grăsimi",
+        "ar": "برتقال / جرابيفرويت/ ميكس\nالقيم الغذائية: 27 كيلو كالوري 9 غ بروتين 22 غ كربوهيدرات 1 غ دهون"
+      },
+      "price": 32
+    }
+  ]
+}

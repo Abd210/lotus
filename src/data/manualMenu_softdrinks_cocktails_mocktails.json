@@ -1,0 +1,276 @@
+{
+  "categories": [
+    {
+      "key": "soft_drinks",
+      "name": { "en": "Soft drinks", "ro": "SOFT DRINKS", "ar": "المشروبات الغازية" }
+    },
+    {
+      "key": "cocktails",
+      "name": { "en": "Cocktails", "ro": "COCKTAILS", "ar": "كوكتيلات" }
+    },
+    {
+      "key": "mocktails",
+      "name": { "en": "Mocktails", "ro": "MOKTAIL", "ar": "موكتيلات" }
+    }
+  ],
+  "products": [
+    {
+      "categoryKey": "soft_drinks",
+      "name": { "en": "still water / MINERAL", "ro": "APA PLATA / MINERALA", "ar": "ستيلل ماء / مينيرال" },
+      "description": {
+        "en": "Nutritional values: 0 kcal 7 g protein 0 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRITIONALE: 0 kcal 7 g proteine 0 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 0 كيلو كالوري 7 غ بروتين 0 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 15
+    },
+    {
+      "categoryKey": "soft_drinks",
+      "name": { "en": "PEPSI (250ml)", "ro": "PEPSI (250ml)", "ar": "بيبسي (250 مل)" },
+      "description": {
+        "en": "Nutritional values: 155kcal 27 g protein 11 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRITIONALE: 155kcal 27 g proteine 11 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 155 كيلو كالوري 27 غ بروتين 11 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 15
+    },
+    {
+      "categoryKey": "soft_drinks",
+      "name": { "en": "PEPSI MAX/ TWIST (250ml)", "ro": "PEPSI MAX/ TWIST (250ml)", "ar": "بيبسي ماكس / تويست (250 مل)" },
+      "description": {
+        "en": "Nutritional values: 155 kcal 27 g protein 11 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRITIONALE: 155 kcal 27 g proteine 11 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 155 كيلو كالوري 27 غ بروتين 11 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 15
+    },
+    {
+      "categoryKey": "soft_drinks",
+      "name": { "en": "MIRINDA (250ml)", "ro": "MIRINDA (250ml)", "ar": "ميريندا (250 مل)" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 15
+    },
+    {
+      "categoryKey": "soft_drinks",
+      "name": { "en": "AYRAN", "ro": "AYRAN", "ar": "عيران" },
+      "description": {
+        "en": "Nutritional values: 38 kcal 17 g protein 11 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRITIONALE: 38 kcal 17 g proteine 11 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 38 كيلو كالوري 17 غ بروتين 11 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 15
+    },
+    {
+      "categoryKey": "soft_drinks",
+      "name": { "en": "7up (250ml)", "ro": "7up (250ml)", "ar": "7وب (250مل)" },
+      "description": {
+        "en": "Nutritional values: 150 kcal 27 g protein 11 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRITIONALE: 150 kcal 27 g proteine 11 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 150 كيلو كالوري 27 غ بروتين 11 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 15
+    },
+    {
+      "categoryKey": "soft_drinks",
+      "name": { "en": "EVERVESS TONIC (250ml)", "ro": "EVERVESS TONIC (250ml)", "ar": "إيفرفيس تونيك (250 مل)" },
+      "description": {
+        "en": "Nutritional values: 50 kcal 11 g protein 10 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRITIONALE: 50 kcal 11 g proteine 10 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 50 كيلو كالوري 11 غ بروتين 10 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 15
+    },
+    {
+      "categoryKey": "soft_drinks",
+      "name": { "en": "LIPTON (330 ml)", "ro": "LIPTON (330 ml)", "ar": "ليبتون (330 مل)" },
+      "description": {
+        "en": "Lemon, Piretica, Green\nNutritional values: 150 kcal 27g protein 11 g carbohydrates 0 g fat",
+        "ro": "Lamaie, Piretica, Verde\nVALORI NUTRITIONALE: 150 kcal 27g proteine 11 g carbohidrați 0 g grăsimi",
+        "ar": "ليمون, بيريتيكا, أخضر\nالقيم الغذائية: 150 كيلو كالوري 27 غ بروتين 11 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 15
+    },
+    {
+      "categoryKey": "soft_drinks",
+      "name": { "en": "PRIGAT (250ml)", "ro": "PRIGAT (250ml)", "ar": "بريغات (250 مل)" },
+      "description": {
+        "en": "Nutritional values: 53 kcal 11 g protein 10 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRITIONALE: 53 kcal 11 g proteine 10 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 53 كيلو كالوري 11 غ بروتين 10 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 15
+    },
+    {
+      "categoryKey": "soft_drinks",
+      "name": { "en": "FIGA (250ml)", "ro": "FIGA (250ml)", "ar": "فيغا (250 مل)" },
+      "description": {
+        "en": "Nutritional values: 38 kcal 17 g protein 11 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRITIONALE: 38 kcal 17 g proteine 11 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 38 كيلو كالوري 17 غ بروتين 11 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 25
+    },
+    {
+      "categoryKey": "soft_drinks",
+      "name": { "en": "REDBULL (250ml)", "ro": "REDBULL (250ml)", "ar": "ريد بول (250 مل)" },
+      "description": {
+        "en": "Nutritional values: 45 kcal 27 g protein 10 g carbohydrates 0 g fat",
+        "ro": "VALORI NUTRITIONALE: 45 kcal 27 g proteine 10 g carbohidrați 0 g grăsimi",
+        "ar": "القيم الغذائية: 45 كيلو كالوري 27 غ بروتين 10 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 22
+    },
+
+    {
+      "categoryKey": "cocktails",
+      "name": { "en": "TROPICAL BREEZE (400ml)", "ro": "TROPICAL BREEZE (400ml)", "ar": "استوائي نسيم (400 مل)" },
+      "description": {
+        "en": "Ingredients: juice pineapple, juice oranges, puree passion fruit, fresh lemon\nNutritional values: 121 kcal 3 g protein 27 g carbohydrates 0 g fat",
+        "ro": "INGREDIENTE: suc ananas, suc portocale, piure fructul pasiunii, fresh lămâie\nVALORI NUTRITIONALE: 121 kcal 3 g proteine 27 g carbohidrați 0 g grăsimi",
+        "ar": "المكونات: عصير بينياببلي، عصير ورانجيس، بوري باسسيون فرويت، طازج ليمون\nالقيم الغذائية: 121 كيلو كالوري 3 غ بروتين 27 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 37
+    },
+    {
+      "categoryKey": "cocktails",
+      "name": { "en": "BERRY CRUSH (400ml)", "ro": "BERRY CRUSH (400ml)", "ar": "توت كراش (400 مل)" },
+      "description": {
+        "en": "Ingredients: juice fruits tomatoes, puree raspberry, syrup elderflower, fresh lemon\nNutritional values: 110 kcal 3 g protein 25 g carbohydrates 0 g fat",
+        "ro": "INGREDIENTE: suc fructe roșii, piure zmeura, sirop soc, fresh lămâie\nVALORI NUTRITIONALE: 110 kcal 3 g proteine 25 g carbohidrați 0 g grăsimi",
+        "ar": "المكونات: عصير فرويتس طماطم، بوري راسببيرري، سيروب يلديرفلووير، طازج ليمون\nالقيم الغذائية: 110 كيلو كالوري 3 غ بروتين 25 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 38
+    },
+    {
+      "categoryKey": "cocktails",
+      "name": { "en": "PINK STRAWBERRY MOJITO (250ml)", "ro": "PINK STRAWBERRY MOJITO (250ml)", "ar": "وردي فراولة موهيتو (250 مل)" },
+      "description": {
+        "en": "Ingredients: lime, mint, puree strawberries, 7up\nNutritional values: 140 kcal 2 g protein 27 g carbohydrates 0 g fat",
+        "ro": "INGREDIENTE: lime, menta, piure căpșuni, 7up\nVALORI NUTRITIONALE: 140 kcal 2 g proteine 27 g carbohidrați 0 g grăsimi",
+        "ar": "المكونات: ليمي، نعناع، بوري ستراوبيرريس، سفن أب\nالقيم الغذائية: 140 كيلو كالوري 2 غ بروتين 27 غ كربوهيدرات 0 غ دهون"
+      },
+      "price": 39
+    },
+    {
+      "categoryKey": "cocktails",
+      "name": { "en": "RAINBOW (280ml)", "ro": "RAINBOW (280ml)", "ar": "قوس قزح (280 مل)" },
+      "description": {
+        "en": "Ingredients: SYRUP GRENADINE, JUICE ORANGES, SYRUP BLUE CURACAO",
+        "ro": "INGREDIENTE: SIROP GRENADINE, SUC PORTOCALE, SIROP BLUE CURACAO",
+        "ar": "المكونات: سيروب جريناديني، عصير ورانجيس، سيروب بلوي كوراكاو"
+      },
+      "price": 38
+    },
+    {
+      "categoryKey": "cocktails",
+      "name": { "en": "GREEN APPLE (200 ml)", "ro": "GREEN APPLE (200 ml)", "ar": "أخضر تفاح (200 مل)" },
+      "description": {
+        "en": "Ingredients: LIME, PUREE green apple, JUICE green apples.",
+        "ro": "INGREDIENTE: LIME, PIURE MĂR VERDE, SUC MERE VERZI.",
+        "ar": "المكونات: ليمي، بوري أخضر تفاح، عصير أخضر اببليس."
+      },
+      "price": 37
+    },
+    {
+      "categoryKey": "cocktails",
+      "name": { "en": "NADACOLADA (400 ml)", "ro": "NADACOLADA (400 ml)", "ar": "ناداكولادا (400 مل)" },
+      "description": {
+        "en": "Ingredients: PUREE COCONUT, WHIPPED CREAM LIQUID, JUICE PINEAPPLE.",
+        "ro": "INGREDIENTE: PIURE COCOS, FRIȘCĂ LICHIDĂ, SUC ANANAS.",
+        "ar": "المكونات: بوري كوكونوت، وهيببيد كريمة ليقويد، عصير بينياببلي."
+      },
+      "price": 39
+    },
+    {
+      "categoryKey": "cocktails",
+      "name": { "en": "HUGO MOCKTAIL (400 ml)", "ro": "HUGO MOCKTAIL (400 ml)", "ar": "هوغو موككتايل (400 مل)" },
+      "description": {
+        "en": "INGREDIENTS: SYRUP ELDERFLOWER, mint leaves, LIME, sparkling water.",
+        "ro": "INGREDINTE: SIROP SOC, FRUNZE DE MENTĂ, LIME, APĂ MINERALĂ.",
+        "ar": "المكونات: سيروب يلديرفلووير, نعناع ليافيس, ليمي, سباركلينج ماء."
+      },
+      "price": 39
+    },
+
+    {
+      "categoryKey": "mocktails",
+      "name": { "en": "PINK SUMMER BREEZE (280 ml)", "ro": "PINK SUMMER BREEZE (280 ml)", "ar": "وردي صيفي نسيم (280 مل)" },
+      "description": {
+        "en": "220 kcal\nIngredients: 7UP, FRESH LEMON, SYRUP ELDERFLOWER, LIME, GREENOOLENE.",
+        "ro": "220 kcal\nINGREDIENTE: 7UP, FRESH LĂMÂIE, SIROP SOC, LIME, GREENOOLENE.",
+        "ar": "220 كيلو كالوري\nالمكونات: سفن أب، طازج ليمون، سيروب يلديرفلووير، ليمي، جرينوليني."
+      },
+      "price": 35
+    },
+    {
+      "categoryKey": "mocktails",
+      "name": { "en": "SKY BUBBLE (280 ml)", "ro": "SKY BUBBLE (280 ml)", "ar": "سماء فقاعات (280 مل)" },
+      "description": {
+        "en": "230 kcal\nIngredients: 7UP, FRESH LEMON, SYRUP ELDERFLOWER, LIME, GREENOOLENE.",
+        "ro": "230 kcal\nINGREDIENTE: 7UP, FRESH LĂMÂIE, SIROP SOC, LIME, GREENOOLENE.",
+        "ar": "230 كيلو كالوري\nالمكونات: سفن أب، طازج ليمون، سيروب يلديرفلووير، ليمي، جرينوليني."
+      },
+      "price": 35
+    },
+    {
+      "categoryKey": "mocktails",
+      "name": { "en": "Monkey Coconut (280 ml)", "ro": "Monkey Coconut (280 ml)", "ar": "مونكيي كوكونوت (280 مل)" },
+      "description": {
+        "en": "Puree bananas, puree coconut, whipped cream liquid, juice pineapple, ice",
+        "ro": "Piure banane, piure cocos, frișcă lichide, suc ananas, gheață",
+        "ar": "بوري باناناس, بوري كوكونوت, وهيببيد كريمة ليقويد, عصير بينياببلي, ثلج"
+      },
+      "price": 39
+    },
+    {
+      "categoryKey": "mocktails",
+      "name": { "en": "Strawberry Cloud's (280 ml)", "ro": "Strawberry Cloud's (280 ml)", "ar": "فراولة كلودس (280 مل)" },
+      "description": {
+        "en": "Puree strawberries, syrup vanilla, whipped cream liquid, juice pineapple, ice",
+        "ro": "Piure căpșuni, sirop vanilie, frișcă lichidă, suc ananas, gheață",
+        "ar": "بوري ستراوبيرريس, سيروب فانيليا, وهيببيد كريمة ليقويد, عصير بينياببلي, ثلج"
+      },
+      "price": 39
+    },
+    {
+      "categoryKey": "mocktails",
+      "name": { "en": "Vanilla Blues (280 ml)", "ro": "Vanilla Blues (280 ml)", "ar": "فانيليا بلويس (280 مل)" },
+      "description": {
+        "en": "Syrup blue curacao, syrup vanilla, whipped cream liquid, juice pineapple, ice",
+        "ro": "Sirop blue curacao, sirop vanilie, frișcă lichidă, suc ananas, gheață",
+        "ar": "سيروب بلوي كوراكاو, سيروب فانيليا, وهيببيد كريمة ليقويد, عصير بينياببلي, ثلج"
+      },
+      "price": 39
+    },
+    {
+      "categoryKey": "mocktails",
+      "name": { "en": "Virgin Mojito (280 ml)", "ro": "Virgin Mojito (280 ml)", "ar": "فيرجين موهيتو (280 مل)" },
+      "description": {
+        "en": "Juice cranberry, lime, leaves mint, sugar brun, ice crushed",
+        "ro": "Suc cranberry, lime, frunze mentă, zahăr brun, gheață pisată",
+        "ar": "عصير كرانبيرري, ليمي, ليافيس نعناع, سكر برون, ثلج كروشيد"
+      },
+      "price": 39
+    },
+    {
+      "categoryKey": "mocktails",
+      "name": { "en": "Wild Cherry (280 ml)", "ro": "Wild Cherry (280 ml)", "ar": "ويلد كرزية (280 مل)" },
+      "description": {
+        "en": "Juice sour cherries, lime, leaves mint, ice crushed",
+        "ro": "Suc vișine, lime, frunze mentă, gheață pisată",
+        "ar": "عصير سور تشيرريس, ليمي, ليافيس نعناع, ثلج كروشيد"
+      },
+      "price": 39
+    },
+    {
+      "categoryKey": "mocktails",
+      "name": { "en": "Pineapple Lemonade (280 ml)", "ro": "Pineapple Lemonade (280 ml)", "ar": "بينياببلي ليمونادة (280 مل)" },
+      "description": {
+        "en": "Pineapple, juice lemon, puree pineapple, ice",
+        "ro": "Ananas, suc lămâie, piure ananas, gheață",
+        "ar": "بينياببلي, عصير ليمون, بوري بينياببلي, ثلج"
+      },
+      "price": 60
+    }
+  ]
+}

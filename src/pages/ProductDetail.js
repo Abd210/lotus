@@ -41,8 +41,8 @@ export default function ProductDetail() {
     })();
   }, [productId]);
 
-  const nameText = (product?.name && (product.name[lang] || product.name.en || product.name.ro)) || product?.name || '';
-  const descText = (product?.description && (product.description[lang] || product.description.en || product.description.ro)) || (typeof product?.description === 'string' ? product.description : '');
+  const nameText = (product?.name && (product.name[lang] || product.name.en || product.name.ro || product.name.ar)) || product?.name || '';
+  const descText = (product?.description && (product.description[lang] || product.description.en || product.description.ro || product.description.ar)) || (typeof product?.description === 'string' ? product.description : '');
 
   return (
     <div className="min-h-screen marble-bg marble-overlay text-off-white">

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "key": "burgers",
+      "name": { "en": "BURGERS", "ro": "BURGERS", "ar": "البرغر" },
+      "parentKey": null,
+      "imageUrl": ""
+    }
+  ],
+  "products": [
+    {
+      "categoryKey": "burgers",
+      "name": {
+        "en": "CLASSIC BURGER",
+        "ro": "CLASSIC BURGER",
+        "ar": "كلاسيك برغر"
+      },
+      "description": {
+        "en": "Ingredients: bun, meat beef 200 g, tomatoes 100 g, cucumbers 100 g, salad 50 g, sauce lotus 50 g.\nNutritional values: kcal 466, protein 33g, carbohydrates 26g, fat 37g.",
+        "ro": "Ingrediente: chiflă, carne vită 200 g, roșii 100 g, castraveți 100 g, salată 50 g, sos lotus 50 g.\nValori nutriționale: kcal 466, proteine 33g, carbohidrați 26g, grăsimi 37g.",
+        "ar": "المكونات: بون، لحم بقري 200 غ، طماطم 100 غ، خيار 100 غ، سلطة 50 غ، صلصة لوتس 50 غ.\nالقيم الغذائية: كيلو كالوري 466، بروتين 33 غ، كربوهيدرات 26 غ، دهون 37 غ."
+      },
+      "price": 59,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "burgers",
+      "name": {
+        "en": "CLASSIC CHICKEN",
+        "ro": "CLASSIC CHICKEN",
+        "ar": "كلاسيك الدجاج"
+      },
+      "description": {
+        "en": "Ingredients: bun, breast of chicken 100 g, tomatoes 20 g, cucumbers 20 g, salad, sauce 40 g.\nNutritional values: kcal 454, protein 30g, carbohydrates 26g, fat 37g.",
+        "ro": "Ingrediente: chiflă, piept de pui 100 g, roșii 20 g, castraveți 20 g, salată, sos 40 g.\nValori nutriționale: kcal 454, proteine 30g, carbohidrați 26g, grăsimi 37g.",
+        "ar": "المكونات: بون، صدر من دجاج 100 غ، طماطم 20 غ، خيار 20 غ، سلطة، صلصة 40 غ.\nالقيم الغذائية: كيلو كالوري 454، بروتين 30 غ، كربوهيدرات 26 غ، دهون 37 غ."
+      },
+      "price": 50,
+      "imageUrl": ""
+    }
+  ]
+}

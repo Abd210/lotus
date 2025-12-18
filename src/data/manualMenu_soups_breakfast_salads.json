@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "key": "soups",
+      "name": { "en": "SOUPS", "ro": "CIORBE", "ar": "الشوربات" },
+      "parentKey": null,
+      "imageUrl": ""
+    },
+    {
+      "key": "breakfast",
+      "name": { "en": "BREAKFAST", "ro": "MIC DEJUN", "ar": "الإفطار" },
+      "parentKey": null,
+      "imageUrl": ""
+    },
+    {
+      "key": "salads",
+      "name": { "en": "SALADS", "ro": "SALATE", "ar": "السلطات" },
+      "parentKey": null,
+      "imageUrl": ""
+    }
+  ],
+  "products": [
+    {
+      "categoryKey": "soups",
+      "name": {
+        "en": "VEAL SOUP",
+        "ro": "CIORBĂ DE VĂCUȚĂ",
+        "ar": "شوربة لحم العجل"
+      },
+      "description": {
+        "en": "Ingredients: bell pepper, red and green, celery, potatoes, green beans, onion, leg from\nveal meat.\nNutritional values: 150 protein 24 g, carbohydrates 7 g, fat: 3 g.",
+        "ro": "Ingrediente: ardei gras, roșu și verde, țelină, cartofi, fasole verde, ceapă, pulpă din\ncarne de vițel.\nValori nutriționale: 150 proteine 24 g, carbohidrați 7 g, grăsimi: 3 g.",
+        "ar": "المكونات: فلفل رومي، أحمر و أخضر، كرفس، بطاطس، فاصوليا خضراء، بصل، فخذ من\nلحم العجل.\nالقيم الغذائية: 150 بروتين 24 غ، كربوهيدرات 7 غ، دهون: 3 غ."
+      },
+      "price": 35,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "soups",
+      "name": {
+        "en": "VEGETABLE SOUP",
+        "ro": "CIORBĂ DE LEGUME",
+        "ar": "شوربة الخضار"
+      },
+      "description": {
+        "en": "Ingredients: bell pepper, red and green, celery, potatoes, green beans, onion.\nNutritional values: 82 g protein 4 g, carbohydrates 12 g, fat: 2 g.",
+        "ro": "Ingrediente: ardei gras, roșu și verde, țelină, cartofi, fasole verde, ceapă.\nValori nutriționale: 82 g proteine 4 g, carbohidrați 12 g, grăsimi: 2 g.",
+        "ar": "المكونات: فلفل رومي، أحمر و أخضر، كرفس، بطاطس، فاصوليا خضراء، بصل.\nالقيم الغذائية: 82 غ بروتين 4 غ، كربوهيدرات 12 غ، دهون: 2 غ."
+      },
+      "price": 29,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "soups",
+      "name": {
+        "en": "CHICKEN SOUP",
+        "ro": "CIORBĂ DE PUI",
+        "ar": "شوربة الدجاج"
+      },
+      "description": {
+        "en": "Ingredients: bell pepper, red and green, celery, potatoes, green beans, onion, meat of\nchicken.\nNutritional values: 150, protein 24 g, carbohydrates 7 g, fat: 3 g.",
+        "ro": "Ingrediente: ardei gras, roșu și verde, țelină, cartofi, fasole verde, ceapă, carne de\npui.\nValori nutriționale: 150, proteine 24 g, carbohidrați 7 g, grăsimi: 3 g.",
+        "ar": "المكونات: فلفل رومي، أحمر و أخضر، كرفس، بطاطس، فاصوليا خضراء، بصل، لحم الدجاج.\nالقيم الغذائية: 150، بروتين 24 غ، كربوهيدرات 7 غ، دهون: 3 غ."
+      },
+      "price": 31,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "soups",
+      "name": {
+        "en": "LENTIL SOUP",
+        "ro": "CIORBĂ DE LINTE",
+        "ar": "شوربة العدس"
+      },
+      "description": {
+        "en": "Ingredients: lentils, onion, carrot spices\nNutritional values: 1.4g of fat, 4-8g of carbohydrates and 1-1.5g of protein.",
+        "ro": "Ingrediente: linte, ceapă, morcov condimente\nValori nutriționale: 1.4g de grăsimi, 4-8g de glucide și 1-1.5g de proteine.",
+        "ar": "المكونات: عدس، بصل، جزر بهارات\nالقيم الغذائية: 1.4 غ من دهون، 4-8 غ من كربوهيدرات و 1-1.5 غ من بروتين."
+      },
+      "price": 27,
+      "imageUrl": ""
+    },
+
+    {
+      "categoryKey": "breakfast",
+      "name": {
+        "en": "BREAKFAST PLATTER",
+        "ro": "PLATOU MIC DEJUN",
+        "ar": "طبق إفطار"
+      },
+      "description": {
+        "en": "Ingredients: 2 eggs boiled, 50 g telemea (cow's milk brined cheese), tomatoes 70 g, Fabio cucumbers 50 g,\nhummus 50 g, kashkaval 50 g, blueberry jam 30 g, butter (20% fat) 30 g,\ntoast.\nNutritional values: 563 g, protein 35 g, carbohydrates 30 g, fat: 46 g.",
+        "ro": "Ingrediente: 2 oua fierte, 50 g telemea de vaca, roșii 70 g, castraveți fabio 50 g,\nhumus 50 g, cașcaval 50 g, dulceață afine 30 g, unt (20% grăsime) 30 g,\npâine prăjită.\nValori nutriționale: 563 g, proteine 35 g, carbohidrați 30 g, grăsimi: 46 g.",
+        "ar": "المكونات: 2 بيض مسلوق، 50 غ تيليميا (كووس حليب برينيد جبن)، طماطم 70 غ، فابيو خيار 50 غ،\nحمص 50 غ, كشكافال 50 غ, مربى التوت الأزرق 30 غ, زبدة (20% دهون) 30 غ,\nتوست.\nالقيم الغذائية: 563 غ، بروتين 35 غ، كربوهيدرات 30 غ، دهون: 46 غ."
+      },
+      "price": 58,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "breakfast",
+      "name": {
+        "en": "OMELET",
+        "ro": "OMLETĂ",
+        "ar": "أومليت"
+      },
+      "description": {
+        "en": "Ingredients: 2 eggs, tomatoes 50 g, Fabio cucumbers 50 g.\nNutritional values: kcal 180, protein: 10 g, carbohydrates 1 g, fat: 12 g.",
+        "ro": "Ingrediente: 2 ouă, roșii 50 g, castraveți fabio 50 g.\nValori nutriționale: kcal 180, proteine: 10 g, carbohidrați 1 g, grăsimi: 12 g.",
+        "ar": "المكونات: 2 بيض، طماطم 50 غ، فابيو خيار 50 غ.\nالقيم الغذائية: كيلو كالوري 180، بروتين: 10 غ، كربوهيدرات 1 غ، دهون: 12 غ."
+      },
+      "price": 32,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "breakfast",
+      "name": {
+        "en": "SANDWICH WITH KASHKAVAL",
+        "ro": "SANDWICH CU CAȘCAVAL",
+        "ar": "ساندويتش مع كشكافال"
+      },
+      "description": {
+        "en": "Ingredients: tortilla 200 g, kashkaval grated 100 g, tomatoes 50 g, Fabio cucumbers 50 g.\nNutritional values: 218, protein: 12 g, carbohydrates 30 g, fat: 10 g.",
+        "ro": "Ingrediente: tortila 200 g, cașcaval ras 100 g, roșii 50 g, castraveți fabio 50 g.\nValori nutriționale: 218, proteine: 12 g, carbohidrați 30 g, grăsimi: 10 g.",
+        "ar": "المكونات: تورتيللا 200 غ، كشكافال مبشور 100 غ، طماطم 50 غ، فابيو خيار 50 غ.\nالقيم الغذائية: 218، بروتين: 12 غ، كربوهيدرات 30 غ، دهون: 10 غ."
+      },
+      "price": 34,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "breakfast",
+      "name": {
+        "en": "VEGETABLE OMELET",
+        "ro": "OMLETĂ CU LEGUME",
+        "ar": "أومليت بالخضار"
+      },
+      "description": {
+        "en": "Ingredients: tomatoes, onion, pepper\nNutritional values: kcal 180, protein: 10 g, carbohydrates 1 g, fat: 12 g.",
+        "ro": "Ingrediente: roșii, ceapă, ardei\nValori nutriționale: kcal 180, proteine: 10 g, carbohidrați 1 g, grăsimi: 12 g.",
+        "ar": "المكونات: طماطم، بصل، فلفل\nالقيم الغذائية: كيلو كالوري 180، بروتين: 10 غ، كربوهيدرات 1 غ، دهون: 12 غ."
+      },
+      "price": 35,
+      "imageUrl": ""
+    },
+
+    {
+      "categoryKey": "salads",
+      "name": {
+        "en": "SALAD CAESAR",
+        "ro": "SALATA CAESAR",
+        "ar": "سلطة سيزر"
+      },
+      "description": {
+        "en": "Ingredients: breast of chicken 150 g, salad iceberg 200 g, croutons 30 g, parmesan 20\ng, sauce caesar 30 g, cherry tomatoes 50 g, salt and pepper.\nNutritional values: kcal 210, protein 28g, carbohydrates 11g, fat 6g.",
+        "ro": "Ingrediente: piept de pui 150 g, salata iceberg 200 g, crutoane 30 g, parmezan 20\ng, sos caesar 30 g, roșii cherry 50 g, sare și piper.\nValori nutriționale: kcal 210, proteine 28g, carbohidrați 11g, grăsimi 6g.",
+        "ar": "المكونات: صدر من دجاج 150 غ، سلطة آيسبرغ 200 غ، خبز محمص 30 غ، بارميزان 20\nغ, صلصة سيزر 30 غ, كرزية طماطم 50 غ, ملح و فلفل.\nالقيم الغذائية: كيلو كالوري 210، بروتين 28 غ، كربوهيدرات 11 غ، دهون 6 غ."
+      },
+      "price": 52,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "salads",
+      "name": {
+        "en": "GREEK SALAD",
+        "ro": "SALATĂ GRECEASCĂ",
+        "ar": "سلطة يونانية"
+      },
+      "description": {
+        "en": "Ingredients: cucumbers 100 g, iceberg lettuce 150 g, onion red 20 g, tomatoes 30 g,\npepper 20 g, telemea 50 g, olives kalamata 50 g, olive oil 10 ml, vinegar 10\nml, salt and pepper.\nNutritional values: kcal 293, protein 13g, carbohydrates 13g, fat 21g.",
+        "ro": "Ingrediente: castraveți 100 g, salată iceberg 150 g, ceapă roșie 20 g, roșii 30 g,\nardei 20 g, telemea 50 g, măsline kalamata 50 g, ulei de măsline 10 ml, oțet 10\nml, sare și piper.\nValori nutriționale: kcal 293, proteine 13g, carbohidrați 13g, grăsimi 21g.",
+        "ar": "المكونات: خيار 100 غ، آيسبرغ خس 150 غ، بصل أحمر 20 غ، طماطم 30 غ،\nفلفل 20 غ, تيليميا 50 غ, زيتون كالاماتا 50 غ, زيتون زيت 10 مل, خل 10\nمل, ملح و فلفل.\nالقيم الغذائية: كيلو كالوري 293، بروتين 13 غ، كربوهيدرات 13 غ، دهون 21 غ."
+      },
+      "price": 48,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "salads",
+      "name": {
+        "en": "TOMATO SALAD WITH CHEESE",
+        "ro": "SALATĂ DE ROȘII CU BRÂNZĂ",
+        "ar": "سلطة طماطم مع جبن"
+      },
+      "description": {
+        "en": "Ingredients: tomatoes 150 g, telemea 50 g, olive oil 10 ml, salt and pepper.\nNutritional values: kcal 246, protein 12 g, carbohydrates 9 g, fat 18g.",
+        "ro": "Ingrediente: roșii 150 g, telemea 50 g, ulei de măsline 10 ml, sare și piper.\nValori nutriționale: kcal 246, proteine 12 g, carbohidrați 9 g, grăsimi 18g.",
+        "ar": "المكونات: طماطم 150 غ، تيليميا 50 غ، زيت زيتون 10 مل، ملح وفلفل.\nالقيم الغذائية: كيلو كالوري 246، بروتين 12 غ، كربوهيدرات 9 غ، دهون 18 غ."
+      },
+      "price": 35,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "salads",
+      "name": {
+        "en": "MIXED SALAD",
+        "ro": "SALATĂ ASORTATĂ",
+        "ar": "سلطة مشكلة"
+      },
+      "description": {
+        "en": "Ingredients: iceberg lettuce 200 g, tomatoes 20 g, cucumbers 10 g, pepper 10 g, oil of\nolives 5 ml, vinegar balsamic 5 ml, salt and pepper.\nNutritional values: kcal 80, protein 10g, carbohydrates 5g, fat 18g.",
+        "ro": "Ingrediente: salată iceberg 200 g, roșii 20 g, castraveți 10 g, ardei 10 g, ulei de\nmăsline 5 ml, oțet balsamic 5 ml, sare și piper.\nValori nutriționale: kcal 80, proteine 10g, carbohidrați 5g, grăsimi 18g.",
+        "ar": "المكونات: آيسبرغ خس 200 غ، طماطم 20 غ، خيار 10 غ، فلفل 10 غ، زيت من\nزيتون 5 مل, خل بالساميك 5 مل, ملح و فلفل.\nالقيم الغذائية: كيلو كالوري 80، بروتين 10 غ، كربوهيدرات 5 غ، دهون 18 غ."
+      },
+      "price": 35,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "salads",
+      "name": {
+        "en": "TABOULE",
+        "ro": "TABOULE",
+        "ar": "تبولة"
+      },
+      "description": {
+        "en": "Ingredients: parsley 150 g, onion 25 g, tomatoes 25 g, bulgur 25 g, olive oil +\nsalt + lemon juice 25 g.\nNutritional values: kcal 100, protein 10g, carbohydrates 5g, fat 18g.",
+        "ro": "Ingrediente: pătrunjel 150 g, ceapă 25 g, roșii 25 g, burgul 25 g, ulei de măsline +\nsare + zeamă de lămâie 25 g.\nValori nutriționale: kcal 100, proteine 10g, carbohidrați 5g, grăsimi 18g.",
+        "ar": "المكونات: بقدونس 150 غ، بصل 25 غ، طماطم 25 غ، برغل 25 غ، زيت زيتون +\nملح + ليمون عصير 25 غ.\nالقيم الغذائية: كيلو كالوري 100، بروتين 10 غ، كربوهيدرات 5 غ، دهون 18 غ."
+      },
+      "price": 38,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "salads",
+      "name": {
+        "en": "FATOUSH",
+        "ro": "FATOUSH",
+        "ar": "فتوش"
+      },
+      "description": {
+        "en": "Ingredients: lettuce 50 g, tomatoes 50 g, cucumbers 50 g, pepper 50 g, lamb's lettuce 50\ng, salt + lemon juice + mint dried + sumac + olive oil + paste of\npomegranate + pita toasted 150 g.\nNutritional values: kcal 100, protein 10g, carbohydrates 5g, fat 18g.",
+        "ro": "Ingrediente: salată verde 50 g, roșii 50 g, castraveți 50 g, ardei 50 g, valeriană 50\ng, sare + zeamă de lămâie + mentă uscată + sumac + ulei de măsline + pastă de\nrodie + lipie prăjită 150 g.\nValori nutriționale: kcal 100, proteine 10g, carbohidrați 5g, grăsimi 18g.",
+        "ar": "المكونات: خس 50 غ، طماطم 50 غ، خيار 50 غ، فلفل 50 غ، لامبس خس 50\nغ, ملح + ليمون عصير + نعناع دريد + سماق + زيتون زيت + باستي من\nرمان + خبز بيتا تواستيد 150 غ.\nالقيم الغذائية: كيلو كالوري 100، بروتين 10 غ، كربوهيدرات 5 غ، دهون 18 غ."
+      },
+      "price": 39,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "salads",
+      "name": {
+        "en": "ARMENIAN SALAD",
+        "ro": "SALATĂ ARMENEASCĂ",
+        "ar": "سلطة ارمينيان"
+      },
+      "description": {
+        "en": "Ingredients: tomatoes 50 g, cucumbers 50 g, mixed peppers 50 g, hot pepper 50 g, walnuts 25\ng, salt + lemon juice + olive oil + paste of pomegranate 25 g.\nNutritional values: kcal 100, protein 10g, carbohydrates 5g, fat 18g.",
+        "ro": "Ingrediente: roșii 50 g, castraveți 50 g, ardei colorat 50 g, ardei iute 50 g, nuci 25\ng, sare + zeamă de lămâie + ulei de măsline + pastă de rodie 25 g.\nValori nutriționale: kcal 100, proteine 10g, carbohidrați 5g, grăsimi 18g.",
+        "ar": "المكونات: طماطم 50 غ، خيار 50 غ، مشكل بيببيرس 50 غ، ساخن فلفل 50 غ، والنوتس 25\nغ, ملح + ليمون عصير + زيتون زيت + باستي من رمان 25 غ.\nالقيم الغذائية: كيلو كالوري 100، بروتين 10 غ، كربوهيدرات 5 غ، دهون 18 غ."
+      },
+      "price": 39,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "salads",
+      "name": {
+        "en": "COLESLAW SALAD",
+        "ro": "SALATĂ COLESLAW",
+        "ar": "سلطة كوليسلاو"
+      },
+      "description": {
+        "en": "Ingredients: cabbage white 100 g, carrots 20 g, corn 20 g, mayonnaise 10 g\nNutritional values: 170 kcal, 12 g fat, 13 g carbohydrates and 2 g protein.",
+        "ro": "Ingrediente: varză albă 100 g, morcovi 20 g, porumb 20 g, maioneză 10 g\nValori nutriționale: 170 kcal, 12 g grăsimi, 13 g carbohidrați și 2 g proteine.",
+        "ar": "المكونات: ملفوف أبيض 100 غ، جزر 20 غ، ذرة 20 غ، مايونيز 10 غ\nالقيم الغذائية: 170 كيلو كالوري، 12 غ دهون، 13 غ كربوهيدرات و 2 غ بروتين."
+      },
+      "price": 25,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "salads",
+      "name": {
+        "en": "RED CABBAGE SALAD",
+        "ro": "SALATĂ DE VARZĂ ROȘIE",
+        "ar": "سلطة أحمر ملفوف"
+      },
+      "description": {
+        "en": "Ingredients: red cabbage 170 g, vinegar 10 g, oil 10 g, lemon juice 10 g.\nNutritional values: 25 kcal, 1,4 g protein, 4,57 g carbohydrates, 0.22 fat.",
+        "ro": "Ingrediente: varză roșie 170 g, oțet 10 g, ulei 10 g, zeamă de lămâie 10 g.\nValori nutriționale: 25 kcal, 1,4 g proteine, 4,57 g carbohidrați, 0.22 grăsimi.",
+        "ar": "المكونات: ملفوف أحمر 170 غ، خل 10 غ، زيت 10 غ، عصير ليمون 10 غ.\nالقيم الغذائية: 25 كيلو كالوري، 1،4 غ بروتين، 4،57 غ كربوهيدرات، 0.22 دهون."
+      },
+      "price": 27,
+      "imageUrl": ""
+    }
+  ]
+}

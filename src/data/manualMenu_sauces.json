@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "key": "sauces",
+      "name": { "en": "SAUCES", "ro": "SOSURI", "ar": "ساوكيس" },
+      "parentKey": null,
+      "imageUrl": ""
+    }
+  ],
+  "products": [
+    {
+      "categoryKey": "sauces",
+      "name": { "en": "SAUCE LOTUS", "ro": "SOS LOTUS", "ar": "صلصة لوتس" },
+      "description": { "en": "40 g", "ro": "40 g", "ar": "40 غ" },
+      "price": 8,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "sauces",
+      "name": { "en": "SAUCE GARLIC", "ro": "SOS USTUROI", "ar": "صلصة الثوم" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 8,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "sauces",
+      "name": { "en": "MAYONNAISE", "ro": "MAIONEZĂ", "ar": "مايونيز" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 8,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "sauces",
+      "name": { "en": "KETCHUP", "ro": "KETCHUP", "ar": "كاتشب" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 8,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "sauces",
+      "name": { "en": "CHILLY", "ro": "CHILLY", "ar": "حار" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 8,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "sauces",
+      "name": { "en": "SWEET CHILLY", "ro": "SWEET CHILLY", "ar": "حار حلو" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 8,
+      "imageUrl": ""
+    }
+  ]
+}

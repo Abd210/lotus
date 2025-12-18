@@ -41,13 +41,13 @@ export default function CategoryProducts() {
 				const prodsData = productsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
 				// sort client-side by name_ro with fallbacks
 				subsData.sort((a,b)=>{
-					const an = (a?.name_ro || (a?.name?.ro) || (a?.name?.en) || a?.name || '').toString().toLowerCase();
-					const bn = (b?.name_ro || (b?.name?.ro) || (b?.name?.en) || b?.name || '').toString().toLowerCase();
+					const an = (a?.name_ro || (a?.name?.ro) || (a?.name?.en) || (a?.name?.ar) || a?.name || '').toString().toLowerCase();
+					const bn = (b?.name_ro || (b?.name?.ro) || (b?.name?.en) || (b?.name?.ar) || b?.name || '').toString().toLowerCase();
 					return an.localeCompare(bn);
 				});
 				prodsData.sort((a,b)=>{
-					const an = (a?.name_ro || (a?.name?.ro) || (a?.name?.en) || a?.name || '').toString().toLowerCase();
-					const bn = (b?.name_ro || (b?.name?.ro) || (b?.name?.en) || b?.name || '').toString().toLowerCase();
+					const an = (a?.name_ro || (a?.name?.ro) || (a?.name?.en) || (a?.name?.ar) || a?.name || '').toString().toLowerCase();
+					const bn = (b?.name_ro || (b?.name?.ro) || (b?.name?.en) || (b?.name?.ar) || b?.name || '').toString().toLowerCase();
 					return an.localeCompare(bn);
 				});
 				
@@ -71,8 +71,20 @@ export default function CategoryProducts() {
 		})();
 	}, [categoryId]);
 
-	const getName = React.useCallback((item) => (item?.name && (item.name[lang] || item.name.en || item.name.ro)) || item?.name || '', [lang]);
-	const getDesc = React.useCallback((item) => (item?.description && (item.description[lang] || item.description.en || item.description.ro)) || item?.description || '', [lang]);
+	const getName = React.useCallback((item) => {
+		const n = item?.name;
+		if (!n) return '';
+		if (typeof n === 'string') return n;
+		if (typeof n === 'object') return (n[lang] || n.en || n.ro || n.ar || '') || '';
+		return '';
+	}, [lang]);
+	const getDesc = React.useCallback((item) => {
+		const d = item?.description;
+		if (!d) return '';
+		if (typeof d === 'string') return d;
+		if (typeof d === 'object') return (d[lang] || d.en || d.ro || d.ar || '') || '';
+		return '';
+	}, [lang]);
 
 	return (
 		<div className="min-h-screen marble-bg marble-overlay text-off-white">
@@ -157,7 +169,7 @@ export default function CategoryProducts() {
 							)}
 							<div className="p-5">
 								<h3 className="font-cinzel text-xl text-gold mb-2 group-hover:text-deep-gold transition-colors">{getName(product)}</h3>
-								{product.description && (
+								{getDesc(product) && (
 									<p className="text-off-white/80 text-sm mb-3 line-clamp-2">
 										{getDesc(product)}
 									</p>

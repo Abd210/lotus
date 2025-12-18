@@ -1,0 +1,433 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "key": "grill",
+      "name": { "en": "GRILL", "ro": "GRĂTAR", "ar": "المشاوي" },
+      "parentKey": null,
+      "imageUrl": ""
+    },
+    {
+      "key": "international_dishes",
+      "name": { "en": "INTERNATIONAL DISHES", "ro": "PREPARATE INTERNAȚIONALE", "ar": "الأطباق العالمية" },
+      "parentKey": null,
+      "imageUrl": ""
+    },
+    {
+      "key": "sides",
+      "name": { "en": "SIDES", "ro": "GARNITURI", "ar": "الأطباق الجانبية" },
+      "parentKey": null,
+      "imageUrl": ""
+    },
+    {
+      "key": "pasta",
+      "name": { "en": "PASTA", "ro": "PASTE", "ar": "المعكرونة" },
+      "parentKey": null,
+      "imageUrl": ""
+    }
+  ],
+  "products": [
+    {
+      "categoryKey": "grill",
+      "name": { "en": "KEBAB HALABI", "ro": "KEBAB HALABI", "ar": "كباب حلبي" },
+      "description": {
+        "en": "Ingredients: minced meat 200 g, onion 25 g, parsley 25 g, potatoes 50 g, v\n50 g, red cabbage 50 g, vegetables GRILLED 50 g.\nNutritional values: 213.93 kcal, fat 6.22 g, carbohydrates 24,84g, sugar 1,17,\nfiber 3,31, protein 13,7 g, salt 0.12 g.",
+        "ro": "Ingrediente: carne tocată 200 g, ceapă 25 g, pătrunjel 25 g, cartofi 50 g, v\n50 g, varză roșie 50 g, legume la grătar 50 g.\nValori nutriționale: 213.93 kcal, grăsimi 6.22 g, carbohidrați 24,84g, zahăr 1,17,\nfibre 3,31, proteine 13,7 g, sare 0.12 g.",
+        "ar": "المكونات: مينكيد لحم 200 غ، بصل 25 غ، بقدونس 25 غ، بطاطس 50 غ، ف\n50 غ, أحمر ملفوف 50 غ, خضار مشوية 50 غ.\nالقيم الغذائية: 213.93 كيلو كالوري، دهون 6.22 غ، كربوهيدرات 24،84 غ، سكر 1،17،\nفيبير 3,31, بروتين 13,7 غ, ملح 0.12 غ."
+      },
+      "price": 65,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "KEBAB SPICY", "ro": "KEBAB IUTE", "ar": "كباب حار" },
+      "description": {
+        "en": "Ingredients: minced meat seasoned 200 g, onion 25 g, parsley 25 g, potatoes\n50 g, Rice 50 g, red cabbage 50 g, vegetables GRILLED 50 g.\nNutritional values: 213.93 kcal, fat 6.22 g, carbohydrates 24,84g, sugar 1,17,\nfiber 3,31, protein 13,7 g, salt 0.12 g.",
+        "ro": "Ingrediente: carne tocată condimentată 200 g, ceapă 25 g, pătrunjel 25 g, cartofi\n50 g, Orez 50 g, varză roșie 50 g, legume la grătar 50 g.\nValori nutriționale: 213.93 kcal, grăsimi 6.22 g, carbohidrați 24,84g, zahăr 1,17,\nfibre 3,31, proteine 13,7 g, sare 0.12 g.",
+        "ar": "المكونات: مينكيد لحم متبل 200 غ، بصل 25 غ، بقدونس 25 غ، بطاطس\n50 غ, أرز 50 غ, أحمر ملفوف 50 غ, خضار مشوية 50 غ.\nالقيم الغذائية: 213.93 كيلو كالوري، دهون 6.22 غ، كربوهيدرات 24،84 غ، سكر 1،17،\nفيبير 3,31, بروتين 13,7 غ, ملح 0.12 غ."
+      },
+      "price": 67,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "KEBAB KUSHKUSH", "ro": "KEBAB KUSHKUSH", "ar": "كباب كوشكوش" },
+      "description": {
+        "en": "Ingredients: minced meat 200 g, onion 25 g, parsley 25 g, potatoes 50 g, Rice\n50 g, red cabbage 50 g, vegetables GRILLED 50 g, sauce kushkush.\nNutritional values: 213.93 kcal, fat 6.22 g, carbohydrates 24,84g, sugar 1,17,\nfiber 3,31, protein 13,7 g, salt 0.12 g.",
+        "ro": "Ingrediente: carne tocată 200 g, ceapă 25 g, pătrunjel 25 g, cartofi 50 g, Orez\n50 g, varză roșie 50 g, legume la grătar 50 g, sos kushkush.\nValori nutriționale: 213.93 kcal, grăsimi 6.22 g, carbohidrați 24,84g, zahăr 1,17,\nfibre 3,31, proteine 13,7 g, sare 0.12 g.",
+        "ar": "المكونات: مينكيد لحم 200 غ، بصل 25 غ، بقدونس 25 غ، بطاطس 50 غ، أرز\n50 غ, أحمر ملفوف 50 غ, خضار مشوية 50 غ, صلصة كوشكوش.\nالقيم الغذائية: 213.93 كيلو كالوري، دهون 6.22 غ، كربوهيدرات 24،84 غ، سكر 1،17،\nفيبير 3,31, بروتين 13,7 غ, ملح 0.12 غ."
+      },
+      "price": 70,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "KEBAB TAHINI", "ro": "KEBAB TAHINI", "ar": "كباب طحينة" },
+      "description": {
+        "en": "Ingredients: minced meat 200 g, onion 25 g, parsley 25 g, potatoes 50 g, Rice\n50 g, red cabbage 50 g, vegetables GRILLED 50 g, sauce tahini.\nNutritional values: 213.93 kcal, fat 6.22 g, carbohydrates 24,84g, sugar 1,17,\nfiber 3,31, protein 13,7 g, salt 0.12 g.",
+        "ro": "Ingrediente: carne tocată 200 g, ceapă 25 g, pătrunjel 25 g, cartofi 50 g, Orez\n50 g, varză roșie 50 g, legume la grătar 50 g, sos tahini.\nValori nutriționale: 213.93 kcal, grăsimi 6.22 g, carbohidrați 24,84g, zahăr 1,17,\nfibre 3,31, proteine 13,7 g, sare 0.12 g.",
+        "ar": "المكونات: مينكيد لحم 200 غ، بصل 25 غ، بقدونس 25 غ، بطاطس 50 غ، أرز\n50 غ, أحمر ملفوف 50 غ, خضار مشوية 50 غ, صلصة طحينة.\nالقيم الغذائية: 213.93 كيلو كالوري، دهون 6.22 غ، كربوهيدرات 24،84 غ، سكر 1،17،\nفيبير 3,31, بروتين 13,7 غ, ملح 0.12 غ."
+      },
+      "price": 70,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "KEBAB LOTUS", "ro": "KEBAB LOTUS", "ar": "كباب لوتس" },
+      "description": {
+        "en": "Ingredients: minced meat 200 g, kashkaval 50 g , pistachio 50 g, pepper red 50 g, batata\nharra 100 g.\nNutritional values: 213.93 kcal, fat 6.22 g, carbohydrates 24,84g, sugar 1,17,\nfiber 3,31, protein 13,7 g, salt 0.12 g.",
+        "ro": "Ingrediente: carne tocată 200 g, cașcaval 50 g , fistic 50 g, ardei roșu 50 g, batata\nharra 100 g.\nValori nutriționale: 213.93 kcal, grăsimi 6.22 g, carbohidrați 24,84g, zahăr 1,17,\nfibre 3,31, proteine 13,7 g, sare 0.12 g.",
+        "ar": "المكونات: مينكيد لحم 200 غ، كشكافال 50 غ ، بيستاتشيو 50 غ، فلفل أحمر 50 غ، باتاتا\nهاررا 100 غ.\nالقيم الغذائية: 213.93 كيلو كالوري، دهون 6.22 غ، كربوهيدرات 24،84 غ، سكر 1،17،\nفيبير 3,31, بروتين 13,7 غ, ملح 0.12 غ."
+      },
+      "price": 80,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "SKEWERS OF BEEF", "ro": "FRIGĂRUI DE VITĂ", "ar": "أسياخ من اللحم البقري" },
+      "description": {
+        "en": "Ingredients: tenderloin of beef 200 g, potatoes 100 g, Rice 50 g, parsley 25 g,\nonion 25 g, vegetables GRILLED 50 g.\nNutritional values: 184,62 kcal, fat 6,32 g, carbohydrates 19,11 g, sugar 1,75\ng, fiber 2,19 g, protein 11,65 g, salt 0,11 g.",
+        "ro": "Ingrediente: mușchi de vită 200 g, cartofi 100 g, Orez 50 g, pătrunjel 25 g,\nceapă 25 g, legume la grătar 50 g.\nValori nutriționale: 184,62 kcal, grăsimi 6,32 g, carbohidrați 19,11 g, zahăr 1,75\ng, fibre 2,19 g, proteine 11,65 g, sare 0,11 g.",
+        "ar": "المكونات: تينديرلوين من بقري 200 غ، بطاطس 100 غ، أرز 50 غ، بقدونس 25 غ،\nبصل 25 غ, خضار مشوية 50 غ.\nالقيم الغذائية: 184،62 كيلو كالوري، دهون 6،32 غ، كربوهيدرات 19،11 غ، سكر 1،75\nغ, فيبير 2,19 غ, بروتين 11,65 غ, ملح 0,11 غ."
+      },
+      "price": 85,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "SKEWERS OF CHICKEN", "ro": "FRIGĂRUI DE PUI", "ar": "أسياخ من الدجاج" },
+      "description": {
+        "en": "Ingredients: breast of chicken 200 g, potatoes 100 g, salad coleslaw 100 g, cream of\ngarlic 25 g, pickles 25g.\nNutritional values: 184,62 kcal, fat 6,32 g, carbohydrates 19,11 g, sugar 1,75\ng, fiber 2,19 g, protein 11.65 g, salt 0,11 g.",
+        "ro": "Ingrediente: piept de pui 200 g, cartofi 100 g, salată coleslaw 100 g, cremă de\nusturoi 25 g, murături 25g.\nValori nutriționale: 184,62 kcal, grăsimi 6,32 g, carbohidrați 19,11 g, zahăr 1,75\ng, fibre 2,19 g, proteine 11.65 g, sare 0,11 g.",
+        "ar": "المكونات: صدر من دجاج 200 غ، بطاطس 100 غ، سلطة كوليسلاو 100 غ، كريمة من\nثوم 25 غ, مخللات 25غ.\nالقيم الغذائية: 184،62 كيلو كالوري، دهون 6،32 غ، كربوهيدرات 19،11 غ، سكر 1،75\nغ, فيبير 2,19 غ, بروتين 11.65 غ, ملح 0,11 غ."
+      },
+      "price": 60,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "WINGS GRILLED", "ro": "ARIPIOARE LA GRĂTAR", "ar": "أجنحة مشوية" },
+      "description": {
+        "en": "Ingredients: wings of chicken 350 g, potatoes 100 g, salad coleslaw 100 g, cream\nof garlic 25 g, pickles 25g.\nNutritional values: 184,62 kcal, fat 6,32 g, carbohydrates 19,11 g, sugar 1,75\ng, fiber 2,19 g, protein 11.65 g, salt 0,11 g.",
+        "ro": "Ingrediente: aripioare de pui 350 g, cartofi 100 g, salată coleslaw 100 g, cremă\nde usturoi 25 g, murături 25g.\nValori nutriționale: 184,62 kcal, grăsimi 6,32 g, carbohidrați 19,11 g, zahăr 1,75\ng, fibre 2,19 g, proteine 11.65 g, sare 0,11 g.",
+        "ar": "المكونات: أجنحة من دجاج 350 غ، بطاطس 100 غ، سلطة كوليسلاو 100 غ، كريمة\nمن ثوم 25 غ, مخللات 25غ.\nالقيم الغذائية: 184،62 كيلو كالوري، دهون 6،32 غ، كربوهيدرات 19،11 غ، سكر 1،75\nغ, فيبير 2,19 غ, بروتين 11.65 غ, ملح 0,11 غ."
+      },
+      "price": 55,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "HALF OF CHICKEN WITH JAR", "ro": "JUMĂTATE DE PUI LA JAR", "ar": "نصف من الدجاج مع جار" },
+      "description": {
+        "en": "Ingredients: half of chicken, potatoes 100 g, salad coleslaw 100 g, cream of\ngarlic 25 g, pickles 25g.\nNutritional values: 184,62 kcal, fat 6,32 g, carbohydrates 19,11 g, sugar 1,75\ng, fiber 2,19 g, protein 11.65 g, salt 0,11 g.",
+        "ro": "Ingrediente: jumătate de pui, cartofi 100 g, salată coleslaw 100 g, cremă de\nusturoi 25 g, murături 25g.\nValori nutriționale: 184,62 kcal, grăsimi 6,32 g, carbohidrați 19,11 g, zahăr 1,75\ng, fibre 2,19 g, proteine 11.65 g, sare 0,11 g.",
+        "ar": "المكونات: نصف من دجاج، بطاطس 100 غ، سلطة كوليسلاو 100 غ، كريمة من\nثوم 25 غ, مخللات 25غ.\nالقيم الغذائية: 184،62 كيلو كالوري، دهون 6،32 غ، كربوهيدرات 19،11 غ، سكر 1،75\nغ, فيبير 2,19 غ, بروتين 11.65 غ, ملح 0,11 غ."
+      },
+      "price": 60,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "LAMB CHOPS", "ro": "COTLETE DE MIEL", "ar": "لحم الغنم ريش" },
+      "description": {
+        "en": "Ingredients: chops 200 g, Rice 100 g, potatoes 100 g, baba ganush 50, vegetables\nGRILLED 50, red cabbage.\nNutritional values: 213.93 kcal, fat 6.22 g, carbohydrates 24,84g, sugar 1,17,\nfiber 3,31, protein 13,7 g, salt 0.12 g.",
+        "ro": "Ingrediente: cotlete 200 g, Orez 100 g, cartofi 100 g, baba ganush 50, legume\nla grătar 50, varză roșie.\nValori nutriționale: 213.93 kcal, grăsimi 6.22 g, carbohidrați 24,84g, zahăr 1,17,\nfibre 3,31, proteine 13,7 g, sare 0.12 g.",
+        "ar": "المكونات: ريش 200 غ، أرز 100 غ، بطاطس 100 غ، بابا جانوش 50، خضار\nمشوية 50, أحمر ملفوف.\nالقيم الغذائية: 213.93 كيلو كالوري، دهون 6.22 غ، كربوهيدرات 24،84 غ، سكر 1،17،\nفيبير 3,31, بروتين 13,7 غ, ملح 0.12 غ."
+      },
+      "price": 110,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "ARAYES WITH MEAT", "ro": "ARAYES CU CARNE", "ar": "عرايس باللحم" },
+      "description": {
+        "en": "Ingredients: minced meat of beef and lamb, sauce of parsley, garlic, tahini +\npotatoes.\nNutritional values: 213.93 kcal, fat 6.22 g, carbohydrates 24,84g, sugar 1,17,\nfiber 3,31, protein 13,7 g, salt 0.12 g.",
+        "ro": "Ingrediente: carne tocată de vită și miel, sos de pătrunjel, usturoi, tahini +\ncartofi.\nValori nutriționale: 213.93 kcal, grăsimi 6.22 g, carbohidrați 24,84g, zahăr 1,17,\nfibre 3,31, proteine 13,7 g, sare 0.12 g.",
+        "ar": "المكونات: مينكيد لحم من بقري و غنم، صلصة من بقدونس، ثوم، طحينة +\nبطاطس.\nالقيم الغذائية: 213.93 كيلو كالوري، دهون 6.22 غ، كربوهيدرات 24،84 غ، سكر 1،17،\nفيبير 3,31, بروتين 13,7 غ, ملح 0.12 غ."
+      },
+      "price": 50,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "ARAYES WITH CHICKEN", "ro": "ARAYES CU PUI", "ar": "عرايس بالدجاج" },
+      "description": {
+        "en": "Ingredients: minced meat of chicken, sauce of parsley, garlic, tahini + potatoes.\nNutritional values: 213.93 kcal, fat 6.22 g, carbohydrates 24,84g, sugar 1,17,\nfiber 3,31, protein 13,7 g, salt 0.12 g.",
+        "ro": "Ingrediente: carne tocată de pui, sos de pătrunjel, usturoi, tahini + cartofi.\nValori nutriționale: 213.93 kcal, grăsimi 6.22 g, carbohidrați 24,84g, zahăr 1,17,\nfibre 3,31, proteine 13,7 g, sare 0.12 g.",
+        "ar": "المكونات: مينكيد لحم من دجاج، صلصة من بقدونس، ثوم، طحينة + بطاطس.\nالقيم الغذائية: 213.93 كيلو كالوري، دهون 6.22 غ، كربوهيدرات 24،84 غ، سكر 1،17،\nفيبير 3,31, بروتين 13,7 غ, ملح 0.12 غ."
+      },
+      "price": 45,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "GRILL MIX (1P 650 G)", "ro": "MIX GRIL (1P 650 G)", "ar": "تشكيلة مشاوي (1ب 650 غ)" },
+      "description": {
+        "en": "Ingredients: kebab 100 g, skewers of beef 100 g, skewers of chicken 100 g, 4\nwings + Rice 50 g, potatoes 100g, vegetables GRILLED 50 g.",
+        "ro": "Ingrediente: kebab 100 g, frigărui de vită 100 g, frigărui de pui 100 g, 4\naripioare + Orez 50 g, cartofi 100g, legume la grătar 50 g.",
+        "ar": "المكونات: كباب 100 غ، أسياخ من بقري 100 غ، أسياخ من دجاج 100 غ، 4\nأجنحة + أرز 50 غ, بطاطس 100غ, خضار مشوية 50 غ."
+      },
+      "price": 98,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "GRILL MIX (2P 1300 G)", "ro": "MIX GRIL (2P 1300 G)", "ar": "تشكيلة مشاوي (2ب 1300 غ)" },
+      "description": {
+        "en": "Ingredients: kebab 200 g, skewers of beef 200 g, skewers of chicken 200 g, 8\nwings + Rice 100 g, potatoes 200g, vegetables GRILLED 100 g.",
+        "ro": "Ingrediente: kebab 200 g, frigărui de vită 200 g, frigărui de pui 200 g, 8\naripioare + Orez 100 g, cartofi 200g, legume la grătar 100 g.",
+        "ar": "المكونات: كباب 200 غ، أسياخ من بقري 200 غ، أسياخ من دجاج 200 غ، 8\nأجنحة + أرز 100 غ, بطاطس 200غ, خضار مشوية 100 غ."
+      },
+      "price": 185,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "GRILL MIX (3P 1950 G)", "ro": "MIX GRIL (3P 1950 G)", "ar": "تشكيلة مشاوي (3ب 1950 غ)" },
+      "description": {
+        "en": "Ingredients: kebab 300 g, skewers of beef 300 g, skewers of chicken 300 g, 12\nwings + Rice 150 g, potatoes 300g, vegetables GRILLED 150 g.",
+        "ro": "Ingrediente: kebab 300 g, frigărui de vită 300 g, frigărui de pui 300 g, 12\naripioare + Orez 150 g, cartofi 300g, legume la grătar 150 g.",
+        "ar": "المكونات: كباب 300 غ، أسياخ من بقري 300 غ، أسياخ من دجاج 300 غ، 12\nأجنحة + أرز 150 غ, بطاطس 300غ, خضار مشوية 150 غ."
+      },
+      "price": 280,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "GRILL MIX (4P 2600 G)", "ro": "MIX GRIL (4P 2600 G)", "ar": "تشكيلة مشاوي (4ب 2600 غ)" },
+      "description": {
+        "en": "Ingredients: kebab 400 g, skewers of beef 400 g, skewers of chicken 400 g, 16\nwings + Rice 200 g, potatoes 400g, vegetables GRILLED 200 g.",
+        "ro": "Ingrediente: kebab 400 g, frigărui de vită 400 g, frigărui de pui 400 g, 16\naripioare + Orez 200 g, cartofi 400g, legume la grătar 200 g.",
+        "ar": "المكونات: كباب 400 غ، أسياخ من بقري 400 غ، أسياخ من دجاج 400 غ، 16\nأجنحة + أرز 200 غ, بطاطس 400غ, خضار مشوية 200 غ."
+      },
+      "price": 375,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "ARAYES WITH MEAT AND KASHKAVAL", "ro": "ARAYES CU CARNE ȘI CAȘCAVAL", "ar": "عرايس باللحم وجبنة كشكافال" },
+      "description": {
+        "en": "Ingredients: minced meat of beef and lamb, kashkaval, sauce of parsley, garlic,\ntahini + potatoes.\nNutritional values: 213.93 kcal, fat 6.22 g, carbohydrates 24,84g, sugar 1,17,\nfiber 3,31, protein 13,7 g, salt 0.12 g.",
+        "ro": "Ingrediente: carne tocată de vită și miel, cașcaval, sos de pătrunjel, usturoi,\ntahini + cartofi.\nValori nutriționale: 213.93 kcal, grăsimi 6.22 g, carbohidrați 24,84g, zahăr 1,17,\nfibre 3,31, proteine 13,7 g, sare 0.12 g.",
+        "ar": "المكونات: مينكيد لحم من بقري و غنم، كشكافال، صلصة من بقدونس، ثوم،\nطحينة + بطاطس.\nالقيم الغذائية: 213.93 كيلو كالوري، دهون 6.22 غ، كربوهيدرات 24،84 غ، سكر 1،17،\nفيبير 3,31, بروتين 13,7 غ, ملح 0.12 غ."
+      },
+      "price": 55,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "grill",
+      "name": { "en": "MIX GRILL LOTUS", "ro": "MIX GRILL LOTUS", "ar": "ميكس جريلل لوتس" },
+      "description": {
+        "en": "Ingredients: kebab lotus 100 g, skewers of beef 100 g, skewers of chicken 100 g,\nchops x2 , wings x4 + Rice 100 g, potatoes 100 g, vegetables GRILLED 50g",
+        "ro": "Ingrediente: kebab lotus 100 g, frigărui de vită 100 g, frigărui de pui 100 g,\ncotlete x2 , aripioare x4 + Orez 100 g, cartofi 100 g, legume la grătar 50g",
+        "ar": "المكونات: كباب لوتس 100 غ، أسياخ من بقري 100 غ، أسياخ من دجاج 100 غ،\nريش كس2 , أجنحة كس4 + أرز 100 غ, بطاطس 100 غ, خضار مشوية 50غ"
+      },
+      "price": 140,
+      "imageUrl": ""
+    },
+
+    {
+      "categoryKey": "international_dishes",
+      "name": { "en": "SCHNITZEL OF CHICKEN CRISPY", "ro": "ȘNIȚEL DE PUI CRISPY", "ar": "شنيتسل من الدجاج كريسبي" },
+      "description": {
+        "en": "Ingredients: parsley 150 g, onion 25 g, tomatoes 25 g, bulgur 25 g, olive oil +\nsalt + lemon juice 25 g.\nNutritional values: kcal 100, protein 10g, carbohydrates 5g, fat 18g.",
+        "ro": "Ingrediente: pătrunjel 150 g, ceapă 25 g, roșii 25 g, burgul 25 g, ulei de măsline +\nsare + zeamă de lămâie 25 g.\nValori nutriționale: kcal 100, proteine 10g, carbohidrați 5g, grăsimi 18g.",
+        "ar": "المكونات: بقدونس 150 غ، بصل 25 غ، طماطم 25 غ، برغل 25 غ، زيت زيتون +\nملح + ليمون عصير 25 غ.\nالقيم الغذائية: كيلو كالوري 100، بروتين 10 غ، كربوهيدرات 5 غ، دهون 18 غ."
+      },
+      "price": 52,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "international_dishes",
+      "name": { "en": "CRISPY STRIPS", "ro": "CRISPY STRIPS", "ar": "كريسبي ستربس" },
+      "description": {
+        "en": "Ingredients: breast of chicken 150 g, breadcrumbs, flour, egg, salt and pepper + potatoes dipper\n200 g.\nNutritional values: kcal 968, protein 75g, carbohydrates 95g, fat 32g.",
+        "ro": "Ingrediente: piept de pui 150 g, pesmet, făină, ou, sare și piper + cartofi dipper\n200 g.\nValori nutriționale: kcal 968, proteine 75g, carbohidrați 95g, grăsimi 32g.",
+        "ar": "المكونات: صدر من دجاج 150 غ، بريادكرومبس، طحين، بيض، ملح وفلفل + بطاطس ديببير\n200 غ.\nالقيم الغذائية: كيلو كالوري 968، بروتين 75 غ، كربوهيدرات 95 غ، دهون 32 غ."
+      },
+      "price": 54,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "international_dishes",
+      "name": { "en": "GORDON BLEU", "ro": "GORDON BLEU", "ar": "غوردون بلو" },
+      "description": {
+        "en": "Ingredients: breast of chicken 200 g, salami of beef 30 g, mozzarella 30 g, mushrooms 20\ng, sauce bechamel 100 g, salt and pepper.\nNutritional values: kcal 713, protein 53g, carbohydrates 84g, fat 28g.",
+        "ro": "Ingrediente: piept de pui 200 g, salam de vită 30 g, mozzarella 30 g, ciuperci 20\ng, sos bechamel 100 g, sare și piper.\nValori nutriționale: kcal 713, proteine 53g, carbohidrați 84g, grăsimi 28g.",
+        "ar": "المكونات: صدر من دجاج 200 غ، سالامي من بقري 30 غ، موززاريللا 30 غ، موشرومس 20\nغ, صلصة بيتشاميل 100 غ, ملح و فلفل.\nالقيم الغذائية: كيلو كالوري 713، بروتين 53 غ، كربوهيدرات 84 غ، دهون 28 غ."
+      },
+      "price": 63,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "international_dishes",
+      "name": { "en": "QUESADILLA OF CHICKEN", "ro": "QUESADILLA DE PUI", "ar": "كيساديلا من الدجاج" },
+      "description": {
+        "en": "Ingredients: breast of chicken 100 g, tortilla 30 g, onion red 20 g, mushrooms 20 g, pepper\nred 50 g, pepper green 50 g, garlic 10 g, mozzarella 30 g, oil 30 ml, salt and pepper.\nNutritional values: kcal 518, protein 35g, carbohydrates 30g, fat 41g",
+        "ro": "Ingrediente: piept de pui 100 g, tortillia 30 g, ceapă roșie 20 g, ciuperci 20 g, ardei\nroșu 50 g, ardei verde 50 g, usturoi 10 g, mozzarella 30 g, ulei 30 ml, sare și piper.\nValori nutriționale: kcal 518, proteine 35g, carbohidrați 30g, grăsimi 41g",
+        "ar": "المكونات: صدر من دجاج 100 غ، تورتيللا 30 غ، بصل أحمر 20 غ، موشرومس 20 غ، فلفل\nأحمر 50 غ, فلفل أخضر 50 غ, ثوم 10 غ, موززاريللا 30 غ, زيت 30 مل, ملح و فلفل.\nالقيم الغذائية: كيلو كالوري 518، بروتين 35 غ، كربوهيدرات 30 غ، دهون 41 غ"
+      },
+      "price": 59,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "international_dishes",
+      "name": { "en": "CRUNCH GRITIN", "ro": "CRUNCH GRITIN", "ar": "كرانش غراتان" },
+      "description": {
+        "en": "Ingredients: breast of chicken 250 g, paste 100 g, mozzarella 50 g, sauce white 50 g, potatoes\n50 g.\nNutritional values: kcal 454, protein 30g, carbohydrates 26g, fat 37g.",
+        "ro": "Ingrediente: piept de pui 250 g, pasta 100 g, mozzarella 50 g, sos alb 50 g, cartofi\n50 g.\nValori nutriționale: kcal 454, proteine 30g, carbohidrați 26g, grăsimi 37g.",
+        "ar": "المكونات: صدر من دجاج 250 غ، باستي 100 غ، موززاريللا 50 غ، صلصة أبيض 50 غ، بطاطس\n50 غ.\nالقيم الغذائية: كيلو كالوري 454، بروتين 30 غ، كربوهيدرات 26 غ، دهون 37 غ."
+      },
+      "price": 65,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "international_dishes",
+      "name": { "en": "SHAWARMA OF CHICKEN ARABIC", "ro": "SHAWARMA DE PUI ARĂBEASCĂ", "ar": "شاورما من الدجاج عربي" },
+      "description": {
+        "en": "Ingredients: chicken 200 g, garlic 25 g, cucumbers 25 g, cream of garlic 50 g + potatoes\ndipper 100 g.\nNutritional values: 450 kcal, 7g protein, 18.7g carbohydrates, 4.9g fat",
+        "ro": "Ingrediente: pui 200 g, usturoi 25 g, castraveți 25 g, cremă de usturoi 50 g + cartofi\ndipper 100 g.\nValori nutriționale: 450 kcal, 7g proteine, 18.7g glucide, 4.9g grăsimi",
+        "ar": "المكونات: دجاج 200 غ، ثوم 25 غ، خيار 25 غ، كريمة من ثوم 50 غ + بطاطس\nديببير 100 غ.\nالقيم الغذائية: 450 كيلو كالوري، 7 غ بروتين، 18.7 غ كربوهيدرات، 4.9 غ دهون"
+      },
+      "price": 62,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "international_dishes",
+      "name": { "en": "BIRYANI WITH CHICKEN", "ro": "BIRYANI CU PUI", "ar": "برياني مع الدجاج" },
+      "description": {
+        "en": "Ingredients: rice 200 g, vegetables 50 g, spices, breast of chicken 100 g, sauce dogos\n50 g\nNutritional values: 115 kcal, 2.8g of fat, 15.5g of carbohydrates, 6g of protein\nand 0,9 g of salt.",
+        "ro": "Ingrediente: orez 200 g, legume 50 g, condimente, piept de pui 100 g, sos dogos\n50 g\nValori nutriționale: 115 kcal, 2.8g de grăsimi, 15.5g de carbohidrați, 6g de proteine\nși 0,9 g de sare.",
+        "ar": "المكونات: أرز 200 غ، خضار 50 غ، بهارات، صدر من دجاج 100 غ، صلصة دوجوس\n50 غ\nالقيم الغذائية: 115 كيلو كالوري، 2.8 غ من دهون، 15.5 غ من كربوهيدرات، 6 غ من بروتين\nو 0,9 غ من ملح."
+      },
+      "price": 65,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "international_dishes",
+      "name": { "en": "BREAST OF CHICKEN WITH JAR", "ro": "PIEPT DE PUI LA JAR", "ar": "صدر من الدجاج مع جار" },
+      "description": {
+        "en": "Ingredients: breast of chicken 200 g, sauce of garlic 50 ml, cucumbers pickled 100 g, puree\nof potatoes 150 g.\nNutritional values: kcal 580, protein 45g, carbohydrates 32g, fat 29g.",
+        "ro": "Ingrediente: piept de pui 200 g, sos de usturoi 50 ml, castraveți murați 100 g, piure\nde cartofi 150 g.\nValori nutriționale: kcal 580, proteine 45g, carbohidrați 32g, grăsimi 29g.",
+        "ar": "المكونات: صدر من دجاج 200 غ، صلصة من ثوم 50 مل، خيار بيككليد 100 غ، بوري\nمن بطاطس 150 غ.\nالقيم الغذائية: كيلو كالوري 580، بروتين 45 غ، كربوهيدرات 32 غ، دهون 29 غ."
+      },
+      "price": 49,
+      "imageUrl": ""
+    },
+
+    {
+      "categoryKey": "sides",
+      "name": { "en": "MASHED POTATOES", "ro": "PIURE DE CARTOFI", "ar": "بطاطس مهروسة" },
+      "description": {
+        "en": "Ingredients: potatoes boiled 200 g, butter with 20% fat 50 g, milk 50 ml, salt.\nNutritional values: 250, protein 5 g, carbohydrates 40 g, fat 9 g.",
+        "ro": "Ingrediente: cartofi fierți 200 g, unt cu 20% grăsime 50 g, lapte 50 ml, sare.\nValori nutriționale: 250, proteine 5 g, carbohidrați 40 g, grăsimi 9 g.",
+        "ar": "المكونات: بطاطس مسلوق 200 غ، زبدة مع 20% دهون 50 غ، حليب 50 مل، ملح.\nالقيم الغذائية: 250، بروتين 5 غ، كربوهيدرات 40 غ، دهون 9 غ."
+      },
+      "price": 23,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "sides",
+      "name": { "en": "RICE WITH VERMICELLI", "ro": "OREZ CU FIDEA", "ar": "أرز بالشعيرية" },
+      "description": {
+        "en": "Ingredients: rice basmati 200 g, vermicelli\nNutritional values: 258, protein 5 g, carbohydrates 55 g, fat 1 g.",
+        "ro": "Ingrediente: orez basmati 200 g, fidea\nValori nutriționale: 258, proteine 5 g, carbohidrați 55 g, grăsimi 1 g.",
+        "ar": "المكونات: أرز باسماتي 200 غ، شعيرية\nالقيم الغذائية: 258، بروتين 5 غ، كربوهيدرات 55 غ، دهون 1 غ."
+      },
+      "price": 22,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "sides",
+      "name": { "en": "RICE WITH VEGETABLES", "ro": "OREZ CU LEGUME", "ar": "أرز بالخضار" },
+      "description": {
+        "en": "Ingredients: rice basmati 200 g, pepper capia 10 g, carrots 10 g, onion red 10 g,\nmushrooms 10 g, zucchini 10 g.\nNutritional values: kcal 278, protein 5 g, carbohydrates 60 g, fat 1g.",
+        "ro": "Ingrediente: orez basmati 200 g, ardei capia 10 g, morcovi 10 g, ceapă roșie 10 g,\nciuperci 10 g, dovlecel 10 g.\nValori nutriționale: kcal 278, proteine 5 g, carbohidrați 60 g, grăsimi 1g.",
+        "ar": "المكونات: أرز باسماتي 200 غ، فلفل كابيا 10 غ، جزر 10 غ، بصل أحمر 10 غ،\nموشرومس 10 غ, زوكتشيني 10 غ.\nالقيم الغذائية: كيلو كالوري 278، بروتين 5 غ، كربوهيدرات 60 غ، دهون 1 غ."
+      },
+      "price": 25,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "sides",
+      "name": { "en": "TOAST", "ro": "TOST", "ar": "توست" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 5,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "sides",
+      "name": { "en": "PITA", "ro": "LIPIE", "ar": "خبز بيتا" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 8,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "sides",
+      "name": { "en": "SAUCES", "ro": "SOSURI", "ar": "ساوكيس" },
+      "description": {
+        "en": "SAUCE LOTUS — 40 g\n• SAUCE GARLIC\n• MAYONNAISE\n• KETCHUP\n• CHILLY\n• SWEET CHILLY",
+        "ro": "SOS LOTUS — 40 g\n• SOS USTUROI\n• MAIONEZĂ\n• KETCHUP\n• CHILLY\n• SWEET CHILLY",
+        "ar": "صلصة لوتس — 40 غ\n• صلصة الثوم\n• مايونيز\n• كاتشب\n• حار\n• حار حلو"
+      },
+      "price": 8,
+      "imageUrl": ""
+    },
+
+    {
+      "categoryKey": "pasta",
+      "name": { "en": "PENNE QUATTRO FORMAGGI", "ro": "PENNE QUATTRO FORMAGGI", "ar": "بينني قواتترو فورماججي" },
+      "description": {
+        "en": "Ingredients: penne 200 g, cheese gorgonzola 30 g, cheese mozzarella 30 g,\nparmesan 30 g, cheese cheddar 30 g, sour cream liquid 50 ml, salt and pepper.\nNutritional values: kcal 876, protein 48g, carbohydrates 99g, fat 32g.",
+        "ro": "Ingrediente: penne 200 g, brânză gorgonzola 30 g, brânză mozzarella 30 g,\nparmezan 30 g, brânză cheddar 30 g, smântână lichidă 50 ml, sare și piper.\nValori nutriționale: kcal 876, proteine 48g, carbohidrați 99g, grăsimi 32g.",
+        "ar": "المكونات: بينني 200 غ، جبن جورجونزولا 30 غ، جبن موززاريللا 30 غ،\nبارميزان 30 غ, جبن تشيددار 30 غ, سور كريمة ليقويد 50 مل, ملح و فلفل.\nالقيم الغذائية: كيلو كالوري 876، بروتين 48 غ، كربوهيدرات 99 غ، دهون 32 غ."
+      },
+      "price": 57,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "pasta",
+      "name": { "en": "PENNE WITH CHICKEN", "ro": "PENNE CU PUI", "ar": "بينني مع الدجاج" },
+      "description": {
+        "en": "Ingredients: penne 150 g, chicken 100 g, mushrooms 30 g, garlic 30 g, olive oil\n10 g, salt and pepper 20 g, parmesan 20 g.\nNutritional values: kcal 502, protein 70g, carbohydrates 75g, fat 6g.",
+        "ro": "Ingrediente: penne 150 g, pui 100 g, ciuperci 30 g, usturoi 30 g, ulei de măsline\n10 g, sare și piper 20 g, parmezan 20 g.\nValori nutriționale: kcal 502, proteine 70g, carbohidrați 75g, grăsimi 6g.",
+        "ar": "المكونات: بينني 150 غ، دجاج 100 غ، موشرومس 30 غ، ثوم 30 غ، زيت زيتون\n10 غ, ملح و فلفل 20 غ, بارميزان 20 غ.\nالقيم الغذائية: كيلو كالوري 502، بروتين 70 غ، كربوهيدرات 75 غ، دهون 6 غ."
+      },
+      "price": 54,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "pasta",
+      "name": { "en": "PENNE WITH SAUCE PESTO", "ro": "PENNE CU SOS PESTO", "ar": "بينني مع صلصة بيستو" },
+      "description": {
+        "en": "Ingredients: penne 150 g, pesto 100 g, mushrooms 30 g, garlic 30 g, olive oil\n10 g, salt and pepper 20 g, parmesan 20 g.\nNutritional values: kcal 502, protein 70g, carbohydrates 75g, fat 6g.",
+        "ro": "Ingrediente: penne 150 g, pesto 100 g, ciuperci 30 g, usturoi 30 g, ulei de măsline\n10 g, sare și piper 20 g, parmezan 20 g.\nValori nutriționale: kcal 502, proteine 70g, carbohidrați 75g, grăsimi 6g.",
+        "ar": "المكونات: بينني 150 غ، بيستو 100 غ، موشرومس 30 غ، ثوم 30 غ، زيت زيتون\n10 غ, ملح و فلفل 20 غ, بارميزان 20 غ.\nالقيم الغذائية: كيلو كالوري 502، بروتين 70 غ، كربوهيدرات 75 غ، دهون 6 غ."
+      },
+      "price": 48,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "pasta",
+      "name": { "en": "PENNE BOLOGNESE", "ro": "PENNE BOLOGNESE", "ar": "بينني بولوجنيسي" },
+      "description": {
+        "en": "Ingredients: penne 150 g, 150 minced meat of beef, 40 g sauce bolognese, parmesan\n10 g.\nNutritional values: kcal 500, protein 75g, carbohydrates 75g, fat 6g.",
+        "ro": "Ingrediente: penne 150 g, 150 carne tocată de vită, 40 g sos bolognese, parmezan\n10 g.\nValori nutriționale: kcal 500, proteine 75g, carbohidrați 75g, grăsimi 6g.",
+        "ar": "المكونات: بينني 150 غ، 150 مينكيد لحم من بقري، 40 غ صلصة بولوجنيسي، بارميزان\n10 غ.\nالقيم الغذائية: كيلو كالوري 500، بروتين 75 غ، كربوهيدرات 75 غ، دهون 6 غ."
+      },
+      "price": 56,
+      "imageUrl": ""
+    },
+    {
+      "categoryKey": "pasta",
+      "name": { "en": "PENNE ROSÉ", "ro": "PENNE ROZE", "ar": "بينني روسé" },
+      "description": {
+        "en": "Ingredients: penne 200 g, gran cucina 50 g, sauce red 25 g, tomatoes 25 g, butter 25 g,\nspices.\nNutritional values: kcal 450, protein 25g, carbohydrates 75g, fat 6g.",
+        "ro": "Ingrediente: penne 200 g, gran cucina 50 g, sos roșu 25 g, roșii 25 g, unt 25 g,\ncondimente.\nValori nutriționale: kcal 450, proteine 25g, carbohidrați 75g, grăsimi 6g.",
+        "ar": "المكونات: بينني 200 غ، جران كوكينا 50 غ، صلصة أحمر 25 غ، طماطم 25 غ، زبدة 25 غ،\nبهارات.\nالقيم الغذائية: كيلو كالوري 450، بروتين 25 غ، كربوهيدرات 75 غ، دهون 6 غ."
+      },
+      "price": 47,
+      "imageUrl": ""
+    }
+  ]
+}

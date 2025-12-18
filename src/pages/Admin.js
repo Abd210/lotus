@@ -4,6 +4,14 @@ import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, setDoc, getDoc 
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { signOutUser, useAuth } from '../auth';
 import { useToast } from '../components/Toast';
+import { parseMenuData, importMenuToFirestore, clearAllMenuData, importManualMenuJsonToFirestore } from '../utils/menuImporter';
+import manualMenuSeed from '../data/manualMenu_soups_breakfast_salads.json';
+import manualMenuAppetizers from '../data/manualMenu_appetizers.json';
+import manualMenuCatsMore from '../data/manualMenu_categories_grill_international_sides_pasta.json';
+import manualMenuBurgers from '../data/manualMenu_burgers.json';
+import manualMenuDessertsDrinks from '../data/manualMenu_desserts_coffee_freakshakes_lemonades.json';
+import manualMenuSoftDrinksCocktails from '../data/manualMenu_softdrinks_cocktails_mocktails.json';
+import manualMenuSauces from '../data/manualMenu_sauces.json';
 
 function useCategories(refresh) {
 	const [categories, setCategories] = React.useState([]);
@@ -12,8 +20,16 @@ function useCategories(refresh) {
 			const snap = await getDocs(collection(db, 'categories'));
 			const list = snap.docs.map(d => ({ id: d.id, ...d.data() }));
 			list.sort((a,b)=>{
-				const an = (a?.name_ro || (a?.name?.ro) || (a?.name?.en) || a?.name || '').toString().toLowerCase();
-				const bn = (b?.name_ro || (b?.name?.ro) || (b?.name?.en) || b?.name || '').toString().toLowerCase();
+				// Safe name extraction for sorting
+				const getName = (item) => {
+					if (!item || !item.name) return '';
+					if (typeof item.name === 'object') {
+						return item.name.ro || item.name.en || item.name.ar || '';
+					}
+					return item.name || '';
+				};
+				const an = getName(a).toString().toLowerCase();
+				const bn = getName(b).toString().toLowerCase();
 				return an.localeCompare(bn);
 			});
 			setCategories(list);
@@ -41,7 +57,13 @@ function useProducts(refresh) {
 
 function buildPathMap(categories, lang) {
 	const idToCat = new Map(categories.map(c => [c.id, c]));
-	const getName = (c) => (c?.name && (c.name[lang] || c.name.en || c.name.ro)) || c?.name || '';
+	const getName = (c) => {
+		if (!c || !c.name) return '';
+		if (typeof c.name === 'object' && c.name !== null) {
+			return c.name[lang] || c.name.en || c.name.ro || c.name.ar || '';
+		}
+		return c.name || '';
+	};
 	function fullPath(cat) {
 		const parts = [getName(cat)];
 		let p = cat.parentId ? idToCat.get(cat.parentId) : null;
@@ -87,6 +109,15 @@ export default function Admin() {
 	const [adminLang, setAdminLang] = React.useState('ro');
 	const pathOptions = React.useMemo(() => buildPathMap(categories, adminLang), [categories, adminLang]);
 
+	// Helper function to safely get name
+	const getName = React.useCallback((item) => {
+		if (!item) return '';
+		if (typeof item.name === 'object' && item.name !== null) {
+			return item.name[adminLang] || item.name.en || item.name.ro || item.name.ar || '';
+		}
+		return item.name || '';
+	}, [adminLang]);
+
 	// Category form state
 	const [editingCat, setEditingCat] = React.useState(null);
 	const [catNames, setCatNames] = React.useState({ en: '', ro: '', ar: '' });
@@ -111,6 +142,10 @@ export default function Admin() {
 	const [instagramUrl, setInstagramUrl] = React.useState('');
 	const [facebookUrl, setFacebookUrl] = React.useState('');
 	const [tiktokUrl, setTiktokUrl] = React.useState('');
+
+	// Bulk import state
+	const [importing, setImporting] = React.useState(false);
+	const [importProgress, setImportProgress] = React.useState('');
 
 	// Load footer settings into form when available
 	React.useEffect(() => {
@@ -326,6 +361,122 @@ async function handleSaveFooter(e) {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 
+	async function handleBulkImport() {
+		if (!window.confirm('This will import all menu items from the menu files. Continue?')) return;
+		
+		setImporting(true);
+		setImportProgress('Loading menu files...');
+		
+		try {
+			// Fetch the menu files
+			const [enResponse, roResponse, arResponse] = await Promise.all([
+				fetch('/Lotus_Menu_English.txt'),
+				fetch('/Lotus_Menu_Romanian.txt'),
+				fetch('/Lotus_Menu_Arabic.txt')
+			]);
+			
+			const [enText, roText, arText] = await Promise.all([
+				enResponse.text(),
+				roResponse.text(),
+				arResponse.text()
+			]);
+			
+			setImportProgress('Parsing menu data...');
+			const { categories, products, issues } = parseMenuData(enText, roText, arText);
+			if (issues && issues.length > 0) {
+				console.error('Menu parse issues:', issues);
+				setImportProgress(`Parsing failed. Found ${issues.length} mismatch(es). Not importing to avoid wrong translations.\n\nFirst issues:\n- ${issues.slice(0, 10).join('\n- ')}`);
+				showToast(`Parsing failed (${issues.length} mismatch(es)). Not imported. Check console.`, 'error');
+				return;
+			}
+			
+			setImportProgress(`Found ${categories.length} categories and ${products.length} products. Importing...`);
+			
+			const results = await importMenuToFirestore(categories, products);
+			
+			setImportProgress(`Import complete! Added ${results.categoriesAdded} categories and ${results.productsAdded} products.`);
+			
+			if (results.errors.length > 0) {
+				console.error('Import errors:', results.errors);
+				showToast(`Import completed with ${results.errors.length} errors. Check console.`, 'error');
+			} else {
+				showToast(`Successfully imported ${results.categoriesAdded} categories and ${results.productsAdded} products!`, 'success');
+			}
+			
+			setRefreshKey(prev => prev + 1);
+		} catch (error) {
+			console.error('Bulk import error:', error);
+			showToast('Failed to import menu. See console for details.', 'error');
+			setImportProgress('Import failed: ' + error.message);
+		} finally {
+			setImporting(false);
+			setTimeout(() => setImportProgress(''), 5000);
+		}
+	}
+
+	async function handleManualFullMenuImport() {
+		if (!window.confirm('This will import the FULL menu using the manual JSON seeds (safe to re-run). Continue?')) return;
+
+		setImporting(true);
+		setImportProgress('Starting manual full-menu import...');
+		try {
+			const datasets = [
+				{ label: 'Soups/Breakfast/Salads', data: manualMenuSeed },
+				{ label: 'Appetizers', data: manualMenuAppetizers },
+				{ label: 'Grill/International/Sides/Pasta', data: manualMenuCatsMore },
+				{ label: 'Burgers', data: manualMenuBurgers },
+				{ label: 'Desserts/Coffee/Freak shakes/Lemonades', data: manualMenuDessertsDrinks },
+				{ label: 'Soft drinks/Cocktails/Mocktails', data: manualMenuSoftDrinksCocktails },
+				{ label: 'Sauces', data: manualMenuSauces }
+			];
+
+			let totalCategories = 0;
+			let totalProducts = 0;
+			const allErrors = [];
+
+			for (const ds of datasets) {
+				setImportProgress(`Importing ${ds.label}...`);
+				// eslint-disable-next-line no-await-in-loop
+				const results = await importManualMenuJsonToFirestore(ds.data);
+				totalCategories += results.categoriesAdded || 0;
+				totalProducts += results.productsAdded || 0;
+				if (results.errors?.length) {
+					allErrors.push(...results.errors.map(e => `[${ds.label}] ${e}`));
+				}
+			}
+
+			setImportProgress(`Manual full-menu import complete! Upserted ${totalCategories} categories and ${totalProducts} items.`);
+			if (allErrors.length > 0) {
+				console.error('Manual full-menu import errors:', allErrors);
+				showToast(`Manual full-menu import completed with ${allErrors.length} errors. Check console.`, 'error');
+			} else {
+				showToast(`Manual full-menu import completed successfully!`, 'success');
+			}
+			setRefreshKey(prev => prev + 1);
+		} catch (error) {
+			console.error('Manual full-menu import error:', error);
+			showToast('Failed to import manual full menu. See console for details.', 'error');
+			setImportProgress('Import failed: ' + error.message);
+		} finally {
+			setImporting(false);
+			setTimeout(() => setImportProgress(''), 5000);
+		}
+	}
+
+	async function handleClearAllData() {
+		if (!window.confirm('⚠️ WARNING: This will delete ALL categories and products! Are you absolutely sure?')) return;
+		if (!window.confirm('This action cannot be undone! Type confirmation needed.')) return;
+		
+		try {
+			await clearAllMenuData();
+			showToast('All menu data cleared successfully!', 'success');
+			setRefreshKey(prev => prev + 1);
+		} catch (error) {
+			console.error('Clear data error:', error);
+			showToast('Failed to clear menu data.', 'error');
+		}
+	}
+
 	return (
 		<div className="min-h-screen marble-bg marble-overlay text-off-white">
 	<header className="sticky top-0 z-30 bg-marble-black/90 backdrop-blur-md border-b border-gold/20">
@@ -434,6 +585,45 @@ async function handleSaveFooter(e) {
 					</section>
 				</div>
 
+				{/* Bulk Import Section */}
+				<section className="bg-marble-black/80 border border-gold/30 rounded-xl p-6 mb-8">
+					<h2 className="font-cinzel text-xl text-gold mb-4">Bulk Menu Import</h2>
+					<div className="space-y-4">
+						<p className="text-muted-gray text-sm">
+							Import all categories and products from the menu text files (Lotus_Menu_English.txt, Lotus_Menu_Romanian.txt, Lotus_Menu_Arabic.txt).
+							Make sure these files are in the public folder.
+						</p>
+						<div className="flex gap-3">
+							<button 
+								onClick={handleBulkImport}
+								disabled={importing}
+								className="px-6 py-3 bg-gold text-black rounded hover:bg-deep-gold disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+							>
+								{importing ? 'Importing...' : 'Import Full Menu'}
+							</button>
+							<button 
+								onClick={handleManualFullMenuImport}
+								disabled={importing}
+								className="px-6 py-3 bg-gold/20 text-gold border border-gold/40 rounded hover:bg-gold/30 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+							>
+								Import Full Menu (Manual JSON)
+							</button>
+							<button 
+								onClick={handleClearAllData}
+								disabled={importing}
+								className="px-6 py-3 bg-red-500/20 text-red-400 border border-red-500/40 rounded hover:bg-red-500/30 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+							>
+								Clear All Data
+							</button>
+						</div>
+						{importProgress && (
+							<div className="p-4 bg-black/40 border border-gold/20 rounded">
+								<p className="text-off-white text-sm">{importProgress}</p>
+							</div>
+						)}
+					</div>
+				</section>
+
 				{/* Lists Section */}
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 					{/* Categories List */}
@@ -443,7 +633,7 @@ async function handleSaveFooter(e) {
 							{categories.map(cat => (
 								<div key={cat.id} className="flex items-center justify-between p-3 bg-black/40 rounded border border-gold/10 hover:border-gold/30 transition-colors">
 									<div className="flex-1">
-										<p className="text-off-white font-medium">{(cat?.name && (cat.name[adminLang] || cat.name.en || cat.name.ro)) || cat?.name}</p>
+										<p className="text-off-white font-medium">{getName(cat)}</p>
 										{cat.parentId && (
 											<p className="text-xs text-muted-gray">Parent: {pathOptions.find(o => o.id === cat.parentId)?.label || 'Unknown'}</p>
 										)}
@@ -468,7 +658,7 @@ async function handleSaveFooter(e) {
 							{products.map(prod => (
 								<div key={prod.id} className="flex items-center justify-between p-3 bg-black/40 rounded border border-gold/10 hover:border-gold/30 transition-colors">
 									<div className="flex-1">
-										<p className="text-off-white font-medium">{(prod?.name && (prod.name[adminLang] || prod.name.en || prod.name.ro)) || prod?.name}</p>
+										<p className="text-off-white font-medium">{getName(prod)}</p>
 										<p className="text-xs text-gold">{prod.price} LEI</p>
 										{prod.categoryId && (
 											<p className="text-xs text-muted-gray">Category: {pathOptions.find(o => o.id === prod.categoryId)?.label || 'Unknown'}</p>

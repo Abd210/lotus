@@ -1,0 +1,374 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "key": "appetizers",
+      "name": { "en": "APPETIZERS", "ro": "APERITIVE", "ar": "المقبلات" },
+      "parentKey": null,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "key": "appetizers_cold",
+      "name": { "en": "COLD APPETIZERS", "ro": "APERITIVE RECI", "ar": "المقبلات الباردة" },
+      "parentKey": "appetizers",
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "key": "appetizers_hot",
+      "name": { "en": "HOT APPETIZERS", "ro": "APERITIVE CALDE", "ar": "المقبلات الساخنة" },
+      "parentKey": "appetizers",
+      "imageUrl": "/images/menu/placeholder.svg"
+    }
+  ],
+  "products": [
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "HUMMUS", "ro": "HUMUS", "ar": "حمص" },
+      "description": {
+        "en": "Ingredients: chickpeas boiled 150 g, paste of sesame 20 g, garlic 5 g, lemon juice 30\nml, olive oil 30 ml, salt 15 g, paprika of pepper 20 g, paprika of hot pepper 10g.\nNutritional values: 354, protein 10 g, carbohydrates 40 g, fat 17 g.",
+        "ro": "Ingrediente: năut fiert 150 g, pastă de susan 20 g, usturoi 5 g, suc de lămâie 30\nml, ulei de măsline 30 ml, sare 15 g, boia de ardei 20 g, boia de ardei iute 10g.\nValori nutriționale: 354, proteine 10 g, carbohidrați 40 g, grăsimi 17 g.",
+        "ar": "المكونات: حمص مسلوق 150 غ، باستي من سمسم 20 غ، ثوم 5 غ، عصير ليمون 30\nمل, زيتون زيت 30 مل, ملح 15 غ, بابريكا من فلفل 20 غ, بابريكا من ساخن فلفل 10غ.\nالقيم الغذائية: 354، بروتين 10 غ، كربوهيدرات 40 غ، دهون 17 غ."
+      },
+      "price": 33,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "HUMMUS WITH MEAT", "ro": "HUMUS CU CARNE", "ar": "حمص مع لحم" },
+      "description": {
+        "en": "Ingredients: chickpeas boiled 50 g, paste of sesame 100 g, garlic 10 g, lemon juice 30\nml, olive oil 60 ml, salt and pepper, minced meat of beef 200 g.\nNutritional values: 394, protein 20 g, carbohydrates 40 g, fat 17 g.",
+        "ro": "Ingrediente: năut fiert 50 g, pastă de susan 100 g, usturoi 10 g, suc de lămâie 30\nml, ulei de măsline 60 ml, sare și piper, carne tocată de vită 200 g.\nValori nutriționale: 394, proteine 20 g, carbohidrați 40 g, grăsimi 17 g.",
+        "ar": "المكونات: حمص مسلوق 50 غ، باستي من سمسم 100 غ، ثوم 10 غ، عصير ليمون 30\nمل, زيتون زيت 60 مل, ملح و فلفل, مينكيد لحم من بقري 200 غ.\nالقيم الغذائية: 394، بروتين 20 غ، كربوهيدرات 40 غ، دهون 17 غ."
+      },
+      "price": 42,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "HUMMUS WITH PESTO", "ro": "HUMUS CU PESTO", "ar": "حمص مع بيستو" },
+      "description": {
+        "en": "Ingredients: chickpeas boiled 150 g, paste of sesame 20 g, garlic 5 g, lemon juice 30\nml, olive oil 30 ml, salt 15 g, paprika of pepper 20 g, paprika of hot pepper 10 g,\npesto 50 g.\nNutritional values: 354 kcal, protein 10g, carbohydrates 40g, fat 17g.",
+        "ro": "Ingrediente: năut fiert 150 g, pastă de susan 20 g, usturoi 5 g, suc de lămâie 30\nml, ulei de măsline 30 ml, sare 15 g, boia de ardei 20 g, boia de ardei iute 10 g,\npesto 50 g.\nValori nutriționale: 354 kcal, proteine 10g, carbohidrați 40g, grăsimi 17g.",
+        "ar": "المكونات: حمص مسلوق 150 غ، باستي من سمسم 20 غ، ثوم 5 غ، عصير ليمون 30\nمل, زيتون زيت 30 مل, ملح 15 غ, بابريكا من فلفل 20 غ, بابريكا من ساخن فلفل 10 غ,\nبيستو 50 غ.\nالقيم الغذائية: 354 كيلو كالوري، بروتين 10 غ، كربوهيدرات 40 غ، دهون 17 غ."
+      },
+      "price": 37,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "HUMMUS BEIRUTI", "ro": "HUMUS BEIRUTI", "ar": "حمص بيروتي" },
+      "description": {
+        "en": "Ingredients: chickpeas boiled 150 g, paste of sesame 20 g, garlic 5 g, lemon juice 30\nml, olive oil 30 ml, salt 15 g, paprika of pepper 20 g, paprika of hot pepper 10 g,\ntomatoes 50 g, paste of pepper 10 g, parsley.\nNutritional values: 354 kcal, protein 10g, carbohydrates 40g, fat 17g.",
+        "ro": "Ingrediente: năut fiert 150 g, pastă de susan 20 g, usturoi 5 g, suc de lămâie 30\nml, ulei de măsline 30 ml, sare 15 g, boia de ardei 20 g, boia de ardei iute 10 g,\nroșii 50 g, pastă de ardei 10 g, pătrunjel.\nValori nutriționale: 354 kcal, proteine 10g, carbohidrați 40g, grăsimi 17g.",
+        "ar": "المكونات: حمص مسلوق 150 غ، باستي من سمسم 20 غ، ثوم 5 غ، عصير ليمون 30\nمل, زيتون زيت 30 مل, ملح 15 غ, بابريكا من فلفل 20 غ, بابريكا من ساخن فلفل 10 غ,\nطماطم 50 غ, باستي من فلفل 10 غ, بقدونس.\nالقيم الغذائية: 354 كيلو كالوري، بروتين 10 غ، كربوهيدرات 40 غ، دهون 17 غ."
+      },
+      "price": 35,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "LABNE", "ro": "LABNE", "ar": "لبنة" },
+      "description": {
+        "en": "Ingredients: yogurt 200g , olive oil 50 g.\nNutritional values 150 kcal, protein 12 g, carbohydrates 2 g, fat 10g.",
+        "ro": "Ingrediente: iaurt 200g , ulei de măsline 50 g.\nValori nutriționale 150 kcal, proteine 12 g, carbohidrați 2 g, grăsimi 10g.",
+        "ar": "المكونات: زبادي 200 غ ، زيت زيتون 50 غ.\nالقيم الغذائية 150 كيلو كالوري, بروتين 12 غ, كربوهيدرات 2 غ, دهون 10غ."
+      },
+      "price": 32,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "LABNE WITH MINT", "ro": "LABNE CU MENTĂ", "ar": "لبنة مع نعناع" },
+      "description": {
+        "en": "Ingredients: garlic , yogurt 200g , olive oil 50 g, mint.\nNutritional values 150 kcal, protein 12 g, carbohydrates 2 g, fat 10g.",
+        "ro": "Ingrediente: usturoi , iaurt 200g , ulei de măsline 50 g, mentă.\nValori nutriționale 150 kcal, proteine 12 g, carbohidrați 2 g, grăsimi 10g.",
+        "ar": "المكونات: ثوم ، زبادي 200 غ ، زيت زيتون 50 غ، نعناع.\nالقيم الغذائية 150 كيلو كالوري, بروتين 12 غ, كربوهيدرات 2 غ, دهون 10غ."
+      },
+      "price": 33,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "LABNE WITH ZAATAR", "ro": "LABNE CU ZAATAR", "ar": "لبنة مع زعتر" },
+      "description": {
+        "en": "Ingredients: yogurt 200g , olive oil 50 g, zaatar 25 g.\nNutritional values 150 kcal, protein 12 g, carbohydrates 2 g, fat 10g.",
+        "ro": "Ingrediente: iaurt 200g , ulei de măsline 50 g, zaatar 25 g.\nValori nutriționale 150 kcal, proteine 12 g, carbohidrați 2 g, grăsimi 10g.",
+        "ar": "المكونات: زبادي 200 غ ، زيت زيتون 50 غ، زعتر 25 غ.\nالقيم الغذائية 150 كيلو كالوري, بروتين 12 غ, كربوهيدرات 2 غ, دهون 10غ."
+      },
+      "price": 33,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "MIXED PICKLES", "ro": "MIX DE MURĂTURI", "ar": "مخللات مشكلة" },
+      "description": { "en": "", "ro": "", "ar": "" },
+      "price": 20,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "CHEESE STICKS", "ro": "CHEESE STICKS", "ar": "جبن أصابع" },
+      "description": {
+        "en": "Ingredients: mozzarella 200 g, egg, breadcrumbs 25 g, flour 25 g, salt 10 g, pepper 10 g,\n30 ml oil.\nCalories: 604 g, protein 51 g, carbohydrates 7, fat 40 g.",
+        "ro": "Ingrediente: mozzarella 200 g, ou, pesmet 25 g, făină 25 g, sare 10 g, piper 10 g,\n30 ml ulei.\nCalorii: 604 g, proteine 51 g, carbohidrați 7, grăsimi 40 g.",
+        "ar": "المكونات: موززاريللا 200 غ، بيض، بريادكرومبس 25 غ، طحين 25 غ، ملح 10 غ، فلفل 10 غ،\n30 مل زيت.\nكالوريس: 604 غ, بروتين 51 غ, كربوهيدرات 7, دهون 40 غ."
+      },
+      "price": 42,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "COLD PLATTER", "ro": "PLATOU RECE", "ar": "طبق بارد" },
+      "description": {
+        "en": "Ingredients: hummus beiruty 100 g, 100 g hummus, 100 g labne, 100 g moutabal.\nCalories: 454 kcal, protein 20 g, carbohydrates 40 g, fat 17g.",
+        "ro": "Ingrediente: humus beiruty 100 g, 100 g humus, 100 g labne, 100 g moutabal.\nCalorii: 454 kcal, proteine 20 g, carbohidrați 40 g, grăsimi 17g.",
+        "ar": "المكونات: حمص بايروتي 100 غ، 100 غ حمص، 100 غ لبنة، 100 غ موتابال.\nكالوريس: 454 كيلو كالوري, بروتين 20 غ, كربوهيدرات 40 غ, دهون 17غ."
+      },
+      "price": 74,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "HUMMUS WITH BEETROOT", "ro": "HUMUS CU SFECLĂ", "ar": "حمص مع شمندر" },
+      "description": {
+        "en": "Ingredients: chickpeas boiled 150 g, paste of sesame 20 g, garlic 5 g, lemon juice 30\nml, olive oil 30 ml, salt 15 g, paprika of pepper 20 g, paprika of hot pepper 10g,\n50g beetroot.\nNutritional values: 354, protein 10 g, carbohydrates 40 g, fat 17 g.",
+        "ro": "Ingrediente: năut fiert 150 g, pastă de susan 20 g, usturoi 5 g, suc de lămâie 30\nml, ulei de măsline 30 ml, sare 15 g, boia de ardei 20 g, boia de ardei iute 10g,\n50g sfeclă.\nValori nutriționale: 354, proteine 10 g, carbohidrați 40 g, grăsimi 17 g.",
+        "ar": "المكونات: حمص مسلوق 150 غ، باستي من سمسم 20 غ، ثوم 5 غ، عصير ليمون 30\nمل, زيتون زيت 30 مل, ملح 15 غ, بابريكا من فلفل 20 غ, بابريكا من ساخن فلفل 10غ,\n50غ شمندر.\nالقيم الغذائية: 354، بروتين 10 غ، كربوهيدرات 40 غ، دهون 17 غ."
+      },
+      "price": 35,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "MOUTABAL WITH BEETROOT", "ro": "MOUTABAL CU SFECLĂ", "ar": "متبل مع شمندر" },
+      "description": {
+        "en": "Ingredients: eggplant 150g, paste of sesame 25g, spices 10g, garlic 10g, oil\nof olives 5g.\nNutritional values: Kcal 354, protein 10 g, carbohydrates 40 g, fat 17 g.",
+        "ro": "Ingrediente: vinete 150g, pastă de susan 25g, condimente 10g, usturoi 10g, ulei\nde măsline 5g.\nValori nutriționale: Kcal 354, proteine 10 g, carbohidrați 40 g, grăsimi 17 g.",
+        "ar": "المكونات: يججبلانت 150 غ، باستي من سمسم 25 غ، بهارات 10 غ، ثوم 10 غ، زيت\nمن زيتون 5غ.\nالقيم الغذائية: كيلو كالوري 354، بروتين 10 غ، كربوهيدرات 40 غ، دهون 17 غ."
+      },
+      "price": 38,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "BABA GANOUSH", "ro": "BABA GANOUSH", "ar": "بابا غنوج" },
+      "description": {
+        "en": "Ingredients: eggplant 150 g, mix of vegetables 30g, garlic 10g, spices 5g, oil\nof olives 5g.\nNutritional values: Kcal 354, protein 10 g, carbohydrates 40 g, fat 17 g.",
+        "ro": "Ingrediente: vinete 150 g, mix de legume 30g, usturoi 10g, condimente 5g, ulei\nde măsline 5g.\nValori nutriționale: Kcal 354, proteine 10 g, carbohidrați 40 g, grăsimi 17 g.",
+        "ar": "المكونات: يججبلانت 150 غ، ميكس من خضار 30 غ، ثوم 10 غ، بهارات 5 غ، زيت\nمن زيتون 5غ.\nالقيم الغذائية: كيلو كالوري 354، بروتين 10 غ، كربوهيدرات 40 غ، دهون 17 غ."
+      },
+      "price": 37,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "MUHAMMARA", "ro": "MUHAMMARA", "ar": "محمّرة" },
+      "description": {
+        "en": "Ingredients: hot pepper 150 g, grisine 30g, walnut 10g, spices 5g, oil of\nolives 5g.\nNutritional values: Kcal 354, protein 10 g, carbohydrates 40 g, fat 17 g.",
+        "ro": "Ingrediente: ardei iute 150 g, grisine 30g, nucă 10g, condimente 5g, ulei de\nmăsline 5g.\nValori nutriționale: Kcal 354, proteine 10 g, carbohidrați 40 g, grăsimi 17 g.",
+        "ar": "المكونات: ساخن فلفل 150 غ، جريسيني 30 غ، والنوت 10 غ، بهارات 5 غ، زيت من\nزيتون 5غ.\nالقيم الغذائية: كيلو كالوري 354، بروتين 10 غ، كربوهيدرات 40 غ، دهون 17 غ."
+      },
+      "price": 36,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "MOUTABAL", "ro": "MOUTABAL", "ar": "متبل" },
+      "description": {
+        "en": "Ingredients: eggplant 150g, beetroot 50 g, paste of sesame 25g, spices 10g,\ngarlic 10g, olive oil 5g.\nNutritional values: Kcal 354, protein 10 g, carbohydrates 40 g, fat 17 g.",
+        "ro": "Ingrediente: vinete 150g, sfeclă 50 g, pastă de susan 25g, condimente 10g,\nusturoi 10g, ulei de măsline 5g.\nValori nutriționale: Kcal 354, proteine 10 g, carbohidrați 40 g, grăsimi 17 g.",
+        "ar": "المكونات: يججبلانت 150 غ، شمندر 50 غ، باستي من سمسم 25 غ، بهارات 10 غ،\nثوم 10غ, زيتون زيت 5غ.\nالقيم الغذائية: كيلو كالوري 354، بروتين 10 غ، كربوهيدرات 40 غ، دهون 17 غ."
+      },
+      "price": 39,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_cold",
+      "name": { "en": "MIX OF OLIVES", "ro": "MIX DE MĂSLINE", "ar": "تشكيلة زيتون" },
+      "description": {
+        "en": "Ingredients: Olives black 100 g, olives green 100g.\nNutritional values: 243 kcal, 14-24g fat, 6g carbohydrates and 2g protein.",
+        "ro": "Ingrediente: Măsline negre 100 g, măsline verzi 100g.\nValori nutriționale: 243 kcal, 14-24g grăsimi, 6g glucide și 2g proteine.",
+        "ar": "المكونات: زيتون أسود 100 غ، زيتون أخضر 100 غ.\nالقيم الغذائية: 243 كيلو كالوري، 14-24 غ دهون، 6 غ كربوهيدرات و 2 غ بروتين."
+      },
+      "price": 22,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "CHICKEN ROLLS", "ro": "CHICKEN ROLLS", "ar": "لفائف الدجاج" },
+      "description": {
+        "en": "Ingredients: chicken, vegetables, spices\nNutritional values: 240 kcal, 6.4 g protein, 19.2 g carbohydrates and 4.5 g fat.",
+        "ro": "Ingrediente: pui, legume, condimente\nValori nutriționale: 240 kcal, 6.4 g proteine, 19.2 g carbohidrați și 4.5 g grăsimi.",
+        "ar": "المكونات: دجاج، خضار، بهارات\nالقيم الغذائية: 240 كيلو كالوري، 6.4 غ بروتين، 19.2 غ كربوهيدرات و 4.5 غ دهون."
+      },
+      "price": 42,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "SPRING ROLLS", "ro": "SPRING ROLLS", "ar": "سبرينغ رولز" },
+      "description": {
+        "en": "Ingredients: vegetables, spices\nNutritional values: 165kcal, fat 6g, carbohydrates 21.8g, sugar 1.6g, fiber 0g,\nprotein 6.5g, sugar 0.08g",
+        "ro": "Ingrediente: legume, condimente\nValori nutriționale: 165kcal, grăsimi 6g, carbohidrați 21.8g, zahăr 1.6g, fibre 0g,\nproteine 6.5g, zahăr 0.08g",
+        "ar": "المكونات: خضار، بهارات\nالقيم الغذائية: 165 كيلو كالوري، دهون 6 غ، كربوهيدرات 21.8 غ، سكر 1.6 غ، فيبير 0 غ،\nبروتين 6.5غ, سكر 0.08غ"
+      },
+      "price": 39,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "FALAFEL", "ro": "FALAFEL", "ar": "فلافل" },
+      "description": {
+        "en": "Ingredients: chickpeas, onion, garlic, parsley, spices, paste of sesame +\ncucumbers pickled.\nNutritional values: 182.04kcal, fat 7.94g, carbohydrates 20.92g, sugar 3.03g,\nfiber 6.04g, protein 7.96g, salt 0.04g.",
+        "ro": "Ingrediente: năut, ceapă, usturoi, pătrunjel, condimente, pastă de susan +\ncastraveți murați.\nValori nutriționale: 182.04kcal, grăsimi 7.94g, carbohidrați 20.92g, zahăr 3.03g,\nfibre 6.04g, proteine 7.96g, sare 0.04g.",
+        "ar": "المكونات: حمص، بصل، ثوم، بقدونس، بهارات، باستي من سمسم +\nخيار بيككليد.\nالقيم الغذائية: 182.04 كيلو كالوري، دهون 7.94 غ، كربوهيدرات 20.92 غ، سكر 3.03 غ،\nفيبير 6.04غ, بروتين 7.96غ, ملح 0.04غ."
+      },
+      "price": 40,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "KEBBE", "ro": "KEBBE", "ar": "كيببي" },
+      "description": {
+        "en": "Ingredients: Bulgur, minced meat of beef, onion, walnut\nNutritional values: 81.07 kcal, fiber 0.58g, protein 3.23 g, salt 0.04.",
+        "ro": "Ingrediente: Burgul, carne tocată de vită, ceapă, nucă\nValori nutriționale: 81.07 kcal, fibre 0.58g, proteine 3.23 g, sare 0.04.",
+        "ar": "المكونات: برغل، مينكيد لحم من بقري، بصل، والنوت\nالقيم الغذائية: 81.07 كيلو كالوري، فيبير 0.58 غ، بروتين 3.23 غ، ملح 0.04."
+      },
+      "price": 50,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "SAMBUSAK WITH CHEESE", "ro": "SAMBUSAK CU BRÂNZĂ", "ar": "سامبوساك مع جبن" },
+      "description": {
+        "en": "Ingredients: cheese telemea (cow's milk brined cheese), parsley, dough (milk, flour, salt)\nNutritional values: 150,8 kcal, fat 13,22 g, parsley 11 g, salt 0,08 g.",
+        "ro": "Ingrediente: brânză telemea de vacă, pătrunjel, aluat (lapte, făină, sare)\nValori nutriționale: 150,8 kcal, grăsimi 13,22 g, pătrunjel 11 g, sare 0,08 g.",
+        "ar": "المكونات: جبن تيليميا (كووس حليب برينيد جبن)، بقدونس، دوغ (حليب، طحين، ملح)\nالقيم الغذائية: 150،8 كيلو كالوري، دهون 13،22 غ، بقدونس 11 غ، ملح 0،08 غ."
+      },
+      "price": 39,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "SAMBUSAK WITH MEAT", "ro": "SAMBUSAK CU CARNE", "ar": "سامبوساك مع لحم" },
+      "description": {
+        "en": "Ingredients: minced meat of beef, parsley, dough (milk, flour, salt)\nNutritional values: 150,8 kcal, fat 13,22 g, parsley 11 g, salt 0,08 g.",
+        "ro": "Ingrediente: carne tocată de vită, pătrunjel, aluat (lapte, făină, sare)\nValori nutriționale: 150,8 kcal, grăsimi 13,22 g, pătrunjel 11 g, sare 0,08 g.",
+        "ar": "المكونات: مينكيد لحم من بقري، بقدونس، دوغ (حليب، طحين، ملح)\nالقيم الغذائية: 150،8 كيلو كالوري، دهون 13،22 غ، بقدونس 11 غ، ملح 0،08 غ."
+      },
+      "price": 43,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "GRATED ASFOUR CHICKEN", "ro": "RAS ASFOUR PUI", "ar": "مبشور اسفور الدجاج" },
+      "description": {
+        "en": "Ingredients: chicken 200 g, onion 50 g, paste of pomegranate 50 g.\nNutritional values: kcal 300, protein 30 g, carbohydrates 26 g, fat 37 g.",
+        "ro": "Ingrediente: pui 200 g, ceapă 50 g, pastă de rodie 50 g.\nValori nutriționale: kcal 300, proteine 30 g, carbohidrați 26 g, grăsimi 37 g.",
+        "ar": "المكونات: دجاج 200 غ، بصل 50 غ، باستي من رمان 50 غ.\nالقيم الغذائية: كيلو كالوري 300، بروتين 30 غ، كربوهيدرات 26 غ، دهون 37 غ."
+      },
+      "price": 50,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "GRATED ASFOUR BEEF", "ro": "RAS ASFOUR VITĂ", "ar": "مبشور اسفور اللحم البقري" },
+      "description": {
+        "en": "Ingredients: tenderloin of beef 150 g, onion 50 g, paste of pomegranate 50 g.\nNutritional values: kcal 350, protein 30 g, carbohydrates 26 g, fat 37 g.",
+        "ro": "Ingrediente: mușchi de vită 150 g, ceapă 50 g, pastă de rodie 50 g.\nValori nutriționale: kcal 350, proteine 30 g, carbohidrați 26 g, grăsimi 37 g.",
+        "ar": "المكونات: تينديرلوين من بقري 150 غ، بصل 50 غ، باستي من رمان 50 غ.\nالقيم الغذائية: كيلو كالوري 350، بروتين 30 غ، كربوهيدرات 26 غ، دهون 37 غ."
+      },
+      "price": 63,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "SHARHAT OF CHICKEN", "ro": "SHARHAT DE PUI", "ar": "شارهات من الدجاج" },
+      "description": {
+        "en": "Ingredients: chicken 250 g, sauce 50 g.\nNutritional values: kcal 350, protein 30 g, carbohydrates 26 g, fat 37 g.",
+        "ro": "Ingrediente: pui 250 g, sos 50 g.\nValori nutriționale: kcal 350, proteine 30 g, carbohidrați 26 g, grăsimi 37 g.",
+        "ar": "المكونات: دجاج 250 غ، صلصة 50 غ.\nالقيم الغذائية: كيلو كالوري 350، بروتين 30 غ، كربوهيدرات 26 غ، دهون 37 غ."
+      },
+      "price": 52,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "SHARHAT OF BEEF", "ro": "SHARHAT DE VITĂ", "ar": "شارهات من اللحم البقري" },
+      "description": {
+        "en": "Ingredients: tenderloin of beef 200 g, sauce 50 g.\nNutritional values: kcal 350, protein 30 g, carbohydrates 26 g, fat 37 g.",
+        "ro": "Ingrediente: mușchi de vită 200 g, sos 50 g.\nValori nutriționale: kcal 350, proteine 30 g, carbohidrați 26 g, grăsimi 37 g.",
+        "ar": "المكونات: تينديرلوين من بقري 200 غ، صلصة 50 غ.\nالقيم الغذائية: كيلو كالوري 350، بروتين 30 غ، كربوهيدرات 26 غ، دهون 37 غ."
+      },
+      "price": 65,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "GRILLED HALLOUMI", "ro": "HALLOUMI LA GRĂTAR", "ar": "مشوية هاللومي" },
+      "description": {
+        "en": "Ingredients: halloumi, tomatoes, cucumbers.\nNutritional values: 321 kcal, fat 28,6 g, carbohydrates 3,6 g, sugar 1,6 g, fiber\n2,1 g, protein 21,4 g, salt 0,08 g.",
+        "ro": "Ingrediente: halloumi, roșii, castraveți.\nValori nutriționale: 321 kcal, grăsimi 28,6 g, carbohidrați 3,6 g, zahăr 1,6 g, fibre\n2,1 g, proteine 21,4 g, sare 0,08 g.",
+        "ar": "المكونات: هاللومي، طماطم، خيار.\nالقيم الغذائية: 321 كيلو كالوري، دهون 28،6 غ، كربوهيدرات 3،6 غ، سكر 1،6 غ، فيبير\n2,1 غ, بروتين 21,4 غ, ملح 0,08 غ."
+      },
+      "price": 45,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "BATATA HARRA", "ro": "BATATA HARRA", "ar": "باتاتا هاررا" },
+      "description": {
+        "en": "Ingredients: potatoes, coriander, garlic, lemon, paprika\nNutritional values: 25,75 kcal, fat 15,54 g, carbohydrates 26,53 g, sugar 0,95\ng, fiber 2,25 g, protein 2,97 g, salt 1,06 g.",
+        "ro": "Ingrediente: cartofi, coriandru, usturoi, lămâie, boia\nValori nutriționale: 25,75 kcal, grăsimi 15,54 g, carbohidrați 26,53 g, zahăr 0,95\ng, fibre 2,25 g, proteine 2,97 g, sare 1,06 g.",
+        "ar": "المكونات: بطاطس، كورياندير، ثوم، ليمون، بابريكا\nالقيم الغذائية: 25،75 كيلو كالوري، دهون 15،54 غ، كربوهيدرات 26،53 غ، سكر 0،95\nغ, فيبير 2,25 غ, بروتين 2,97 غ, ملح 1,06 غ."
+      },
+      "price": 34,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "PLATTER MIX", "ro": "PLATOU MIX", "ar": "طبق ميكس" },
+      "description": {
+        "en": "KEBBE x2, SAMBUSAK WITH CHEESE x2, CHICKEN ROLLS x2, SPRING\nROLLS x2.\nNutritional values: 178,48 kcal, fat 3,55 g, carbohydrates 6,33 g, sugar 0,8 g,\nfiber 0,52 g, protein 4,75 g, salt 0,19 g.",
+        "ro": "KEBBE x2, SAMBUSAK CU BRÂNZĂ x2, CHICKEN ROLLS x2, SPRING\nROLLS x2.\nValori nutriționale: 178,48 kcal, grăsimi 3,55 g, carbohidrați 6,33 g, zahăr 0,8 g,\nfibre0,52 g, proteine 4,75 g, sare 0,19 g.",
+        "ar": "كيببي كس2, سامبوساك مع جبن كس2, دجاج لفائف كس2, سبرينغ\nلفائف كس2.\nالقيم الغذائية: 178،48 كيلو كالوري، دهون 3،55 غ، كربوهيدرات 6،33 غ، سكر 0،8 غ،\nفيبير 0,52 غ, بروتين 4,75 غ, ملح 0,19 غ."
+      },
+      "price": 79,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "POTATOES FRIED WITH PARMESAN AND GARLIC", "ro": "CARTOFI PRĂJIȚI CU PARMEZAN ȘI USTUROI", "ar": "بطاطس مقلية مع بارميزان و ثوم" },
+      "description": {
+        "en": "POTATOES, OIL, GARLIC, PARMESAN\n250,75 kcal, fat 15,54 g, carbohydrates 26,53 g, sugar 0,99 g, fiber 2,25 g,\nprotein 2,97 g, salt 1,06 g.",
+        "ro": "CARTOFI, ULEI, USTUROI, PARMEZAN\n250,75 kcal, grăsimi 15,54 g, carbohidrați 26,53 g, zahăr 0,99 g, fibre 2,25 g,\nproteine 2,97 g, sare 1,06 g.",
+        "ar": "بطاطس، زيت، ثوم، بارميزان\n250,75 كيلو كالوري, دهون 15,54 غ, كربوهيدرات 26,53 غ, سكر 0,99 غ, فيبير 2,25 غ,\nبروتين 2,97 غ, ملح 1,06 غ."
+      },
+      "price": 29,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "FRENCH FRIES", "ro": "CARTOFI PRĂJIȚI", "ar": "بطاطس مقلية" },
+      "description": {
+        "en": "POTATOES, OIL\n125 kcal, fat 4 g, carbohydrates 21 g, sugars 0g, fiber 2,43 g, protein 2,3 g,\nsugar 0,15 g.",
+        "ro": "CARTOFI, ULEI\n125 kcal, grăsimi 4 g, carbohidrați 21 g, zaharuri 0g, fibre 2,43 g, proteine 2,3 g,\nzahăr 0,15 g.",
+        "ar": "بطاطس، زيت\n125 كيلو كالوري, دهون 4 غ, كربوهيدرات 21 غ, سوجارس 0غ, فيبير 2,43 غ, بروتين 2,3 غ,\nسكر 0,15 غ."
+      },
+      "price": 25,
+      "imageUrl": "/images/menu/placeholder.svg"
+    },
+    {
+      "categoryKey": "appetizers_hot",
+      "name": { "en": "SAUSAGES", "ro": "CÂRENAȚI", "ar": "نقانق" },
+      "description": {
+        "en": "350 kcal, 19-33g fat, 13-24g protein and 0.3-8g carbohydrates.",
+        "ro": "350 kcal, 19-33g grăsimi, 13-24g proteine și 0.3-8g carbohidrați.",
+        "ar": "350 كيلو كالوري, 19-33غ دهون, 13-24غ بروتين و 0.3-8غ كربوهيدرات."
+      },
+      "price": 45,
+      "imageUrl": "/images/menu/placeholder.svg"
+    }
+  ]
+}
