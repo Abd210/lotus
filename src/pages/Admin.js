@@ -108,6 +108,38 @@ export default function Admin() {
 	const footerSettings = useFooterSettings(refreshKey);
 	const [adminLang, setAdminLang] = React.useState('ro');
 	const pathOptions = React.useMemo(() => buildPathMap(categories, adminLang), [categories, adminLang]);
+	const [listFilterCategoryId, setListFilterCategoryId] = React.useState('');
+
+	const listFilterCategoryIdSet = React.useMemo(() => {
+		if (!listFilterCategoryId) return null;
+		const childrenByParent = new Map();
+		for (const c of categories) {
+			const pid = c.parentId || null;
+			if (!childrenByParent.has(pid)) childrenByParent.set(pid, []);
+			childrenByParent.get(pid).push(c.id);
+		}
+
+		const visited = new Set();
+		const queue = [listFilterCategoryId];
+		while (queue.length) {
+			const id = queue.shift();
+			if (!id || visited.has(id)) continue;
+			visited.add(id);
+			const kids = childrenByParent.get(id) || [];
+			for (const kid of kids) queue.push(kid);
+		}
+		return visited;
+	}, [categories, listFilterCategoryId]);
+
+	const filteredCategories = React.useMemo(() => {
+		if (!listFilterCategoryIdSet) return categories;
+		return categories.filter(c => listFilterCategoryIdSet.has(c.id));
+	}, [categories, listFilterCategoryIdSet]);
+
+	const filteredProducts = React.useMemo(() => {
+		if (!listFilterCategoryIdSet) return products;
+		return products.filter(p => p.categoryId && listFilterCategoryIdSet.has(p.categoryId));
+	}, [products, listFilterCategoryIdSet]);
 
 	// Helper function to safely get name
 	const getName = React.useCallback((item) => {
@@ -628,9 +660,25 @@ async function handleSaveFooter(e) {
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 					{/* Categories List */}
 					<section className="bg-marble-black/80 border border-gold/30 rounded-xl p-6">
-						<h2 className="font-cinzel text-xl text-gold mb-4">All Categories ({categories.length})</h2>
+						<h2 className="font-cinzel text-xl text-gold mb-4">All Categories ({filteredCategories.length})</h2>
+						<div className="mb-3">
+							<label className="block text-sm text-muted-gray mb-1">Filter by category/subcategory</label>
+							<select
+								value={listFilterCategoryId}
+								onChange={e => setListFilterCategoryId(e.target.value)}
+								className="w-full px-3 py-2 rounded bg-black/40 border border-gold/20 focus:outline-none text-off-white"
+							>
+								<option value="">All categories</option>
+								{pathOptions.map(o => (
+									<option key={o.id} value={o.id}>{o.label}</option>
+								))}
+							</select>
+							{listFilterCategoryId && (
+								<p className="text-xs text-muted-gray mt-1">Showing selected category + subcategories</p>
+							)}
+						</div>
 						<div className="space-y-2 max-h-96 overflow-y-auto">
-							{categories.map(cat => (
+							{filteredCategories.map(cat => (
 								<div key={cat.id} className="flex items-center justify-between p-3 bg-black/40 rounded border border-gold/10 hover:border-gold/30 transition-colors">
 									<div className="flex-1">
 										<p className="text-off-white font-medium">{getName(cat)}</p>
@@ -653,9 +701,25 @@ async function handleSaveFooter(e) {
 
 					{/* Products List */}
 					<section className="bg-marble-black/80 border border-gold/30 rounded-xl p-6">
-						<h2 className="font-cinzel text-xl text-gold mb-4">All Products ({products.length})</h2>
+						<h2 className="font-cinzel text-xl text-gold mb-4">All Products ({filteredProducts.length})</h2>
+						<div className="mb-3">
+							<label className="block text-sm text-muted-gray mb-1">Filter dishes by category/subcategory</label>
+							<select
+								value={listFilterCategoryId}
+								onChange={e => setListFilterCategoryId(e.target.value)}
+								className="w-full px-3 py-2 rounded bg-black/40 border border-gold/20 focus:outline-none text-off-white"
+							>
+								<option value="">All products</option>
+								{pathOptions.map(o => (
+									<option key={o.id} value={o.id}>{o.label}</option>
+								))}
+							</select>
+							{listFilterCategoryId && (
+								<p className="text-xs text-muted-gray mt-1">Showing dishes in selected category subtree</p>
+							)}
+						</div>
 						<div className="space-y-2 max-h-96 overflow-y-auto">
-							{products.map(prod => (
+							{filteredProducts.map(prod => (
 								<div key={prod.id} className="flex items-center justify-between p-3 bg-black/40 rounded border border-gold/10 hover:border-gold/30 transition-colors">
 									<div className="flex-1">
 										<p className="text-off-white font-medium">{getName(prod)}</p>
