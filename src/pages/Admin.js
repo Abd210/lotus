@@ -13,6 +13,92 @@ import manualMenuDessertsDrinks from '../data/manualMenu_desserts_coffee_freaksh
 import manualMenuSoftDrinksCocktails from '../data/manualMenu_softdrinks_cocktails_mocktails.json';
 import manualMenuSauces from '../data/manualMenu_sauces.json';
 
+function sanitizeFilename(name) {
+	return (name || 'image')
+		.toString()
+		.replace(/[^a-zA-Z0-9._-]+/g, '_')
+		.replace(/^_+|_+$/g, '')
+		.slice(0, 120) || 'image';
+}
+
+function fileExtForMime(mime) {
+	switch (mime) {
+		case 'image/webp': return 'webp';
+		case 'image/jpeg': return 'jpg';
+		case 'image/png': return 'png';
+		default: return 'bin';
+	}
+}
+
+async function loadImageFromFile(file) {
+	if (typeof createImageBitmap === 'function') {
+		return await createImageBitmap(file);
+	}
+	// Fallback for older browsers
+	return await new Promise((resolve, reject) => {
+		const url = URL.createObjectURL(file);
+		const img = new Image();
+		img.onload = () => {
+			URL.revokeObjectURL(url);
+			resolve(img);
+		};
+		img.onerror = (e) => {
+			URL.revokeObjectURL(url);
+			reject(e);
+		};
+		img.src = url;
+	});
+}
+
+async function resizeAndCompressImage(file, { maxWidth, maxHeight, quality }) {
+	// Only handle images we can decode in-browser
+	if (!file || !file.type || !file.type.startsWith('image/')) return file;
+
+	const bitmapOrImg = await loadImageFromFile(file);
+	const srcWidth = bitmapOrImg.width;
+	const srcHeight = bitmapOrImg.height;
+	if (!srcWidth || !srcHeight) return file;
+
+	const scale = Math.min(maxWidth / srcWidth, maxHeight / srcHeight, 1);
+	const targetWidth = Math.max(1, Math.round(srcWidth * scale));
+	const targetHeight = Math.max(1, Math.round(srcHeight * scale));
+
+	// If already small-ish, keep original
+	if (scale === 1 && file.size <= 450 * 1024) return file;
+
+	const canvas = document.createElement('canvas');
+	canvas.width = targetWidth;
+	canvas.height = targetHeight;
+	const ctx = canvas.getContext('2d', { alpha: true });
+	if (!ctx) return file;
+
+	ctx.drawImage(bitmapOrImg, 0, 0, targetWidth, targetHeight);
+
+	// Prefer WebP (smaller + supports alpha); fallback to JPEG if not supported
+	const preferredMime = 'image/webp';
+	const fallbackMime = 'image/jpeg';
+	const tryMime = async (mime) => {
+		return await new Promise((resolve) => {
+			canvas.toBlob((blob) => resolve(blob || null), mime, quality);
+		});
+	};
+
+	let outBlob = await tryMime(preferredMime);
+	let outType = preferredMime;
+	if (!outBlob) {
+		outBlob = await tryMime(fallbackMime);
+		outType = fallbackMime;
+	}
+	if (!outBlob) return file;
+
+	// If compression didn't help, keep original
+	if (outBlob.size >= file.size && scale === 1) return file;
+
+	const base = sanitizeFilename(file.name.replace(/\.[^/.]+$/, ''));
+	const outName = `${base}.${fileExtForMime(outType)}`;
+	return new File([outBlob], outName, { type: outType, lastModified: Date.now() });
+}
+
 function useCategories(refresh) {
 	const [categories, setCategories] = React.useState([]);
 	React.useEffect(() => {
@@ -109,6 +195,7 @@ export default function Admin() {
 	const [adminLang, setAdminLang] = React.useState('ro');
 	const pathOptions = React.useMemo(() => buildPathMap(categories, adminLang), [categories, adminLang]);
 	const [listFilterCategoryId, setListFilterCategoryId] = React.useState('');
+	const [listProductSearch, setListProductSearch] = React.useState('');
 
 	const listFilterCategoryIdSet = React.useMemo(() => {
 		if (!listFilterCategoryId) return null;
@@ -141,6 +228,20 @@ export default function Admin() {
 		return products.filter(p => p.categoryId && listFilterCategoryIdSet.has(p.categoryId));
 	}, [products, listFilterCategoryIdSet]);
 
+	const searchedProducts = React.useMemo(() => {
+		const q = (listProductSearch || '').trim().toLowerCase();
+		if (!q) return filteredProducts;
+		const toText = (v) => (v == null ? '' : String(v));
+		return filteredProducts.filter((p) => {
+			const parts = [];
+			if (p?.name && typeof p.name === 'object' && p.name !== null) parts.push(p.name.en, p.name.ro, p.name.ar);
+			if (p?.name && typeof p.name === 'string') parts.push(p.name);
+			parts.push(p?.name_ro);
+			const hay = toText(parts.filter(Boolean).join(' ')).toLowerCase();
+			return hay.includes(q);
+		});
+	}, [filteredProducts, listProductSearch]);
+
 	// Helper function to safely get name
 	const getName = React.useCallback((item) => {
 		if (!item) return '';
@@ -149,6 +250,31 @@ export default function Admin() {
 		}
 		return item.name || '';
 	}, [adminLang]);
+
+	const getFilenameFromUrl = React.useCallback((url) => {
+		if (!url) return '';
+		const toText = (v) => (v == null ? '' : String(v));
+		const raw = toText(url);
+		try {
+			const u = new URL(raw, window.location.origin);
+			const path = u.pathname || '';
+			// Firebase Storage download URLs look like: .../o/<encodedPath>?alt=media...
+			const idx = path.indexOf('/o/');
+			if (idx >= 0) {
+				const encoded = path.slice(idx + 3);
+				const decoded = decodeURIComponent(encoded);
+				const parts = decoded.split('/').filter(Boolean);
+				return parts[parts.length - 1] || decoded;
+			}
+			const parts = path.split('/').filter(Boolean);
+			return decodeURIComponent(parts[parts.length - 1] || '');
+		} catch {
+			// Fallback: try best-effort parsing without URL()
+			const clean = raw.split('?')[0] || raw;
+			const parts = clean.split('/').filter(Boolean);
+			return decodeURIComponent(parts[parts.length - 1] || '');
+		}
+	}, []);
 
 	// Category form state
 	const [editingCat, setEditingCat] = React.useState(null);
@@ -195,8 +321,17 @@ export default function Admin() {
 	}, [footerSettings]);
 
 	async function uploadToStorage(file, folder) {
-		const fileRef = ref(storage, `${folder}/${Date.now()}_${file.name}`);
-		const res = await uploadBytes(fileRef, file);
+		const optimized = await resizeAndCompressImage(file, {
+			maxWidth: folder === 'product-images' ? 1600 : 1200,
+			maxHeight: folder === 'product-images' ? 1600 : 1200,
+			quality: 0.82
+		});
+		const safeName = sanitizeFilename(optimized?.name || file?.name);
+		const fileRef = ref(storage, `${folder}/${Date.now()}_${safeName}`);
+		const res = await uploadBytes(fileRef, optimized, {
+			contentType: optimized?.type || file?.type || undefined,
+			cacheControl: 'public,max-age=31536000,immutable'
+		});
 		return await getDownloadURL(res.ref);
 	}
 
@@ -378,6 +513,7 @@ async function handleSaveFooter(e) {
 
 	function handleEditProduct(prod) {
 		setEditingProd(prod);
+		setProdImage(null);
 		if (typeof prod.name === 'object') {
 			setProdNames({ en: prod.name.en || '', ro: prod.name.ro || '', ar: prod.name.ar || '' });
 		} else {
@@ -606,6 +742,12 @@ async function handleSaveFooter(e) {
 							<div>
 								<label className="block text-sm text-muted-gray mb-1">Product image {editingProd?.imageUrl && '(leave empty to keep current)'}</label>
 								<input type="file" accept="image/*" onChange={e=>setProdImage(e.target.files?.[0]||null)} className="block w-full text-sm text-off-white" />
+								{editingProd?.imageUrl ? (
+									<p className="text-xs text-muted-gray mt-1">Current file: <span className="text-off-white/80">{getFilenameFromUrl(editingProd.imageUrl) || 'Unknown'}</span></p>
+								) : null}
+								{prodImage ? (
+									<p className="text-xs text-muted-gray mt-1">Selected file: <span className="text-off-white/80">{prodImage.name}</span></p>
+								) : null}
 							</div>
 							<div className="flex gap-2">
 								<button type="submit" className="px-4 py-2 bg-gold text-black rounded hover:bg-deep-gold flex-1">{editingProd ? 'Update' : 'Add'} Product</button>
@@ -701,7 +843,7 @@ async function handleSaveFooter(e) {
 
 					{/* Products List */}
 					<section className="bg-marble-black/80 border border-gold/30 rounded-xl p-6">
-						<h2 className="font-cinzel text-xl text-gold mb-4">All Products ({filteredProducts.length})</h2>
+						<h2 className="font-cinzel text-xl text-gold mb-4">All Products ({searchedProducts.length})</h2>
 						<div className="mb-3">
 							<label className="block text-sm text-muted-gray mb-1">Filter dishes by category/subcategory</label>
 							<select
@@ -718,8 +860,20 @@ async function handleSaveFooter(e) {
 								<p className="text-xs text-muted-gray mt-1">Showing dishes in selected category subtree</p>
 							)}
 						</div>
+						<div className="mb-3">
+							<label className="block text-sm text-muted-gray mb-1">Search product by name</label>
+							<input
+								value={listProductSearch}
+								onChange={(e) => setListProductSearch(e.target.value)}
+								placeholder="Type a product name…"
+								className="w-full px-3 py-2 rounded bg-black/40 border border-gold/20 focus:outline-none text-off-white"
+							/>
+							{listProductSearch && (
+								<p className="text-xs text-muted-gray mt-1">Filtering by name in EN/RO/AR</p>
+							)}
+						</div>
 						<div className="space-y-2 max-h-96 overflow-y-auto">
-							{filteredProducts.map(prod => (
+							{searchedProducts.map(prod => (
 								<div key={prod.id} className="flex items-center justify-between p-3 bg-black/40 rounded border border-gold/10 hover:border-gold/30 transition-colors">
 									<div className="flex-1">
 										<p className="text-off-white font-medium">{getName(prod)}</p>
@@ -779,7 +933,6 @@ async function handleSaveFooter(e) {
 											onChange={e => setFooterEmail(e.target.value)} 
 											placeholder="contact@restaurant.com" 
 											className="w-full px-3 py-2 rounded bg-black/40 border border-gold/20 focus:outline-none text-off-white" 
-											required 
 										/>
 									</div>
 								</div>

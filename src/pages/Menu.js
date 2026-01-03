@@ -72,9 +72,54 @@ export default function Menu() {
 	const { t, lang } = useI18n();
 	const footerSettings = useFooterSettings();
 
+	const googleMapsUrl = 'https://maps.app.goo.gl/D9V2z9QnraX3PXzo9?g_st=iw';
+	const googleMapsEmbedUrl = 'https://www.google.com/maps?q=44.4272480,26.1302864&output=embed';
+
 	const getName = React.useCallback((item) => {
 		return (item?.name && (item.name[lang] || item.name.en || item.name.ro || item.name.ar)) || item?.name || '';
 	}, [lang]);
+
+	const getTopCategoryLocalImage = React.useCallback((cat) => {
+		// If you have these three hero images in public/, prefer them for the 3 main top-level categories.
+		// This avoids slow Firebase Storage fetches for above-the-fold content.
+		if (!cat || cat.parentId) return null;
+		const toText = (v) => (v == null ? '' : String(v));
+		const norm = (v) => toText(v).trim().toLowerCase();
+		const names = [];
+		if (typeof cat.name === 'string') names.push(cat.name);
+		if (cat.name && typeof cat.name === 'object') {
+			names.push(cat.name.en, cat.name.ro, cat.name.ar);
+		}
+		names.push(cat.name_ro);
+		const s = norm(names.filter(Boolean).join(' '));
+
+		if (
+			s.includes('drink') ||
+			s.includes('soft drink') ||
+			s.includes('cocktail') ||
+			s.includes('mocktail') ||
+			s.includes('beverage') ||
+			s.includes('مشر') // matches Arabic words starting with "مشر" (e.g. مشروبات)
+		) {
+			return '/images/menu/top/drinks.webp';
+		}
+		if (
+			s.includes('dessert') ||
+			s.includes('desert') ||
+			s.includes('حلوي') // matches Arabic words starting with "حلوي" (e.g. الحلويات)
+		) {
+			return '/images/menu/top/dessert.webp';
+		}
+		if (
+			s.includes('food') ||
+			s.includes('mancare') ||
+			s.includes('mâncare') ||
+			s.includes('طعام')
+		) {
+			return '/images/menu/top/food.webp';
+		}
+		return null;
+	}, []);
 	const topLevel = categories.filter(c => !c.parentId);
 	const childrenByParent = React.useMemo(() => {
 		const map = new Map();
@@ -89,15 +134,7 @@ export default function Menu() {
 	const [drawerOpen, setDrawerOpen] = React.useState(false);
 	const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
-	// Preload all category images
-	React.useEffect(() => {
-		topLevel.forEach(cat => {
-			if (cat.imageUrl) {
-				const img = new Image();
-				img.src = cat.imageUrl;
-			}
-		});
-	}, [topLevel]);
+	// Note: avoid preloading all category images; rely on browser lazy-loading
 
 	return (
 		<div className="marble-overlay min-h-screen">
@@ -138,7 +175,7 @@ export default function Menu() {
 			<button onClick={toggleDrawer} className="text-gold active:opacity-70"><i className="fas fa-bars text-2xl"></i></button>
 		</div>
 		<div className="flex-1 flex items-center justify-center">
-			<img src="/lotus-logo.png" alt="Lotus" className="h-24 w-auto cursor-pointer active:opacity-70" onClick={() => navigate('/')} decoding="async" fetchPriority="high" loading="eager" />
+						<img src="/lotus-logo.png" alt="Lotus" className="h-24 w-auto cursor-pointer active:opacity-70" onClick={() => navigate('/')} decoding="async" fetchPriority="high" loading="eager" />
 		</div>
 	<div className="w-20 flex items-center justify-end gap-3">
 		<LanguageSwitcher />
@@ -170,15 +207,25 @@ export default function Menu() {
 				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 					{topLevel.map(cat => {
 						const subs = childrenByParent.get(cat.id) || [];
+						const localImage = getTopCategoryLocalImage(cat);
+						const imgSrc = localImage || cat.imageUrl || 'https://images.unsplash.com/photo-1541542684-4a6e4f9a82b4?q=70&w=800&auto=format&fit=crop';
+						const imgLoading = localImage ? 'eager' : 'lazy';
+						const imgFetchPriority = localImage ? 'high' : 'auto';
 						return (
 				<div key={cat.id} className="cursor-pointer active:opacity-90" onClick={() => navigate(`/category/${cat.id}`)}>
 					<div className="relative overflow-hidden rounded-xl border border-gold/30 shadow-lg">
 						<div className="h-48 overflow-hidden bg-marble-black/50">
 							<img 
 								className="w-full h-full object-cover" 
-								src={cat.imageUrl || 'https://images.unsplash.com/photo-1541542684-4a6e4f9a82b4?q=70&w=800&auto=format&fit=crop'} 
+								src={imgSrc} 
 								alt={getName(cat)} 
-								loading="eager" 
+								loading={imgLoading}
+								fetchPriority={imgFetchPriority}
+								onError={(e) => {
+									if (e.currentTarget?.dataset?.fallbackApplied) return;
+									e.currentTarget.dataset.fallbackApplied = '1';
+									e.currentTarget.src = '/images/menu/placeholder.svg';
+								}}
 								decoding="async"
 							/>
 						</div>
@@ -210,9 +257,15 @@ export default function Menu() {
 					<div className="contact-section">
 						<h3 className="font-cinzel text-xl font-semibold text-gold mb-4">{t('contactUs')}</h3>
 						<div className="space-y-3">
-							<div className="flex items-start space-x-3"><i className="fas fa-map-marker-alt text-gold mt-1"></i><span className="text-off-white">{footerSettings.address}</span></div>
-							<div className="flex items-center space-x-3"><i className="fas fa-phone text-gold"></i><span className="text-off-white">{footerSettings.phone}</span></div>
-							<div className="flex items-center space-x-3"><i className="fas fa-envelope text-gold"></i><span className="text-off-white">{footerSettings.email}</span></div>
+							{(footerSettings.address || '').trim() ? (
+								<div className="flex items-start space-x-3"><i className="fas fa-map-marker-alt text-gold mt-1"></i><span className="text-off-white">{footerSettings.address}</span></div>
+							) : null}
+							{(footerSettings.phone || '').trim() ? (
+								<div className="flex items-center space-x-3"><i className="fas fa-phone text-gold"></i><span className="text-off-white">{footerSettings.phone}</span></div>
+							) : null}
+							{(footerSettings.email || '').trim() ? (
+								<div className="flex items-center space-x-3"><i className="fas fa-envelope text-gold"></i><span className="text-off-white">{footerSettings.email}</span></div>
+							) : null}
 						</div>
 					</div>
 					<div className="hours-section">
@@ -226,9 +279,9 @@ export default function Menu() {
 						<div className="location-section">
 							<h3 className="font-cinzel text-xl font-semibold text-gold mb-4">{t('findUs')}</h3>
 							<div className="h-32 bg-marble-black/50 rounded-xl border border-gold/20 mb-4 flex items-center justify-center">
-								<iframe title="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.123!2d26.1234567!3d44.4123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDI0JzQ0LjQiTiAyNsKwMDcnMjQuNCJF!5e0!3m2!1sen!2sro!4v1234567890" className="w-full h-full rounded-xl" style={{ border: 0 }} allowFullScreen loading="lazy"></iframe>
+								<iframe title="map" src={googleMapsEmbedUrl} className="w-full h-full rounded-xl" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 							</div>
-							<button className="inline-flex items-center space-x-2 text-gold active:opacity-70"><i className="fas fa-directions"></i><span>{t('getDirections')}</span></button>
+							<a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 text-gold active:opacity-70"><i className="fas fa-directions"></i><span>{t('getDirections')}</span></a>
 						</div>
 					</div>
 					<div className="gold-line mb-6"></div>

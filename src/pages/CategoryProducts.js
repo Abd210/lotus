@@ -55,14 +55,6 @@ export default function CategoryProducts() {
 				setSubcategories(subsData);
 				setProducts(prodsData);
 				setCategoryBundle(categoryId, { category: cat, subcategories: subsData, products: prodsData });
-
-				// Preload all images immediately
-				[...subsData, ...prodsData].forEach(item => {
-					if (item.imageUrl) {
-						const img = new Image();
-						img.src = item.imageUrl;
-					}
-				});
 			} catch (e) {
 				console.error(e);
 			} finally {
@@ -85,6 +77,140 @@ export default function CategoryProducts() {
 		if (typeof d === 'object') return (d[lang] || d.en || d.ro || d.ar || '') || '';
 		return '';
 	}, [lang]);
+
+	const isDrinksCategory = React.useMemo(() => {
+		if (!category) return false;
+		const toText = (v) => (v == null ? '' : String(v));
+		const norm = (v) => toText(v).trim().toLowerCase();
+		const names = [];
+		if (typeof category.name === 'string') names.push(category.name);
+		if (category.name && typeof category.name === 'object') names.push(category.name.en, category.name.ro, category.name.ar);
+		names.push(category.name_ro);
+		const s = norm(names.filter(Boolean).join(' '));
+		return s.includes('drink') || s.includes('beverage') || s.includes('مشر');
+	}, [category]);
+
+	const isFoodCategory = React.useMemo(() => {
+		if (!category) return false;
+		const toText = (v) => (v == null ? '' : String(v));
+		const norm = (v) => toText(v).trim().toLowerCase();
+		const names = [];
+		if (typeof category.name === 'string') names.push(category.name);
+		if (category.name && typeof category.name === 'object') names.push(category.name.en, category.name.ro, category.name.ar);
+		names.push(category.name_ro);
+		const s = norm(names.filter(Boolean).join(' '));
+		return s.includes('food') || s.includes('mancare') || s.includes('mâncare') || s.includes('طعام');
+	}, [category]);
+
+	const isAppetizersCategory = React.useMemo(() => {
+		if (!category) return false;
+		const toText = (v) => (v == null ? '' : String(v));
+		const norm = (v) => toText(v).trim().toLowerCase();
+		const names = [];
+		if (typeof category.name === 'string') names.push(category.name);
+		if (category.name && typeof category.name === 'object') names.push(category.name.en, category.name.ro, category.name.ar);
+		names.push(category.name_ro);
+		const s = norm(names.filter(Boolean).join(' '));
+		return s.includes('appet');
+	}, [category]);
+
+	const getDrinkSubcategoryLocalImage = React.useCallback((subcat) => {
+		if (!subcat) return null;
+		const toText = (v) => (v == null ? '' : String(v));
+		const norm = (v) => toText(v).trim().toLowerCase();
+		const names = [];
+		if (typeof subcat.name === 'string') names.push(subcat.name);
+		if (subcat.name && typeof subcat.name === 'object') names.push(subcat.name.en, subcat.name.ro, subcat.name.ar);
+		names.push(subcat.name_ro);
+		const s = norm(names.filter(Boolean).join(' '));
+
+		if (s.includes('cocktail') || s.includes('كوكت')) return '/images/menu/drinks/cocktails.webp';
+		if (s.includes('mocktail') || s.includes('موكت')) return '/images/menu/drinks/mocktails.webp';
+		if (s.includes('coffee') || s.includes('cafea') || s.includes('قهوة')) return '/images/menu/drinks/coffee-and-more.webp';
+		if (s.includes('freak') || s.includes('frappe') || s.includes('frapp') || s.includes('shake')) return '/images/menu/drinks/freak-shakes-and-frappe.webp';
+		if (s.includes('lemon') || s.includes('fresh') || s.includes('lemonade') || s.includes('freshes')) return '/images/menu/drinks/lemonade-and-fresh-juices.webp';
+		if (s.includes('soft drink') || s === 'soft drinks' || s.includes('gaz') || s.includes('suc')) return '/images/menu/drinks/soft-drinks.webp';
+		return null;
+	}, []);
+
+	const getFoodSubcategoryLocalImage = React.useCallback((subcat) => {
+		if (!subcat) return null;
+		const toText = (v) => (v == null ? '' : String(v));
+		const norm = (v) => toText(v).trim().toLowerCase();
+		const names = [];
+		if (typeof subcat.name === 'string') names.push(subcat.name);
+		if (subcat.name && typeof subcat.name === 'object') names.push(subcat.name.en, subcat.name.ro, subcat.name.ar);
+		names.push(subcat.name_ro);
+		const s = norm(names.filter(Boolean).join(' '));
+
+		if (s.includes('appet')) return '/images/menu/food/appetizers.webp';
+		if (s.includes('burger')) return '/images/menu/food/burgers.webp';
+		if (s.includes('breakfast') || s.includes('mic dejun') || s.includes('dejun')) return '/images/menu/food/breakfast.webp';
+		if (s.includes('soup') || s.includes('supa') || s.includes('supă')) return '/images/menu/food/soups.webp';
+		if (s.includes('salad') || s.includes('salate')) return '/images/menu/food/salads.webp';
+		if (s.includes('pasta')) return '/images/menu/food/pasta.webp';
+		if (s.includes('side') || s.includes('garnit')) return '/images/menu/food/sides.webp';
+		if (s.includes('grill') || s.includes('gratar') || s.includes('grătar')) return '/images/menu/food/grill.webp';
+		if (s.includes('international')) return '/images/menu/food/international-dishes.webp';
+		return null;
+	}, []);
+
+	const getAppetizersSubcategoryLocalImage = React.useCallback((subcat) => {
+		if (!subcat) return null;
+		const toText = (v) => (v == null ? '' : String(v));
+		const norm = (v) => toText(v).trim().toLowerCase();
+		const names = [];
+		if (typeof subcat.name === 'string') names.push(subcat.name);
+		if (subcat.name && typeof subcat.name === 'object') names.push(subcat.name.en, subcat.name.ro, subcat.name.ar);
+		names.push(subcat.name_ro);
+		const s = norm(names.filter(Boolean).join(' '));
+
+		if (s.includes('hot')) return '/images/menu/food/hot-appetizers.webp';
+		if (s.includes('cold')) return '/images/menu/food/cold-appetizers.webp';
+		return null;
+	}, []);
+
+	const getDrinksMenuPageImage = React.useCallback((cat) => {
+		// For drink leaf categories, show a full-screen menu-page image instead of product cards.
+		if (!cat) return null;
+		const toText = (v) => (v == null ? '' : String(v));
+		const norm = (v) => toText(v).trim().toLowerCase();
+		const names = [];
+		if (typeof cat.name === 'string') names.push(cat.name);
+		if (cat.name && typeof cat.name === 'object') names.push(cat.name.en, cat.name.ro, cat.name.ar);
+		names.push(cat.name_ro);
+		const s = norm(names.filter(Boolean).join(' '));
+
+		// Be specific so we don't match the top-level "Drinks" category.
+		if (s.includes('mocktail')) return ['/images/menu/drinks-pages/mocktails.jpg'];
+		if (s.includes('cocktail')) return ['/images/menu/drinks-pages/cocktails.jpg'];
+		if (s.includes('soft drink') || s === 'soft drinks') return ['/images/menu/drinks-pages/soft-drinks.jpg'];
+		if (s.includes('coffee')) {
+			// Coffee & More has 2 pages (stacked). Add the 2nd file in public/images/menu/drinks-pages/.
+			return ['/images/menu/drinks-pages/coffee-and-more.jpg', '/images/menu/drinks-pages/coffee-and-more-2.jpg'];
+		}
+		if (s.includes('freak') || s.includes('frappe') || s.includes('frapp') || s.includes('shake')) return ['/images/menu/drinks-pages/freak-shakes-and-frappe.jpg'];
+		if (s.includes('lemon') || s.includes('fresh') || s.includes('lemonade') || s.includes('freshes')) return ['/images/menu/drinks-pages/lemonades-and-fresh-juices.jpg'];
+		return null;
+	}, []);
+
+	const drinksMenuPageImages = React.useMemo(() => {
+		// This is intentionally NOT gated by isDrinksCategory.
+		// Leaf drink categories like "COCKTAILS" or "MOCKTAILS" should activate this view.
+		return getDrinksMenuPageImage(category);
+	}, [category, getDrinksMenuPageImage]);
+
+	const [fullscreenSrc, setFullscreenSrc] = React.useState(null);
+
+	React.useEffect(() => {
+		if (!fullscreenSrc) return;
+		const onKeyDown = (e) => {
+			if (e.key === 'Escape') setFullscreenSrc(null);
+		};
+		window.addEventListener('keydown', onKeyDown);
+		return () => window.removeEventListener('keydown', onKeyDown);
+	}, [fullscreenSrc]);
+
 
 	return (
 		<div className="min-h-screen marble-bg marble-overlay text-off-white">
@@ -111,41 +237,101 @@ export default function CategoryProducts() {
 					<div className="gold-line max-w-32 mx-auto"></div>
 				</div>
 
+				{Array.isArray(drinksMenuPageImages) && drinksMenuPageImages.length > 0 ? (
+					<div className="max-w-3xl mx-auto space-y-4">
+						{drinksMenuPageImages.map((src, idx) => (
+							<img
+								key={`${src}-${idx}`}
+								src={src}
+								alt={getName(category) || 'Menu'}
+								className="w-full h-auto rounded-xl border border-gold/20 bg-black/40 cursor-zoom-in"
+								loading={idx === 0 ? 'eager' : 'lazy'}
+								fetchPriority={idx === 0 ? 'high' : 'auto'}
+								decoding="async"
+								onClick={() => setFullscreenSrc(src)}
+								onError={(e) => {
+									if (e.currentTarget?.dataset?.fallbackApplied) return;
+									e.currentTarget.dataset.fallbackApplied = '1';
+									e.currentTarget.src = '/images/menu/placeholder.svg';
+								}}
+							/>
+						))}
+					</div>
+				) : null}
+
+				{fullscreenSrc ? (
+					<div
+						className="fixed inset-0 z-50 bg-marble-black/95 flex items-center justify-center"
+						onClick={() => setFullscreenSrc(null)}
+						onMouseDown={() => setFullscreenSrc(null)}
+						onTouchStart={() => setFullscreenSrc(null)}
+						role="dialog"
+						aria-modal="true"
+					>
+						<img
+							src={fullscreenSrc}
+							alt={getName(category) || 'Menu'}
+							className="w-full h-full object-contain"
+							decoding="async"
+							onClick={(e) => e.stopPropagation()}
+							onMouseDown={(e) => e.stopPropagation()}
+							onTouchStart={(e) => e.stopPropagation()}
+						/>
+					</div>
+				) : null}
+
 				{/* Subcategories Section */}
-				{subcategories.length > 0 && (
+				{!drinksMenuPageImages && subcategories.length > 0 && (
 					<div className="mb-12">
 						<h3 className="font-cinzel text-2xl text-gold mb-6 text-center">{t('subcategories')}</h3>
 						<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto mb-8">
-							{subcategories.map(subcat => (
-								<div 
-									key={subcat.id} 
-									onClick={() => navigate(`/category/${subcat.id}`)}
-									className="category-card-container group cursor-pointer"
-								>
-									<div className="relative overflow-hidden rounded-xl border border-gold/30 gold-glow transition-all duration-250">
-										<div className="h-40 overflow-hidden bg-marble-black/50">
-											<img 
-												className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-250" 
-												src={subcat.imageUrl || 'https://images.unsplash.com/photo-1541542684-4a6e4f9a82b4?q=80&w=1200&auto=format&fit=crop'} 
-												alt={getName(subcat)}
-												loading="eager"
-												decoding="async"
-											/>
-										</div>
-										<div className="absolute inset-0 category-card"></div>
-										<div className="absolute bottom-0 left-0 right-0 p-3">
-											<h3 className="font-cinzel text-base font-semibold text-off-white">{getName(subcat)}</h3>
+							{subcategories.map(subcat => {
+								const local = isDrinksCategory
+									? getDrinkSubcategoryLocalImage(subcat)
+									: (isFoodCategory
+										? getFoodSubcategoryLocalImage(subcat)
+										: (isAppetizersCategory ? getAppetizersSubcategoryLocalImage(subcat) : null));
+								const src = local || subcat.imageUrl || 'https://images.unsplash.com/photo-1541542684-4a6e4f9a82b4?q=80&w=1200&auto=format&fit=crop';
+								const imgLoading = local ? 'eager' : 'lazy';
+								const imgFetchPriority = local ? 'high' : 'auto';
+								return (
+									<div 
+										key={subcat.id} 
+										onClick={() => navigate(`/category/${subcat.id}`)}
+										className="category-card-container group cursor-pointer"
+									>
+										<div className="relative overflow-hidden rounded-xl border border-gold/30 gold-glow transition-all duration-250">
+											<div className="h-40 overflow-hidden bg-marble-black/50">
+												<img 
+													className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-250" 
+													src={src}
+													alt={getName(subcat)}
+													loading={imgLoading}
+													fetchPriority={imgFetchPriority}
+													onError={(e) => {
+														// If Firebase imageUrl is broken/missing, fall back to a local placeholder.
+														if (e.currentTarget?.dataset?.fallbackApplied) return;
+														e.currentTarget.dataset.fallbackApplied = '1';
+														e.currentTarget.src = '/images/menu/placeholder.svg';
+												}}
+													decoding="async"
+												/>
+											</div>
+											<div className="absolute inset-0 category-card"></div>
+											<div className="absolute bottom-0 left-0 right-0 p-3">
+												<h3 className="font-cinzel text-base font-semibold text-off-white">{getName(subcat)}</h3>
+											</div>
 										</div>
 									</div>
-								</div>
-							))}
+								);
+							})}
 						</div>
 						<div className="diagonal-line my-8"></div>
 					</div>
 				)}
 
 				{/* Products Section */}
-				{products.length > 0 && (
+				{!drinksMenuPageImages && products.length > 0 && (
 					<div>
 						<h3 className="font-cinzel text-2xl text-gold mb-6 text-center">{t('products')}</h3>
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -161,7 +347,7 @@ export default function CategoryProducts() {
 										src={product.imageUrl} 
 										alt={getName(product)} 
 										className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-										loading="eager"
+										loading="lazy"
 										decoding="async"
 									/>
 									<div className="absolute inset-0 bg-gradient-to-t from-marble-black via-transparent to-transparent opacity-60"></div>
@@ -188,7 +374,7 @@ export default function CategoryProducts() {
 				)}
 
 				{/* Empty State */}
-				{!loading && subcategories.length === 0 && products.length === 0 && (
+				{!loading && !drinksMenuPageImages && subcategories.length === 0 && products.length === 0 && (
 					<div className="text-center py-12">
 						<p className="text-muted-gray text-lg">{t('emptyCategoryTitle')}</p>
 						<p className="text-muted-gray text-sm mt-2">{t('emptyCategoryDesc')}</p>
