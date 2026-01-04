@@ -3,6 +3,7 @@ const memory = {
   categories: null, // { data: [...], ts }
   categoryBundles: new Map(), // categoryId -> { category, subcategories, products, ts }
   products: new Map(), // productId -> { data, ts }
+  appSettings: null, // { data, ts }
 };
 
 const TTL_MS = 5 * 60 * 1000; // 5 minutes
@@ -69,4 +70,21 @@ export function setProductCache(productId, data) {
   const entry = { data, ts: now() };
   memory.products.set(productId, entry);
   ssSet(`cache:product:${productId}`, entry);
+}
+
+// App settings (global UI preferences)
+export function getAppSettingsCache() {
+  if (memory.appSettings && isFresh(memory.appSettings.ts)) return memory.appSettings.data;
+  const stored = ssGet('cache:appSettings');
+  if (stored && isFresh(stored.ts)) {
+    memory.appSettings = stored;
+    return stored.data;
+  }
+  return null;
+}
+
+export function setAppSettingsCache(data) {
+  const entry = { data, ts: now() };
+  memory.appSettings = entry;
+  ssSet('cache:appSettings', entry);
 }

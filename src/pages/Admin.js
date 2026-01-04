@@ -185,6 +185,28 @@ function useFooterSettings(refresh) {
 	return settings;
 }
 
+function useAppSettings(refresh) {
+	const [settings, setSettings] = React.useState(null);
+	React.useEffect(() => {
+		(async () => {
+			try {
+				const docSnap = await getDoc(doc(db, 'settings', 'app'));
+				if (docSnap.exists()) {
+					setSettings(docSnap.data());
+				} else {
+					setSettings({
+						showProductPlaceholderImage: true
+					});
+				}
+			} catch (e) {
+				console.error('Error loading app settings:', e);
+				setSettings({ showProductPlaceholderImage: true });
+			}
+		})();
+	}, [refresh]);
+	return settings;
+}
+
 export default function Admin() {
 	const { user } = useAuth();
 	const { showToast, ToastComponent } = useToast();
@@ -192,6 +214,7 @@ export default function Admin() {
 	const categories = useCategories(refreshKey);
 	const products = useProducts(refreshKey);
 	const footerSettings = useFooterSettings(refreshKey);
+	const appSettings = useAppSettings(refreshKey);
 	const [adminLang, setAdminLang] = React.useState('ro');
 	const pathOptions = React.useMemo(() => buildPathMap(categories, adminLang), [categories, adminLang]);
 	const [listFilterCategoryId, setListFilterCategoryId] = React.useState('');
@@ -281,6 +304,11 @@ export default function Admin() {
 	const [catNames, setCatNames] = React.useState({ en: '', ro: '', ar: '' });
 	const [parentId, setParentId] = React.useState('');
 	const [catImage, setCatImage] = React.useState(null);
+	const [catMenuPageMode, setCatMenuPageMode] = React.useState('products_only');
+	const [catMenuPageImages, setCatMenuPageImages] = React.useState([]);
+	const [catMenuPageNewFiles, setCatMenuPageNewFiles] = React.useState([]);
+	const [catMenuPageInheritToChildren, setCatMenuPageInheritToChildren] = React.useState(false);
+	const [catMenuPageChildrenMode, setCatMenuPageChildrenMode] = React.useState('image_only');
 
 	// Product form state
 	const [editingProd, setEditingProd] = React.useState(null);
@@ -301,6 +329,9 @@ export default function Admin() {
 	const [facebookUrl, setFacebookUrl] = React.useState('');
 	const [tiktokUrl, setTiktokUrl] = React.useState('');
 
+	// App settings state
+	const [showProductPlaceholderImage, setShowProductPlaceholderImage] = React.useState(true);
+
 	// Bulk import state
 	const [importing, setImporting] = React.useState(false);
 	const [importProgress, setImportProgress] = React.useState('');
@@ -320,11 +351,34 @@ export default function Admin() {
 		}
 	}, [footerSettings]);
 
+	React.useEffect(() => {
+		if (appSettings) {
+			setShowProductPlaceholderImage(appSettings.showProductPlaceholderImage !== false);
+		}
+	}, [appSettings]);
+
+	async function handleSaveAppSettings(e) {
+		e.preventDefault();
+		try {
+			await setDoc(doc(db, 'settings', 'app'), {
+				showProductPlaceholderImage: !!showProductPlaceholderImage,
+				updatedAt: Date.now()
+			}, { merge: true });
+			showToast('App settings saved successfully!', 'success');
+			setRefreshKey(prev => prev + 1);
+		} catch (error) {
+			console.error('Error saving app settings:', error);
+			showToast('Failed to save app settings. Please try again.', 'error');
+		}
+	}
+
 	async function uploadToStorage(file, folder) {
+		const isProduct = folder === 'product-images';
+		const isMenuPage = folder === 'menu-page-images';
 		const optimized = await resizeAndCompressImage(file, {
-			maxWidth: folder === 'product-images' ? 1600 : 1200,
-			maxHeight: folder === 'product-images' ? 1600 : 1200,
-			quality: 0.82
+			maxWidth: isMenuPage ? 2400 : (isProduct ? 1600 : 1200),
+			maxHeight: isMenuPage ? 2400 : (isProduct ? 1600 : 1200),
+			quality: isMenuPage ? 0.86 : 0.82
 		});
 		const safeName = sanitizeFilename(optimized?.name || file?.name);
 		const fileRef = ref(storage, `${folder}/${Date.now()}_${safeName}`);
@@ -347,6 +401,15 @@ export default function Admin() {
 		try {
 			let imageUrl = editingCat?.imageUrl || '';
 			if (catImage) imageUrl = await uploadToStorage(catImage, 'category-images');
+
+			let menuPageImages = Array.isArray(catMenuPageImages) ? [...catMenuPageImages] : [];
+			if (Array.isArray(catMenuPageNewFiles) && catMenuPageNewFiles.length > 0) {
+				for (const f of catMenuPageNewFiles) {
+					// eslint-disable-next-line no-await-in-loop
+					const url = await uploadToStorage(f, 'menu-page-images');
+					if (url) menuPageImages.push(url);
+				}
+			}
 			
 			if (editingCat) {
 				await updateDoc(doc(db, 'categories', editingCat.id), {
@@ -357,7 +420,11 @@ export default function Admin() {
 					},
 					name_ro: catNames.ro.trim(),
 					parentId: parentId || null,
-					...(catImage ? { imageUrl } : {})
+					...(catImage ? { imageUrl } : {}),
+					menuPageMode: catMenuPageMode || 'products_only',
+					menuPageImages,
+					menuPageInheritToChildren: !!catMenuPageInheritToChildren,
+					menuPageChildrenMode: catMenuPageChildrenMode || 'image_only'
 				});
 				showToast('Category updated successfully!', 'success');
 			} else {
@@ -370,12 +437,24 @@ export default function Admin() {
 					name_ro: catNames.ro.trim(),
 					parentId: parentId || null,
 					imageUrl: imageUrl || '',
+					menuPageMode: catMenuPageMode || 'products_only',
+					menuPageImages,
+					menuPageInheritToChildren: !!catMenuPageInheritToChildren,
+					menuPageChildrenMode: catMenuPageChildrenMode || 'image_only',
 					createdAt: Date.now()
 				});
 				showToast('Category added successfully!', 'success');
 			}
 			
-			setCatNames({ en: '', ro: '', ar: '' }); setParentId(''); setCatImage(null); setEditingCat(null);
+			setCatNames({ en: '', ro: '', ar: '' });
+			setParentId('');
+			setCatImage(null);
+			setCatMenuPageMode('products_only');
+			setCatMenuPageImages([]);
+			setCatMenuPageNewFiles([]);
+			setCatMenuPageInheritToChildren(false);
+			setCatMenuPageChildrenMode('image_only');
+			setEditingCat(null);
 			e.target.reset();
 			setRefreshKey(prev => prev + 1);
 		} catch (error) {
@@ -398,6 +477,11 @@ export default function Admin() {
 
 	function handleEditCategory(cat) {
 		setEditingCat(cat);
+		setCatMenuPageMode(cat?.menuPageMode || 'products_only');
+		setCatMenuPageImages(Array.isArray(cat?.menuPageImages) ? cat.menuPageImages.filter(Boolean) : []);
+		setCatMenuPageNewFiles([]);
+		setCatMenuPageInheritToChildren(!!cat?.menuPageInheritToChildren);
+		setCatMenuPageChildrenMode(cat?.menuPageChildrenMode || 'image_only');
 		if (typeof cat.name === 'object') {
 			setCatNames({
 				en: cat.name.en || '',
@@ -702,10 +786,125 @@ async function handleSaveFooter(e) {
 								<label className="block text-sm text-muted-gray mb-1">Optional image {editingCat?.imageUrl && '(leave empty to keep current)'}</label>
 								<input type="file" accept="image/*" onChange={e=>setCatImage(e.target.files?.[0]||null)} className="block w-full text-sm text-off-white" />
 							</div>
+
+							<div className="bg-black/30 border border-gold/20 rounded-lg p-4 space-y-4">
+								<div className="flex items-start justify-between gap-3">
+									<div>
+										<p className="text-off-white font-medium">Big image (menu page)</p>
+										<p className="text-xs text-muted-gray">Shows one (or multiple) full-screen image pages on the category screen.</p>
+									</div>
+									<button
+										type="button"
+										onClick={() => { setCatMenuPageMode('image_only'); setCatMenuPageInheritToChildren(true); setCatMenuPageChildrenMode('image_only'); }}
+										className="px-3 py-1.5 bg-gold/20 text-gold border border-gold/30 rounded hover:bg-gold/30 text-xs whitespace-nowrap"
+									>
+										Quick: image only + subcats
+									</button>
+								</div>
+
+								<div className="space-y-2">
+									<p className="text-sm text-muted-gray">Display</p>
+									<div className="space-y-2">
+										<label className="flex items-start gap-3 bg-black/40 border border-gold/10 rounded px-3 py-2 cursor-pointer">
+											<input type="radio" name="menuPageMode" checked={catMenuPageMode==='products_only'} onChange={()=>setCatMenuPageMode('products_only')} className="mt-1" />
+											<div>
+												<p className="text-off-white text-sm">Products only</p>
+												<p className="text-xs text-muted-gray">No big image.</p>
+											</div>
+										</label>
+										<label className="flex items-start gap-3 bg-black/40 border border-gold/10 rounded px-3 py-2 cursor-pointer">
+											<input type="radio" name="menuPageMode" checked={catMenuPageMode==='image_and_products'} onChange={()=>setCatMenuPageMode('image_and_products')} className="mt-1" />
+											<div>
+												<p className="text-off-white text-sm">Image + products</p>
+												<p className="text-xs text-muted-gray">Shows big image first, then products/subcategories.</p>
+											</div>
+										</label>
+										<label className="flex items-start gap-3 bg-black/40 border border-gold/10 rounded px-3 py-2 cursor-pointer">
+											<input type="radio" name="menuPageMode" checked={catMenuPageMode==='image_only'} onChange={()=>setCatMenuPageMode('image_only')} className="mt-1" />
+											<div>
+												<p className="text-off-white text-sm">Image only</p>
+												<p className="text-xs text-muted-gray">Only the big image (no products).</p>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div className="space-y-2">
+									<label className="block text-sm text-muted-gray">Menu page image(s)</label>
+									<input
+										type="file"
+										accept="image/*"
+										multiple
+										onChange={(e) => setCatMenuPageNewFiles(Array.from(e.target.files || []))}
+										className="block w-full text-sm text-off-white"
+									/>
+									<p className="text-xs text-muted-gray">Tip: you can upload 2 images for 2 pages.</p>
+								</div>
+
+								{Array.isArray(catMenuPageImages) && catMenuPageImages.length > 0 ? (
+									<div className="space-y-2">
+										<div className="flex items-center justify-between gap-3">
+											<p className="text-sm text-muted-gray">Current images</p>
+											<button
+												type="button"
+												onClick={() => setCatMenuPageImages([])}
+												className="px-3 py-1 bg-red-500/10 text-red-400 border border-red-500/30 rounded hover:bg-red-500/20 text-xs"
+											>
+												Remove all
+											</button>
+										</div>
+										<div className="grid grid-cols-2 gap-2">
+											{catMenuPageImages.map((url, idx) => (
+												<div key={`${url}-${idx}`} className="flex items-center gap-2 bg-black/40 border border-gold/10 rounded p-2">
+													<img src={url} alt="Menu page" className="h-12 w-12 rounded object-cover border border-gold/10" loading="lazy" decoding="async" />
+													<div className="flex-1 min-w-0">
+														<p className="text-xs text-off-white/80 truncate">{getFilenameFromUrl(url) || url}</p>
+														<button
+															type="button"
+															onClick={() => setCatMenuPageImages(prev => (Array.isArray(prev) ? prev.filter((_, i) => i !== idx) : []))}
+															className="mt-1 px-2 py-1 bg-red-500/20 text-red-400 rounded hover:bg-red-500/30 text-xs"
+														>
+															Remove
+														</button>
+													</div>
+												</div>
+											))}
+										</div>
+									</div>
+								) : (
+									<p className="text-xs text-muted-gray">No menu page images set.</p>
+								)}
+
+								<div className="bg-black/40 border border-gold/10 rounded p-3 space-y-2">
+									<label className="flex items-center gap-2 text-sm text-off-white cursor-pointer">
+										<input
+											type="checkbox"
+											checked={catMenuPageInheritToChildren}
+											onChange={(e) => setCatMenuPageInheritToChildren(e.target.checked)}
+										/>
+										Apply this big image to all subcategories
+									</label>
+									{catMenuPageInheritToChildren ? (
+										<div>
+											<label className="block text-xs text-muted-gray mb-1">Subcategories display</label>
+											<select
+												value={catMenuPageChildrenMode}
+												onChange={(e) => setCatMenuPageChildrenMode(e.target.value)}
+												className="w-full px-3 py-2 rounded bg-black/40 border border-gold/20 focus:outline-none text-off-white"
+											>
+												<option value="image_only">Image only</option>
+												<option value="image_and_products">Image + products</option>
+												<option value="products_only">Products only</option>
+											</select>
+											<p className="text-xs text-muted-gray mt-1">Subcategories can still override by setting their own big image/mode.</p>
+										</div>
+									) : null}
+								</div>
+							</div>
 							<div className="flex gap-2">
 								<button type="submit" className="px-4 py-2 bg-gold text-black rounded hover:bg-deep-gold flex-1">{editingCat ? 'Update' : 'Add'} Category</button>
 								{editingCat && (
-									<button type="button" onClick={() => { setEditingCat(null); setCatNames({ en:'', ro:'', ar:'' }); setParentId(''); setCatImage(null); }} className="px-4 py-2 bg-muted-gray/20 text-off-white rounded hover:bg-muted-gray/30">Cancel</button>
+									<button type="button" onClick={() => { setEditingCat(null); setCatNames({ en:'', ro:'', ar:'' }); setParentId(''); setCatImage(null); setCatMenuPageMode('products_only'); setCatMenuPageImages([]); setCatMenuPageNewFiles([]); setCatMenuPageInheritToChildren(false); setCatMenuPageChildrenMode('image_only'); }} className="px-4 py-2 bg-muted-gray/20 text-off-white rounded hover:bg-muted-gray/30">Cancel</button>
 								)}
 							</div>
 						</form>
@@ -1019,6 +1218,26 @@ async function handleSaveFooter(e) {
 							</button>
 						</form>
 					)}
+				</section>
+
+				{/* App UI Settings Section */}
+				<section className="bg-marble-black/80 border border-gold/30 rounded-xl p-6">
+					<h2 className="font-cinzel text-xl text-gold mb-4">App UI Settings</h2>
+					<form onSubmit={handleSaveAppSettings} className="space-y-4">
+						<div className="bg-black/40 border border-gold/20 rounded-lg p-4">
+							<p className="text-off-white font-medium">Product placeholder image</p>
+							<p className="text-xs text-muted-gray mt-1">Controls whether products without images show a placeholder image everywhere.</p>
+							<label className="flex items-center gap-2 mt-3 text-sm text-off-white cursor-pointer">
+								<input
+									type="checkbox"
+									checked={!!showProductPlaceholderImage}
+									onChange={(e) => setShowProductPlaceholderImage(e.target.checked)}
+								/>
+								Show placeholder for missing/broken product images
+							</label>
+						</div>
+						<button type="submit" className="px-6 py-3 bg-gold text-black rounded hover:bg-deep-gold font-semibold">Save App UI Settings</button>
+					</form>
 				</section>
 			</main>
 	{ToastComponent}

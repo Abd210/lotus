@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import LoadingOverlay from '../components/LoadingOverlay';
-import { getProductCache, setProductCache } from '../utils/cache';
+import { getAppSettingsCache, getProductCache, setAppSettingsCache, setProductCache } from '../utils/cache';
 import { useI18n } from '../i18n';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 
@@ -14,6 +14,30 @@ export default function ProductDetail() {
   const [product, setProduct] = React.useState(null);
   const [notFound, setNotFound] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [showProductPlaceholderImage, setShowProductPlaceholderImage] = React.useState(true);
+
+  React.useEffect(() => {
+    const cached = getAppSettingsCache();
+    if (cached && typeof cached.showProductPlaceholderImage === 'boolean') {
+      setShowProductPlaceholderImage(cached.showProductPlaceholderImage);
+    }
+    (async () => {
+      try {
+        const snap = await getDoc(doc(db, 'settings', 'app'));
+        const data = snap.exists() ? snap.data() : { showProductPlaceholderImage: true };
+        setAppSettingsCache(data);
+        setShowProductPlaceholderImage(data.showProductPlaceholderImage !== false);
+      } catch {
+        setShowProductPlaceholderImage(true);
+      }
+    })();
+  }, []);
+
+  const isPlaceholderUrl = React.useCallback((url) => {
+    if (!url) return false;
+    const s = String(url).toLowerCase();
+    return s.includes('/images/menu/placeholder.svg') || s.endsWith('placeholder.svg');
+  }, []);
 
   React.useEffect(() => {
     const cached = getProductCache(productId);
@@ -75,12 +99,35 @@ export default function ProductDetail() {
         {product && (
           <div className="bg-marble-black/80 border border-gold/30 rounded-2xl overflow-hidden shadow-xl">
             {/* Image */}
-            {product.imageUrl && (
-              <div className="relative h-80 md:h-96 overflow-hidden">
-                <img src={product.imageUrl} alt={nameText} className="w-full h-full object-cover" loading="eager" decoding="async" />
-                <div className="absolute inset-0 bg-gradient-to-t from-marble-black via-transparent to-transparent"></div>
-              </div>
-            )}
+            {(() => {
+              const rawUrl = product?.imageUrl || '';
+              const hasRealImage = !!rawUrl && !isPlaceholderUrl(rawUrl);
+              const shouldShowImageBlock = hasRealImage || showProductPlaceholderImage;
+              if (!shouldShowImageBlock) return null;
+              const src = hasRealImage ? rawUrl : '/images/menu/placeholder.svg';
+              return (
+                <div className="product-image-wrap relative h-80 md:h-96 overflow-hidden">
+                  <img
+                    src={src}
+                    alt={nameText}
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                    decoding="async"
+                    onError={(e) => {
+                      if (showProductPlaceholderImage) {
+                        if (e.currentTarget?.dataset?.fallbackApplied) return;
+                        e.currentTarget.dataset.fallbackApplied = '1';
+                        e.currentTarget.src = '/images/menu/placeholder.svg';
+                        return;
+                      }
+                      const wrap = e.currentTarget?.closest?.('.product-image-wrap');
+                      if (wrap) wrap.style.display = 'none';
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-marble-black via-transparent to-transparent"></div>
+                </div>
+              );
+            })()}
 
             {/* Content */}
             <div className="p-6 md:p-10">

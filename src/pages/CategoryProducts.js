@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
 import { collection, getDocs, query, where, doc, getDoc } from 'firebase/firestore';
 import LoadingOverlay from '../components/LoadingOverlay';
-import { getCategoryBundle, setCategoryBundle } from '../utils/cache';
+import { getAppSettingsCache, getCategoryBundle, setAppSettingsCache, setCategoryBundle } from '../utils/cache';
 import { useI18n } from '../i18n';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 // Modal removed for performance; product opens in its own route
@@ -16,9 +16,36 @@ export default function CategoryProducts() {
 	const [subcategories, setSubcategories] = React.useState([]);
 	const [products, setProducts] = React.useState([]);
 	const [loading, setLoading] = React.useState(false);
+	const [inheritedMenuPage, setInheritedMenuPage] = React.useState(null);
+	const [showProductPlaceholderImage, setShowProductPlaceholderImage] = React.useState(true);
 	// modal state removed
 
 	React.useEffect(() => {
+		const cached = getAppSettingsCache();
+		if (cached && typeof cached.showProductPlaceholderImage === 'boolean') {
+			setShowProductPlaceholderImage(cached.showProductPlaceholderImage);
+		}
+		(async () => {
+			try {
+				const snap = await getDoc(doc(db, 'settings', 'app'));
+				const data = snap.exists() ? snap.data() : { showProductPlaceholderImage: true };
+				setAppSettingsCache(data);
+				setShowProductPlaceholderImage(data.showProductPlaceholderImage !== false);
+			} catch (e) {
+				// default: show placeholder
+				setShowProductPlaceholderImage(true);
+			}
+		})();
+	}, []);
+
+	const isPlaceholderUrl = React.useCallback((url) => {
+		if (!url) return false;
+		const s = String(url).toLowerCase();
+		return s.includes('/images/menu/placeholder.svg') || s.endsWith('placeholder.svg');
+	}, []);
+
+	React.useEffect(() => {
+		setInheritedMenuPage(null);
 		const cached = getCategoryBundle(categoryId);
 		if (cached) {
 			setCategory(cached.category || null);
@@ -55,6 +82,27 @@ export default function CategoryProducts() {
 				setSubcategories(subsData);
 				setProducts(prodsData);
 				setCategoryBundle(categoryId, { category: cat, subcategories: subsData, products: prodsData });
+
+				// Inherit menu page image/mode from parent (optional)
+				const allowedModes = new Set(['products_only', 'image_and_products', 'image_only']);
+				const hasExplicitMode = allowedModes.has((cat?.menuPageMode || '').toString());
+				const hasExplicitImages = Array.isArray(cat?.menuPageImages) && cat.menuPageImages.filter(Boolean).length > 0;
+				const shouldCheckParent = !!(cat && cat.parentId && !hasExplicitMode && !hasExplicitImages);
+				if (shouldCheckParent) {
+					const parentDoc = await getDoc(doc(db, 'categories', cat.parentId));
+					if (parentDoc.exists()) {
+						const parent = { id: parentDoc.id, ...parentDoc.data() };
+						const parentAllows = !!parent?.menuPageInheritToChildren;
+						const parentImages = Array.isArray(parent?.menuPageImages) ? parent.menuPageImages.filter(Boolean) : [];
+						if (parentAllows && parentImages.length > 0) {
+							const rawChildMode = (parent?.menuPageChildrenMode || '').toString();
+							const inheritedMode = allowedModes.has(rawChildMode)
+								? rawChildMode
+								: (allowedModes.has((parent?.menuPageMode || '').toString()) ? parent.menuPageMode : 'image_only');
+							setInheritedMenuPage({ images: parentImages, mode: inheritedMode });
+						}
+					}
+				}
 			} catch (e) {
 				console.error(e);
 			} finally {
@@ -200,6 +248,34 @@ export default function CategoryProducts() {
 		return getDrinksMenuPageImage(category);
 	}, [category, getDrinksMenuPageImage]);
 
+	const menuPageImages = React.useMemo(() => {
+		const configured = Array.isArray(category?.menuPageImages) ? category.menuPageImages.filter(Boolean) : [];
+		if (configured.length > 0) return configured;
+		const inherited = Array.isArray(inheritedMenuPage?.images) ? inheritedMenuPage.images.filter(Boolean) : [];
+		if (inherited.length > 0) return inherited;
+		return Array.isArray(drinksMenuPageImages) ? drinksMenuPageImages : null;
+	}, [category, drinksMenuPageImages, inheritedMenuPage]);
+
+	const menuPageMode = React.useMemo(() => {
+		// products_only: hide images, show products/subcategories
+		// image_and_products: show both
+		// image_only: show only images
+		const raw = (category?.menuPageMode || '').toString().trim();
+		if (raw === 'products_only' || raw === 'image_and_products' || raw === 'image_only') return raw;
+		const inheritedRaw = (inheritedMenuPage?.mode || '').toString().trim();
+		if (inheritedRaw === 'products_only' || inheritedRaw === 'image_and_products' || inheritedRaw === 'image_only') return inheritedRaw;
+		// Safe default: if images exist but mode not set, don't hide products.
+		return (Array.isArray(menuPageImages) && menuPageImages.length > 0) ? 'image_and_products' : 'products_only';
+	}, [category, inheritedMenuPage, menuPageImages]);
+
+	const showMenuImages = React.useMemo(() => {
+		return Array.isArray(menuPageImages) && menuPageImages.length > 0 && menuPageMode !== 'products_only';
+	}, [menuPageImages, menuPageMode]);
+
+	const showCategoryContent = React.useMemo(() => {
+		return menuPageMode !== 'image_only';
+	}, [menuPageMode]);
+
 	const [fullscreenSrc, setFullscreenSrc] = React.useState(null);
 
 	React.useEffect(() => {
@@ -237,9 +313,9 @@ export default function CategoryProducts() {
 					<div className="gold-line max-w-32 mx-auto"></div>
 				</div>
 
-				{Array.isArray(drinksMenuPageImages) && drinksMenuPageImages.length > 0 ? (
+				{showMenuImages ? (
 					<div className="max-w-3xl mx-auto space-y-4">
-						{drinksMenuPageImages.map((src, idx) => (
+						{menuPageImages.map((src, idx) => (
 							<img
 								key={`${src}-${idx}`}
 								src={src}
@@ -268,20 +344,25 @@ export default function CategoryProducts() {
 						role="dialog"
 						aria-modal="true"
 					>
+						<button
+							type="button"
+							onClick={() => setFullscreenSrc(null)}
+							className="absolute top-4 right-4 z-10 px-3 py-2 bg-black/40 border border-gold/30 text-gold rounded-lg active:opacity-80"
+							aria-label="Close"
+						>
+							<i className="fas fa-times"></i>
+						</button>
 						<img
 							src={fullscreenSrc}
 							alt={getName(category) || 'Menu'}
 							className="w-full h-full object-contain"
 							decoding="async"
-							onClick={(e) => e.stopPropagation()}
-							onMouseDown={(e) => e.stopPropagation()}
-							onTouchStart={(e) => e.stopPropagation()}
 						/>
 					</div>
 				) : null}
 
 				{/* Subcategories Section */}
-				{!drinksMenuPageImages && subcategories.length > 0 && (
+				{showCategoryContent && subcategories.length > 0 && (
 					<div className="mb-12">
 						<h3 className="font-cinzel text-2xl text-gold mb-6 text-center">{t('subcategories')}</h3>
 						<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto mb-8">
@@ -331,7 +412,7 @@ export default function CategoryProducts() {
 				)}
 
 				{/* Products Section */}
-				{!drinksMenuPageImages && products.length > 0 && (
+				{showCategoryContent && products.length > 0 && (
 					<div>
 						<h3 className="font-cinzel text-2xl text-gold mb-6 text-center">{t('products')}</h3>
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -341,18 +422,35 @@ export default function CategoryProducts() {
 							onClick={() => navigate(`/product/${product.id}`)}
 							className="bg-marble-black/80 border border-gold/30 rounded-xl overflow-hidden hover:border-gold hover:shadow-xl hover:shadow-gold/10 transition-all cursor-pointer group"
 						>
-							{product.imageUrl && (
-								<div className="h-56 overflow-hidden relative bg-marble-black/50">
-									<img 
-										src={product.imageUrl} 
-										alt={getName(product)} 
-										className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-										loading="lazy"
-										decoding="async"
+							{(() => {
+								const rawUrl = product?.imageUrl || '';
+								const hasRealImage = !!rawUrl && !isPlaceholderUrl(rawUrl);
+								const shouldShowImageBlock = hasRealImage || showProductPlaceholderImage;
+								if (!shouldShowImageBlock) return null;
+								const src = hasRealImage ? rawUrl : '/images/menu/placeholder.svg';
+								return (
+									<div className="product-image-wrap h-56 overflow-hidden relative bg-marble-black/50">
+										<img 
+											src={src}
+											alt={getName(product)} 
+											className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+											loading="lazy"
+											decoding="async"
+											onError={(e) => {
+												if (showProductPlaceholderImage) {
+													if (e.currentTarget?.dataset?.fallbackApplied) return;
+													e.currentTarget.dataset.fallbackApplied = '1';
+													e.currentTarget.src = '/images/menu/placeholder.svg';
+													return;
+												}
+												const wrap = e.currentTarget?.closest?.('.product-image-wrap');
+												if (wrap) wrap.style.display = 'none';
+											}}
 									/>
-									<div className="absolute inset-0 bg-gradient-to-t from-marble-black via-transparent to-transparent opacity-60"></div>
-								</div>
-							)}
+										<div className="absolute inset-0 bg-gradient-to-t from-marble-black via-transparent to-transparent opacity-60"></div>
+									</div>
+								);
+							})()}
 							<div className="p-5">
 								<h3 className="font-cinzel text-xl text-gold mb-2 group-hover:text-deep-gold transition-colors">{getName(product)}</h3>
 								{getDesc(product) && (
@@ -374,7 +472,7 @@ export default function CategoryProducts() {
 				)}
 
 				{/* Empty State */}
-				{!loading && !drinksMenuPageImages && subcategories.length === 0 && products.length === 0 && (
+				{!loading && showCategoryContent && subcategories.length === 0 && products.length === 0 && (
 					<div className="text-center py-12">
 						<p className="text-muted-gray text-lg">{t('emptyCategoryTitle')}</p>
 						<p className="text-muted-gray text-sm mt-2">{t('emptyCategoryDesc')}</p>
