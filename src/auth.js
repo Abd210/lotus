@@ -4,7 +4,8 @@ import { auth, googleProvider } from './firebase';
 
 const AuthContext = React.createContext({ user: null, isAdmin: false });
 const ADMIN_EMAILS = [
-	'lotuscaffe5@gmail.com'
+	'lotuscaffe5@gmail.com',
+	'brands.brothers99@gmail.com'
 ];
 
 export function AuthProvider({ children }) {
